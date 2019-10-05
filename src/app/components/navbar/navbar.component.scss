@@ -1,0 +1,76 @@
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 10%;
+  -webkit-box-shadow: 0 10px 6px -6px #ebebeb;
+  -moz-box-shadow: 0 10px 6px -6px #ebebeb77;
+  box-shadow: 0 10px 6px -6px #ebebeb;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+
+  background-color: white;
+  header {
+    cursor: pointer;
+  }
+  li,
+  a,
+  button {
+    text-decoration: none;
+  }
+
+  .btn-logout {
+    border: 2px solid gray;
+    color: gray;
+    background: none;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    -webkit-box-shadow: 0 10px 6px -6px #e4e4e4;
+    -moz-box-shadow: 0 10px 6px -6px #e4e4e4;
+    box-shadow: 0 10px 6px -6px #e4e4e4;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-logout:hover {
+    background-image: linear-gradient(
+      to right,
+      #d31027 0%,
+      #ea384d 51%,
+      #d31027 100%
+    );
+    color: white;
+    -webkit-box-shadow: 0 10px 6px -6px #ea384d;
+    -moz-box-shadow: 0 10px 6px -6px #ea384d;
+    box-shadow: 0 10px 6px -6px #ea384d;
+    border: none;
+  }
+
+  .btn {
+    border: 2px solid gray;
+    color: gray;
+    background: none;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    -webkit-box-shadow: 0 10px 6px -6px #e4e4e4;
+    -moz-box-shadow: 0 10px 6px -6px #e4e4e4;
+    box-shadow: 0 10px 6px -6px #e4e4e4;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 60px;
+}

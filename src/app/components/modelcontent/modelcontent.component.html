@@ -1,0 +1,27 @@
+<div class="modal-header">
+  <h4 class="modal-title">Add a Photo!</h4>
+</div>
+<div class="model-content">
+  <div class="upload-btn-wrapper">
+    <button class="btn">Click to upload</button>
+    <input type="file" name="myfile" />
+  </div>
+  <div class="input-container">
+    <input type="text" placeholder="Add your title" id="input-title" />
+
+    <input
+      type="text"
+      placeholder="What story does your picture tell?"
+      id="input-story"
+    />
+  </div>
+</div>
+<div class="modal-footer">
+  <button
+    type="button"
+    class="btn-close"
+    (click)="activeModal.close('Close click')"
+  >
+    Close
+  </button>
+</div>

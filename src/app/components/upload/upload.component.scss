@@ -1,0 +1,14 @@
+.btn {
+  border: 2px solid gray;
+  color: gray;
+  background: none;
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-size: 20px;
+  font-weight: bold;
+  -webkit-box-shadow: 0 10px 6px -6px #e4e4e4;
+  -moz-box-shadow: 0 10px 6px -6px #e4e4e4;
+  box-shadow: 0 10px 6px -6px #e4e4e4;
+  cursor: pointer;
+  transition: all 0.2s;
+}
