@@ -1,0 +1,21 @@
+<div id="columns">
+  <div *ngFor="let post of posts">
+    <button (click)="goToDetails(post)" id="btn-post">
+      <figure>
+        <button class="btn-pin">
+          <img src="../../../assets/pin.jpg" style="width:100%" />
+        </button>
+        <img [src]="post.imageUrl" />
+        <div class="container">
+          <h4>
+            <b>{{ post.title }}</b>
+          </h4>
+          <p>
+            {{ post.description }}
+          </p>
+        </div>
+      </figure>
+    </button>
+  </div>
+</div>
+<app-upload class="btn-add"></app-upload>

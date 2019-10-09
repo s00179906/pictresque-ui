@@ -1,4 +1,4 @@
-.btn {
+.btn-add {
   border: 2px solid gray;
   color: gray;
   background: none;
@@ -11,4 +11,17 @@
   box-shadow: 0 10px 6px -6px #e4e4e4;
   cursor: pointer;
   transition: all 0.2s;
+}
+.btn-add:hover {
+  background-image: linear-gradient(
+    to right,
+    #d31027 0%,
+    #ea384d 51%,
+    #d31027 100%
+  );
+  color: white;
+  -webkit-box-shadow: 0 10px 6px -6px #ea384d;
+  -moz-box-shadow: 0 10px 6px -6px #ea384d;
+  box-shadow: 0 10px 6px -6px #ea384d;
+  border: none;
 }

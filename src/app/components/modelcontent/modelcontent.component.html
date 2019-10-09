@@ -3,16 +3,25 @@
 </div>
 <div class="model-content">
   <div class="upload-btn-wrapper">
-    <button class="btn">Click to upload</button>
-    <input type="file" name="myfile" />
+    <button class="btn" [class.displayNone]="imageUploaded">
+      Click to upload
+    </button>
+    <img
+      [src]="imageSrc"
+      width="100%"
+      height="100%"
+      id="img-file"
+      [class.displayNone]="!imageUploaded"
+    />
+    <input type="file" name="myfile" (change)="getImage($event.target.files)" />
   </div>
   <div class="input-container">
-    <input type="text" placeholder="Add your title" id="input-title" />
-
+    <input type="text" placeholder="Add your title" id="input-title" #title />
     <input
       type="text"
       placeholder="What story does your picture tell?"
       id="input-story"
+      #description
     />
   </div>
 </div>
@@ -23,5 +32,12 @@
     (click)="activeModal.close('Close click')"
   >
     Close
+  </button>
+  <button
+    type="button"
+    class="btn-upload"
+    (click)="createPost(title.value, description.value)"
+  >
+    Upload
   </button>
 </div>

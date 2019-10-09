@@ -62,6 +62,7 @@ div#columns figure {
   transition: opacity 0.4s ease-in-out;
   display: inline-block;
   column-break-inside: avoid;
+  cursor: pointer;
 }
 
 div#columns figure img {
@@ -106,4 +107,18 @@ div#columns:hover figure:hover {
   #columns figure {
     width: 100%;
   }
+}
+
+.btn-add {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  margin: 25px;
+}
+
+#btn-post {
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
 }
