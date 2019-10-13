@@ -1,6 +1,6 @@
 <div id="columns">
-  <div *ngFor="let post of posts">
-    <button (click)="goToDetails(post)" id="btn-post">
+  <div *ngFor="let post of posts" cdkDrag>
+    <button (dblclick)="goToDetails(post)" id="btn-post">
       <figure>
         <button class="btn-pin">
           <img src="../../../assets/pin.jpg" style="width:100%" />

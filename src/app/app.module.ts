@@ -10,6 +10,7 @@ import { UploadComponent } from './components/upload/upload.component';
 import { ModelcontentComponent } from './components/modelcontent/modelcontent.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { PostDetailsComponent } from './pages/post-details/post-details.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { PostDetailsComponent } from './pages/post-details/post-details.componen
     PostsComponent,
     PostDetailsComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, NgbModule, HttpClientModule, DragDropModule],
   providers: [],
   bootstrap: [AppComponent],
   entryComponents: [ModelcontentComponent]
