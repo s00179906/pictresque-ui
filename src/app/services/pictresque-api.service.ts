@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Post } from '../models/Post';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +11,8 @@ export class PictresqueAPIService {
   fileToUpload: any;
   constructor(private _http: HttpClient) {}
 
-  getAllPosts = () => {
-    return this._http.get(`${this.url}/api/feed`);
+  getAllPosts = (): Observable<Post[]> => {
+    return this._http.get<Post[]>(`${this.url}/api/feed`);
   };
 
   uploadImage = (file: FileList, title, desc) => {
