@@ -11,6 +11,7 @@ import { ModelcontentComponent } from './components/modelcontent/modelcontent.co
 import { PostsComponent } from './components/posts/posts.component';
 import { PostDetailsComponent } from './pages/post-details/post-details.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { PixbayPostsComponent } from './components/pixbayposts/pixbayposts.component';
 
 @NgModule({
   declarations: [
@@ -20,9 +21,16 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     UploadComponent,
     ModelcontentComponent,
     PostsComponent,
-    PostDetailsComponent
+    PostDetailsComponent,
+    PixbayPostsComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule, HttpClientModule, DragDropModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgbModule,
+    HttpClientModule,
+    DragDropModule
+  ],
   providers: [],
   bootstrap: [AppComponent],
   entryComponents: [ModelcontentComponent]
