@@ -55,7 +55,6 @@
     box-sizing: border-box;
     margin-bottom: 50px;
     border: none;
-    width: 60%;
     outline: none;
     border-bottom: 1px solid #aaa;
     transition: 0.2s ease;
@@ -125,7 +124,7 @@ h5 {
   top: 0;
   right: 0;
   box-sizing: border-box;
-  padding: 40px;
+  padding: 40px 0px;
   width: 50%;
   height: 100%;
   background: linear-gradient(to right, #ed213a, #93291e);

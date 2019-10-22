@@ -13,13 +13,13 @@ export class PixbayPostsComponent implements OnInit {
 
   constructor(private apiService: PixbayApiService) {}
 
-  Search(searchTerm: string): boolean {
+  Search = (searchTerm: string): boolean => {
     console.log('Search Works');
     this.apiService.getSearchTerm(searchTerm).subscribe(searchWord => {
       this.searchWord = this.searchWord;
     });
     return false;
-  }
+  };
 
   ngOnInit() {
     this.Search('');
