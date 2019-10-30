@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PictresqueAPIService } from 'src/app/services/pictresque-api.service';
 import { Router } from '@angular/router';
-import {
-  AuthService,
-  FacebookLoginProvider,
-  SocialUser
-} from 'angularx-social-login';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -14,24 +10,11 @@ import {
 export class RegisterComponent implements OnInit {
   constructor(
     private pictresqueAPI: PictresqueAPIService,
-    private router: Router,
-    private authService: AuthService
+    private router: Router
   ) {}
   display: Boolean = false;
   test: Boolean = false;
   title = 'FacebookLogin';
-  user: SocialUser;
-  loggedIn: boolean;
-
-  signInWithFB(): void {
-    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
-    if (this.loggedIn === true) {
-      this.router.navigate(['home']);
-    }
-  }
-  signOutFB(): void {
-    this.authService.signOut();
-  }
 
   showSignin = () => {
     this.display = true;
@@ -72,11 +55,5 @@ export class RegisterComponent implements OnInit {
     }
   };
 
-  ngOnInit() {
-    this.authService.authState.subscribe(user => {
-      this.user = user;
-      this.loggedIn = user != null;
-      console.log(this.user);
-    });
-  }
+  ngOnInit() {}
 }
