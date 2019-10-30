@@ -54,6 +54,6 @@ export function provideConfig() {
     }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ModelcontentComponent, RegisterComponent]
+  entryComponents: [ModelcontentComponent]
 })
 export class AppModule {}

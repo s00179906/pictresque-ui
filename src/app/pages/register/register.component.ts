@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PictresqueAPIService } from 'src/app/services/pictresque-api.service';
 import { Router } from '@angular/router';
-
+import { FacebookAuthService } from 'src/app/services/facebook-auth.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -9,12 +9,20 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   constructor(
+    private FBauthService: FacebookAuthService,
     private pictresqueAPI: PictresqueAPIService,
     private router: Router
   ) {}
   display: Boolean = false;
   test: Boolean = false;
   title = 'FacebookLogin';
+
+  loggedIn: any;
+  user: any;
+
+  signInWithFacebook(): void {
+    this.FBauthService.signInWithFB();
+  }
 
   showSignin = () => {
     this.display = true;

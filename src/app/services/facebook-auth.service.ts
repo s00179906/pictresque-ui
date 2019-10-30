@@ -16,19 +16,16 @@ export class FacebookAuthService {
 
   signInWithFB(): void {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
-    if (this.loggedIn === true) {
-      this.router.navigate(['home']);
-    }
   }
   signOutFB(): void {
     this.authService.signOut();
     this.router.navigate(['']);
   }
-  authenticateUser(): void {
+  authenticateUser(loggedIn: boolean): void {
     this.authService.authState.subscribe(user => {
       this.user = user;
       this.loggedIn = user != null;
-      console.log(this.user);
+      return this.loggedIn;
     });
   }
 }
