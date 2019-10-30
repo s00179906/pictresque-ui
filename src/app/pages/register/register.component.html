@@ -1,10 +1,6 @@
 <div id="login-box">
   <!-- SIGN UP FORM -->
-  <div
-    class="left-box-signup"
-    [class.animation-out]="display"
-    [class.animation-forward]="test"
-  >
+  <div class="left-box-signup" [class.animation-out]="display" [class.animation-forward]="test">
     <h1>Welcome to Pictresque.</h1>
     <h5>Hey there! Signup to continue</h5>
 
@@ -13,10 +9,7 @@
       <input type="password" #passwordSignup placeholder="Password" />
 
       <div class="btn-container">
-        <button
-          class="btn-signup"
-          (click)="registerUser(emailSignup.value, passwordSignup.value)"
-        >
+        <button class="btn-signup" (click)="registerUser(emailSignup.value, passwordSignup.value)">
           Sign Up
         </button>
         <button class="btn-signup" (click)="showSignin($event)">Sign In</button>
@@ -25,11 +18,7 @@
   </div>
 
   <!-- SIGN UP FORM -->
-  <div
-    class="left-box-signin"
-    [class.animation-in]="display"
-    [class.animation-back]="test"
-  >
+  <div class="left-box-signin" [class.animation-in]="display" [class.animation-back]="test">
     <h1>Welcome to Pictresque.</h1>
     <h5>Woosh! login to continue</h5>
 
@@ -39,10 +28,7 @@
 
       <div class="btn-container">
         <button class="btn-signup" (click)="showSignup()">Sign Up</button>
-        <button
-          class="btn-signup"
-          (click)="loginUser(email.value, password.value)"
-        >
+        <button class="btn-signup" (click)="loginUser(email.value, password.value)">
           Sign In
         </button>
       </div>
@@ -53,8 +39,8 @@
   <div class="right-box">
     <h1>Sign in with your social networks</h1>
     <h5>Greatness awaits!</h5>
-    <button class="social facebook">Log in with Facebook</button>
-    <button class="social twitter">Log in with Twitter</button>
+
+    <button class="social facebook" (click)="signInWithFB()">Log in with Facebook</button>
     <button class="social google">Log in with Google+</button>
   </div>
 </div>

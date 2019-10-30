@@ -1,4 +1,9 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+import {
+  AuthService,
+  FacebookLoginProvider,
+  SocialUser
+} from 'angularx-social-login';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +12,19 @@ import { Component, OnInit, HostListener } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
   scrollPost: any = null;
-  constructor() {}
+  userName: string;
+  user: any;
+  loggedIn: any;
+  constructor(private authService: AuthService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.authService.authState.subscribe(user => {
+      this.user = user;
+      this.loggedIn = user != null;
+      console.log(this.user);
+      this.userName = user.firstName;
+    });
+  }
 
   // @HostListener('window:scroll', ['$event'])
   // doSomething(event) {

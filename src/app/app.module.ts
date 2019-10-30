@@ -12,7 +12,22 @@ import { PostsComponent } from './components/posts/posts.component';
 import { PostDetailsComponent } from './pages/post-details/post-details.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { PixbayPostsComponent } from './components/pixbayposts/pixbayposts.component';
+import {
+  SocialLoginModule,
+  AuthServiceConfig,
+  FacebookLoginProvider
+} from 'angularx-social-login';
+import { RegisterComponent } from './pages/register/register.component';
+const config = new AuthServiceConfig([
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider('771480609961730')
+  }
+]);
 
+export function provideConfig() {
+  return config;
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,10 +44,16 @@ import { PixbayPostsComponent } from './components/pixbayposts/pixbayposts.compo
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    DragDropModule
+    DragDropModule,
+    SocialLoginModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    }
+  ],
   bootstrap: [AppComponent],
-  entryComponents: [ModelcontentComponent]
+  entryComponents: [ModelcontentComponent, RegisterComponent]
 })
 export class AppModule {}
