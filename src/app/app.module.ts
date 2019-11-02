@@ -12,6 +12,7 @@ import { PostsComponent } from './components/posts/posts.component';
 import { PostDetailsComponent } from './pages/post-details/post-details.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { PixbayPostsComponent } from './components/pixbayposts/pixbayposts.component';
+import { HighlightDirective } from './directives/highlight.directive';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PixbayPostsComponent } from './components/pixbayposts/pixbayposts.compo
     ModelcontentComponent,
     PostsComponent,
     PostDetailsComponent,
-    PixbayPostsComponent
+    PixbayPostsComponent,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,
