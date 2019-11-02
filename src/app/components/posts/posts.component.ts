@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./posts.component.scss']
 })
 export class PostsComponent implements OnInit {
-  posts: any;
+  posts: Post[];
+
   constructor(
     private apiService: PictresqueAPIService,
     private router: Router
