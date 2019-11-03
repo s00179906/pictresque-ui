@@ -49,7 +49,10 @@ export class RegisterComponent implements OnInit {
     );
   };
 
-  loginUser = (email, password) => {
+  loginUser = () => {
+    let email = this.form.get('emailSignin').value;
+    let password = this.form.get('passwordSignin').value;
+
     if (!email || !password) {
       alert('Please enter all fields!');
     } else {
@@ -70,6 +73,14 @@ export class RegisterComponent implements OnInit {
         validators: [Validators.required]
       }),
       passwordSignup: new FormControl(null, {
+        updateOn: 'blur',
+        validators: [Validators.required, Validators.min(6)]
+      }),
+      emailSignin: new FormControl(null, {
+        updateOn: 'blur',
+        validators: [Validators.required]
+      }),
+      passwordSignin: new FormControl(null, {
         updateOn: 'blur',
         validators: [Validators.required, Validators.min(6)]
       })
