@@ -10,6 +10,33 @@
       <h5>Hey there! Signup to continue</h5>
 
       <div class="input-container">
+        <input type="text" formControlName="emailSignup" placeholder="Email" />
+
+        <input
+          type="password"
+          formControlName="passwordSignup"
+          placeholder="Password"
+        />
+
+        <div class="btn-container">
+          <button class="btn-signup" (click)="registerUser()">
+            Sign Up
+          </button>
+          <button class="btn-signup" (click)="showSignin($event)">
+            Sign In
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- <div
+      class="left-box-signup"
+      [class.animation-out]="display"
+      [class.animation-forward]="test"
+    >
+      <h1>Register</h1>
+      <h5>Hey there! Signup to continue</h5>
+
+      <div class="input-container">
         <input type="text" #emailSignup placeholder="Email" />
         <input type="password" #passwordSignup placeholder="Password" />
 
@@ -25,7 +52,7 @@
           </button>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- LOGIN UP FORM -->
     <div

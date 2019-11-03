@@ -28,8 +28,14 @@ export class RegisterComponent implements OnInit {
     this.display = false;
   };
 
-  registerUser = (email, password) => {
+  registerUser = () => {
     let canLogin = false;
+
+    let email = this.form.get('emailSignup').value;
+    let password = this.form.get('passwordSignup').value;
+
+    console.log(email, password);
+
     this.pictresqueAPI.registerUser(email, password).subscribe(
       data => {
         console.log('success', data);
@@ -59,11 +65,11 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.form = new FormGroup({
-      email: new FormControl(null, {
+      emailSignup: new FormControl(null, {
         updateOn: 'blur',
         validators: [Validators.required]
       }),
-      password: new FormControl(null, {
+      passwordSignup: new FormControl(null, {
         updateOn: 'blur',
         validators: [Validators.required, Validators.min(6)]
       })
