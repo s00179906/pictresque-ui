@@ -1,53 +1,57 @@
 <div id="login-box">
   <!-- SIGN UP FORM -->
-  <div
-    class="left-box-signup"
-    [class.animation-out]="display"
-    [class.animation-forward]="test"
-  >
-    <h1>Register</h1>
-    <h5>Hey there! Signup to continue</h5>
+  <form [formGroup]="form">
+    <div
+      class="left-box-signup"
+      [class.animation-out]="display"
+      [class.animation-forward]="test"
+    >
+      <h1>Register</h1>
+      <h5>Hey there! Signup to continue</h5>
 
-    <div class="input-container">
-      <input type="text" #emailSignup placeholder="Email" />
-      <input type="password" #passwordSignup placeholder="Password" />
+      <div class="input-container">
+        <input type="text" #emailSignup placeholder="Email" />
+        <input type="password" #passwordSignup placeholder="Password" />
 
-      <div class="btn-container">
-        <button
-          class="btn-signup"
-          (click)="registerUser(emailSignup.value, passwordSignup.value)"
-        >
-          Sign Up
-        </button>
-        <button class="btn-signup" (click)="showSignin($event)">Sign In</button>
+        <div class="btn-container">
+          <button
+            class="btn-signup"
+            (click)="registerUser(emailSignup.value, passwordSignup.value)"
+          >
+            Sign Up
+          </button>
+          <button class="btn-signup" (click)="showSignin($event)">
+            Sign In
+          </button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- SIGN UP FORM -->
-  <div
-    class="left-box-signin"
-    [class.animation-in]="display"
-    [class.animation-back]="test"
-  >
-    <h1>Login</h1>
-    <h5>Woosh! login to continue</h5>
+    <!-- LOGIN UP FORM -->
+    <div
+      class="left-box-signin"
+      [class.animation-in]="display"
+      [class.animation-back]="test"
+    >
+      <h1>Login</h1>
+      <h5>Woosh! login to continue</h5>
 
-    <div class="input-container">
-      <input type="text" #email placeholder="Email" />
-      <input type="password" #password placeholder="Password" />
+      <div class="input-container">
+        <input type="text" #email placeholder="Email" />
+        <input type="password" #password placeholder="Password" />
 
-      <div class="btn-container">
-        <button class="btn-signup" (click)="showSignup()">Sign Up</button>
-        <button
-          class="btn-signup"
-          (click)="loginUser(email.value, password.value)"
-        >
-          Sign In
-        </button>
+        <div class="btn-container">
+          <button class="btn-signup" (click)="showSignup()">Sign Up</button>
+          <button
+            class="btn-signup"
+            (click)="loginUser(email.value, password.value)"
+          >
+            Sign In
+          </button>
+        </div>
       </div>
     </div>
-  </div>
+  </form>
 
   <!-- SOCIAL NETWORK LOGIN -->
   <div class="right-box">

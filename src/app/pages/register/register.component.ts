@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PictresqueAPIService } from 'src/app/services/pictresque-api.service';
 import { Router } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -8,12 +9,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+  display: Boolean = false;
+  test: Boolean = false;
+  form: FormGroup;
+
   constructor(
     private pictresqueAPI: PictresqueAPIService,
     private router: Router
   ) {}
-  display: Boolean = false;
-  test: Boolean = false;
 
   showSignin = () => {
     this.display = true;
@@ -54,5 +57,16 @@ export class RegisterComponent implements OnInit {
     }
   };
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.form = new FormGroup({
+      email: new FormControl(null, {
+        updateOn: 'blur',
+        validators: [Validators.required]
+      }),
+      password: new FormControl(null, {
+        updateOn: 'blur',
+        validators: [Validators.required, Validators.min(6)]
+      })
+    });
+  }
 }
