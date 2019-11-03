@@ -10,9 +10,18 @@
       <h5>Hey there! Signup to continue</h5>
 
       <div class="input-container">
-        <input type="text" formControlName="emailSignup" placeholder="Email" />
+        <label for="email">Email</label>
+        <input
+          id="email"
+          type="text"
+          formControlName="emailSignup"
+          placeholder="Email"
+        />
+
+        <label for="password">Password</label>
 
         <input
+          id="password"
           type="password"
           formControlName="passwordSignup"
           placeholder="Password"
