@@ -169,3 +169,33 @@ button.google:hover {
 label {
   display: none;
 }
+
+@media only screen and (max-width: 750px) {
+  .right-box {
+    top: 100%;
+    width: 100%;
+
+    button {
+      width: 90%;
+      padding: 0px 50px;
+    }
+  }
+  .left-box-signup {
+    width: 100%;
+
+    .input-container {
+      align-items: stretch;
+    }
+  }
+
+  .left-box-signin {
+    left: -135%;
+  }
+
+  .btn-container {
+    flex-direction: column;
+    button {
+      padding: 8px 60px;
+    }
+  }
+}
