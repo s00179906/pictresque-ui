@@ -80,14 +80,6 @@
       <div class="input-container">
         <label for="emailSignin">Email</label>
 
-        <!-- <input type="text" formControlName="emailSignin" placeholder="Email" />
-
-        <input
-          type="password"
-          formControlName="passwordSignin"
-          placeholder="Password"
-        /> -->
-
         <ngb-alert
           [dismissible]="false"
           type="danger"
@@ -96,11 +88,7 @@
           <strong>Oh oh!</strong> Your email does not look right!
         </ngb-alert>
 
-        <ngb-alert
-          [dismissible]="false"
-          type="danger"
-          *ngIf="loginErrors || emailSignin.dirty"
-        >
+        <ngb-alert [dismissible]="false" type="danger" *ngIf="loginErrors">
           {{ loginErrors.error.message }}
         </ngb-alert>
 
