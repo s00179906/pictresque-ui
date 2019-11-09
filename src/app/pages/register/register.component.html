@@ -1,7 +1,6 @@
 <div id="login-box">
-  <!-- ? FORM -->
-  <form [formGroup]="form" (ngSubmit)="registerUser()">
-    <!-- ? SIGN UP FORM -->
+  <!-- ? REGISTER FORM -->
+  <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
     <div
       class="left-box-signup"
       [class.animation-out]="display"
@@ -21,11 +20,7 @@
           <strong>Oh oh!</strong> Your email does not look right!
         </ngb-alert>
 
-        <ngb-alert
-          [dismissible]="false"
-          type="danger"
-          *ngIf="registerErrors || emailSignup.dirty"
-        >
+        <ngb-alert [dismissible]="false" type="danger" *ngIf="registerErrors">
           {{ registerErrors.error.message }}
         </ngb-alert>
 
@@ -57,18 +52,27 @@
         />
 
         <div class="btn-container">
-          <button class="btn-signup" (click)="registerUser()">
+          <!-- <button class="btn-signup" (click)="registerUser()">
             Sign Up
-          </button>
-          <!-- <input type="submit" class="btn-signup" [disabled]="!form.valid" /> -->
+          </button> -->
           <button class="btn-signup" (click)="showSignin($event)">
             Sign In
+          </button>
+
+          <button
+            type="submit"
+            [disabled]="!registerForm.valid"
+            class="btn-signup"
+          >
+            Sign Up
           </button>
         </div>
       </div>
     </div>
+  </form>
 
-    <!-- ? LOGIN UP FORM -->
+  <!-- ? LOGIN FORM -->
+  <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
     <div
       class="left-box-signin"
       [class.animation-in]="display"
@@ -77,7 +81,9 @@
       <h1>Login</h1>
       <h5>Woosh! login to continue</h5>
 
+      <!-- ? EMAIL AND PASSWORD INPUTS -->
       <div class="input-container">
+        <!-- ? EMAIL LABEL, INPUT, NGBALERT-->
         <label for="emailSignin">Email</label>
 
         <ngb-alert
@@ -100,15 +106,8 @@
           required
         />
 
+        <!-- ? PASSWORD LABEL, INPUT, NGBALERT-->
         <label for="passwordSignin">Password</label>
-
-        <!-- <ngb-alert
-          [dismissible]="false"
-          type="danger"
-          *ngIf="loginErrors || emailSignin.dirty"
-        >
-          {{ loginErrors.error.message }}
-        </ngb-alert> -->
 
         <input
           id="passwordSignin"
@@ -121,9 +120,18 @@
 
         <div class="btn-container">
           <button class="btn-signup" (click)="showSignup()">Sign Up</button>
-          <button class="btn-signup" (click)="loginUser()">
+
+          <button
+            type="submit"
+            class="btn-signup"
+            [disabled]="!loginForm.valid"
+          >
             Sign In
           </button>
+
+          <!-- <button class="btn-signup" (click)="loginUser()">
+            Sign In
+          </button> -->
         </div>
       </div>
     </div>

@@ -103,7 +103,14 @@ h5 {
   transition: all 0.2s;
 }
 
-.btn-signup:hover {
+button:disabled,
+button[disabled] {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+.btn-signup:hover:enabled {
   background-image: linear-gradient(
     to right,
     #d31027 0%,

@@ -11,7 +11,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class RegisterComponent implements OnInit {
   display: Boolean = false;
   test: Boolean = false;
-  form: FormGroup;
+  registerForm: FormGroup;
+  loginForm: FormGroup;
   registerErrors: string;
   loginErrors: string;
 
@@ -33,8 +34,8 @@ export class RegisterComponent implements OnInit {
   registerUser = () => {
     let canLogin = false;
 
-    let email = this.form.get('emailSignup').value;
-    let password = this.form.get('passwordSignup').value;
+    let email = this.registerForm.get('emailSignup').value;
+    let password = this.registerForm.get('passwordSignup').value;
 
     console.log(email, password);
 
@@ -54,8 +55,10 @@ export class RegisterComponent implements OnInit {
   };
 
   loginUser = () => {
-    let email = this.form.get('emailSignin').value;
-    let password = this.form.get('passwordSignin').value;
+    let email = this.loginForm.get('emailSignin').value;
+    let password = this.loginForm.get('passwordSignin').value;
+
+    console.log('EMAIL AND PASSWORD FROM LOGIN: ', email, password);
 
     this.pictresqueAPI.loginUser(email, password).subscribe(
       data => {
@@ -69,23 +72,23 @@ export class RegisterComponent implements OnInit {
   };
 
   get emailSignup() {
-    return this.form.get('emailSignup');
+    return this.registerForm.get('emailSignup');
   }
 
   get passwordSignup() {
-    return this.form.get('passwordSignup');
+    return this.registerForm.get('passwordSignup');
   }
 
   get emailSignin() {
-    return this.form.get('emailSignin');
+    return this.loginForm.get('emailSignin');
   }
 
   get passwordSignin() {
-    return this.form.get('passwordSignin');
+    return this.loginForm.get('passwordSignin');
   }
 
   ngOnInit() {
-    this.form = new FormGroup({
+    this.registerForm = new FormGroup({
       emailSignup: new FormControl(null, {
         updateOn: 'blur',
         validators: [Validators.required, Validators.email]
@@ -93,7 +96,10 @@ export class RegisterComponent implements OnInit {
       passwordSignup: new FormControl(null, {
         updateOn: 'blur',
         validators: [Validators.required, Validators.minLength(6)]
-      }),
+      })
+    });
+
+    this.loginForm = new FormGroup({
       emailSignin: new FormControl(null, {
         updateOn: 'blur',
         validators: [Validators.required, Validators.email]
