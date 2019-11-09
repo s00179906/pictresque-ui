@@ -14,6 +14,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { PixbayPostsComponent } from './components/pixbayposts/pixbayposts.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CategoriesComponent } from './components/categories/categories.component';
+import { CategoryComponent } from './pages/category/category.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CategoriesComponent } from './components/categories/categories.componen
     PostsComponent,
     PostDetailsComponent,
     PixbayPostsComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,
