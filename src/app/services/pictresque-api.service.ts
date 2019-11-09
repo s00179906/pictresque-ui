@@ -11,6 +11,10 @@ export class PictresqueAPIService {
   fileToUpload: any;
   constructor(private _http: HttpClient) {}
 
+  getCategories = async () => {
+    return await this._http.get(`${this.url}/api/categories`);
+  };
+
   getAllPosts = (): Observable<Post[]> => {
     return this._http.get<Post[]>(`${this.url}/api/feed`);
   };
