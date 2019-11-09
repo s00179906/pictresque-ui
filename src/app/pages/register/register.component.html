@@ -1,6 +1,7 @@
 <div id="login-box">
-  <!-- SIGN UP FORM -->
-  <form [formGroup]="form">
+  <!-- ? FORM -->
+  <form [formGroup]="form" (ngSubmit)="registerUser()">
+    <!-- ? SIGN UP FORM -->
     <div
       class="left-box-signup"
       [class.animation-out]="display"
@@ -10,27 +11,56 @@
       <h5>Hey there! Signup to continue</h5>
 
       <div class="input-container">
-        <label for="email">Email</label>
+        <label for="emailSignup">Email</label>
+
+        <ngb-alert
+          [dismissible]="false"
+          type="danger"
+          *ngIf="emailSignup.invalid && emailSignup.touched"
+        >
+          <strong>Oh oh!</strong> Your email does not look right!
+        </ngb-alert>
+
+        <ngb-alert
+          [dismissible]="false"
+          type="danger"
+          *ngIf="registerErrors || emailSignup.dirty"
+        >
+          {{ registerErrors.error.message }}
+        </ngb-alert>
+
         <input
-          id="email"
+          id="emailSignup"
           type="text"
           formControlName="emailSignup"
           placeholder="Email"
+          required
         />
 
-        <label for="password">Password</label>
+        <label for="passwordSignup">Password</label>
+
+        <ngb-alert
+          [dismissible]="false"
+          type="danger"
+          *ngIf="passwordSignup.invalid && passwordSignup.touched"
+        >
+          <strong>Oops!</strong> Password is weak!
+        </ngb-alert>
 
         <input
-          id="password"
+          id="passwordSignup"
+          name="passwordSignup"
           type="password"
           formControlName="passwordSignup"
           placeholder="Password"
+          required
         />
 
         <div class="btn-container">
           <button class="btn-signup" (click)="registerUser()">
             Sign Up
           </button>
+          <!-- <input type="submit" class="btn-signup" [disabled]="!form.valid" /> -->
           <button class="btn-signup" (click)="showSignin($event)">
             Sign In
           </button>
@@ -38,7 +68,7 @@
       </div>
     </div>
 
-    <!-- LOGIN UP FORM -->
+    <!-- ? LOGIN UP FORM -->
     <div
       class="left-box-signin"
       [class.animation-in]="display"
@@ -48,12 +78,57 @@
       <h5>Woosh! login to continue</h5>
 
       <div class="input-container">
-        <input type="text" formControlName="emailSignin" placeholder="Email" />
+        <label for="emailSignin">Email</label>
+
+        <!-- <input type="text" formControlName="emailSignin" placeholder="Email" />
 
         <input
           type="password"
           formControlName="passwordSignin"
           placeholder="Password"
+        /> -->
+
+        <ngb-alert
+          [dismissible]="false"
+          type="danger"
+          *ngIf="emailSignin.invalid && emailSignin.touched"
+        >
+          <strong>Oh oh!</strong> Your email does not look right!
+        </ngb-alert>
+
+        <ngb-alert
+          [dismissible]="false"
+          type="danger"
+          *ngIf="loginErrors || emailSignin.dirty"
+        >
+          {{ loginErrors.error.message }}
+        </ngb-alert>
+
+        <input
+          id="emailSignin"
+          type="text"
+          formControlName="emailSignin"
+          placeholder="Email"
+          required
+        />
+
+        <label for="passwordSignin">Password</label>
+
+        <!-- <ngb-alert
+          [dismissible]="false"
+          type="danger"
+          *ngIf="loginErrors || emailSignin.dirty"
+        >
+          {{ loginErrors.error.message }}
+        </ngb-alert> -->
+
+        <input
+          id="passwordSignin"
+          name="passwordSignin"
+          type="password"
+          formControlName="passwordSignin"
+          placeholder="Password"
+          required
         />
 
         <div class="btn-container">
@@ -66,7 +141,7 @@
     </div>
   </form>
 
-  <!-- SOCIAL NETWORK LOGIN -->
+  <!-- ? SOCIAL NETWORK LOGIN -->
   <div class="right-box">
     <h1>Sign in with your social networks</h1>
     <h5>Greatness awaits!</h5>

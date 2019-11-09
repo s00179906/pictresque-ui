@@ -12,6 +12,8 @@ export class RegisterComponent implements OnInit {
   display: Boolean = false;
   test: Boolean = false;
   form: FormGroup;
+  registerErrors: string;
+  loginErrors: string;
 
   constructor(
     private pictresqueAPI: PictresqueAPIService,
@@ -45,7 +47,9 @@ export class RegisterComponent implements OnInit {
           this.showSignin();
         }
       },
-      error => console.log(error.error.message)
+      error => {
+        console.log(error.error.message), (this.registerErrors = error);
+      }
     );
   };
 
@@ -53,36 +57,50 @@ export class RegisterComponent implements OnInit {
     let email = this.form.get('emailSignin').value;
     let password = this.form.get('passwordSignin').value;
 
-    if (!email || !password) {
-      alert('Please enter all fields!');
-    } else {
-      this.pictresqueAPI.loginUser(email, password).subscribe(
-        data => {
-          this.router.navigate(['home']);
-          console.log('success', data);
-        },
-        error => console.log(error.error.message)
-      );
-    }
+    this.pictresqueAPI.loginUser(email, password).subscribe(
+      data => {
+        this.router.navigate(['home']);
+        console.log('success', data);
+      },
+      error => {
+        console.log(error.error.message), (this.loginErrors = error);
+      }
+    );
   };
+
+  get emailSignup() {
+    return this.form.get('emailSignup');
+  }
+
+  get passwordSignup() {
+    return this.form.get('passwordSignup');
+  }
+
+  get emailSignin() {
+    return this.form.get('emailSignin');
+  }
+
+  get passwordSignin() {
+    return this.form.get('passwordSignin');
+  }
 
   ngOnInit() {
     this.form = new FormGroup({
       emailSignup: new FormControl(null, {
         updateOn: 'blur',
-        validators: [Validators.required]
+        validators: [Validators.required, Validators.email]
       }),
       passwordSignup: new FormControl(null, {
         updateOn: 'blur',
-        validators: [Validators.required, Validators.min(6)]
+        validators: [Validators.required, Validators.minLength(6)]
       }),
       emailSignin: new FormControl(null, {
         updateOn: 'blur',
-        validators: [Validators.required]
+        validators: [Validators.required, Validators.email]
       }),
       passwordSignin: new FormControl(null, {
         updateOn: 'blur',
-        validators: [Validators.required, Validators.min(6)]
+        validators: [Validators.required, Validators.minLength(6)]
       })
     });
   }
