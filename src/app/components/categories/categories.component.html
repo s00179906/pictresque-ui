@@ -1,17 +1,15 @@
-<div class="categories-container">
-  <div *ngFor="let cat of categories">
+<div class="categories-container" *ngIf="categories">
+  <div *ngFor="let cat of categories.categories">
     <div class="card" style="width: 10rem;">
       <img
         class="card-img-top"
-        src="../../../assets/food.jpg"
+        [src]="cat.image"
         alt="Card image cap"
         width="50px"
       />
       <div class="card-body">
-        <h5 class="card-title">{{ cat }}</h5>
-        <p class="card-text">
-          Post Count
-        </p>
+        <h5 class="card-title">{{ cat.category | titlecase }}</h5>
+        <p class="card-text">{{ cat.count }} Posts</p>
       </div>
     </div>
   </div>

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Post } from '../models/Post';
+import { Category } from '../models/Category';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,8 @@ export class PictresqueAPIService {
   fileToUpload: any;
   constructor(private _http: HttpClient) {}
 
-  getCategories = async () => {
-    return await this._http.get(`${this.url}/api/categories`);
+  getCategories = () => {
+    return this._http.get(`${this.url}/api/categories`);
   };
 
   getAllPosts = (): Observable<Post[]> => {

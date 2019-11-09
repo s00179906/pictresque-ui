@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PictresqueAPIService } from 'src/app/services/pictresque-api.service';
+import { Category } from 'src/app/models/Category';
 
 @Component({
   selector: 'app-categories',
@@ -6,17 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./categories.component.scss']
 })
 export class CategoriesComponent implements OnInit {
-  categories: string[] = [
-    'Food',
-    'Anime',
-    'Nature',
-    'Lifestyle',
-    'Furniture',
-    'Gaming',
-    'Sports'
-  ];
+  categories: any;
 
-  constructor() {}
+  constructor(private pictresqueService: PictresqueAPIService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.pictresqueService.getCategories().subscribe(categories => {
+      console.log('CATEGORIES IN CATEGORY COMPONENT:', categories);
+      this.categories = categories;
+    });
+  }
 }
