@@ -54,7 +54,8 @@ export function provideConfig() {
     HttpClientModule,
     DragDropModule,
     SocialLoginModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
     {
