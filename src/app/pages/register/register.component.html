@@ -1,60 +1,152 @@
 <div id="login-box">
-  <!-- SIGN UP FORM -->
-  <div
-    class="left-box-signup"
-    [class.animation-out]="display"
-    [class.animation-forward]="test"
-  >
-    <h1>Welcome to Pictresque.</h1>
-    <h5>Hey there! Signup to continue</h5>
+  <!-- ? REGISTER FORM -->
+  <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
+    <div
+      class="left-box-signup"
+      [class.animation-out]="display"
+      [class.animation-forward]="test"
+    >
+      <h1>Register</h1>
+      <h5>Hey there! Signup to continue</h5>
 
-    <div class="input-container">
-      <input type="text" #emailSignup placeholder="Email" />
-      <input type="password" #passwordSignup placeholder="Password" />
+      <div class="input-container">
+        <label for="emailSignup">Email</label>
 
-      <div class="btn-container">
-        <button
-          class="btn-signup"
-          (click)="registerUser(emailSignup.value, passwordSignup.value)"
+        <ngb-alert
+          [dismissible]="false"
+          type="danger"
+          *ngIf="emailSignup.invalid && emailSignup.touched"
         >
-          Sign Up
-        </button>
-        <button class="btn-signup" (click)="showSignin($event)">Sign In</button>
+          <strong>Oh oh!</strong> Your email does not look right!
+        </ngb-alert>
+
+        <ngb-alert [dismissible]="false" type="danger" *ngIf="registerErrors">
+          {{ registerErrors.error.message }}
+        </ngb-alert>
+
+        <input
+          id="emailSignup"
+          type="text"
+          formControlName="emailSignup"
+          placeholder="Email"
+          required
+        />
+
+        <label for="passwordSignup">Password</label>
+
+        <ngb-alert
+          [dismissible]="false"
+          type="danger"
+          *ngIf="passwordSignup.invalid && passwordSignup.touched"
+        >
+          <strong>Oops!</strong> Password is weak!
+        </ngb-alert>
+
+        <input
+          id="passwordSignup"
+          name="passwordSignup"
+          type="password"
+          formControlName="passwordSignup"
+          placeholder="Password"
+          required
+        />
+
+        <div class="btn-container">
+          <!-- <button class="btn-signup" (click)="registerUser()">
+            Sign Up
+          </button> -->
+          <button class="btn-signup" (click)="showSignin($event)">
+            Sign In
+          </button>
+
+          <button
+            type="submit"
+            [disabled]="!registerForm.valid"
+            class="btn-signup"
+          >
+            Sign Up
+          </button>
+        </div>
       </div>
     </div>
-  </div>
+  </form>
 
-  <!-- SIGN UP FORM -->
-  <div
-    class="left-box-signin"
-    [class.animation-in]="display"
-    [class.animation-back]="test"
-  >
-    <h1>Welcome to Pictresque.</h1>
-    <h5>Woosh! login to continue</h5>
+  <!-- ? LOGIN FORM -->
+  <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+    <div
+      class="left-box-signin"
+      [class.animation-in]="display"
+      [class.animation-back]="test"
+    >
+      <h1>Login</h1>
+      <h5>Woosh! login to continue</h5>
 
-    <div class="input-container">
-      <input type="text" #email placeholder="Email" />
-      <input type="password" #password placeholder="Password" />
+      <!-- ? EMAIL AND PASSWORD INPUTS -->
+      <div class="input-container">
+        <!-- ? EMAIL LABEL, INPUT, NGBALERT-->
+        <label for="emailSignin">Email</label>
 
-      <div class="btn-container">
-        <button class="btn-signup" (click)="showSignup()">Sign Up</button>
-        <button
-          class="btn-signup"
-          (click)="loginUser(email.value, password.value)"
+        <ngb-alert
+          [dismissible]="false"
+          type="danger"
+          *ngIf="emailSignin.invalid && emailSignin.touched"
         >
-          Sign In
-        </button>
+          <strong>Oh oh!</strong> Your email does not look right!
+        </ngb-alert>
+
+        <ngb-alert [dismissible]="false" type="danger" *ngIf="loginErrors">
+          {{ loginErrors.error.message }}
+        </ngb-alert>
+
+        <input
+          id="emailSignin"
+          type="text"
+          formControlName="emailSignin"
+          placeholder="Email"
+          required
+        />
+
+        <!-- ? PASSWORD LABEL, INPUT, NGBALERT-->
+        <label for="passwordSignin">Password</label>
+
+        <input
+          id="passwordSignin"
+          name="passwordSignin"
+          type="password"
+          formControlName="passwordSignin"
+          placeholder="Password"
+          required
+        />
+
+        <div class="btn-container">
+          <button class="btn-signup" (click)="showSignup()">Sign Up</button>
+
+          <button
+            type="submit"
+            class="btn-signup"
+            [disabled]="!loginForm.valid"
+          >
+            Sign In
+          </button>
+
+          <!-- <button class="btn-signup" (click)="loginUser()">
+            Sign In
+          </button> -->
+        </div>
       </div>
     </div>
-  </div>
+  </form>
 
-  <!-- SOCIAL NETWORK LOGIN -->
+  <!-- ? SOCIAL NETWORK LOGIN -->
   <div class="right-box">
     <h1>Sign in with your social networks</h1>
+
     <h5>Greatness awaits!</h5>
+
     <button class="social facebook">Log in with Facebook</button>
+
     <button class="social twitter">Log in with Twitter</button>
+
     <button class="social google">Log in with Google+</button>
   </div>
 </div>

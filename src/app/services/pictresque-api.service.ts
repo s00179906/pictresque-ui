@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Post } from '../models/Post';
+import { Category } from '../models/Category';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,14 @@ export class PictresqueAPIService {
   url: String = 'https://pictresque-api.herokuapp.com';
   fileToUpload: any;
   constructor(private _http: HttpClient) {}
+
+  getCategories = (): Observable<Category[]> => {
+    return this._http.get<Category[]>(`${this.url}/api/categories`);
+  };
+
+  getSingleCategory = (id): Observable<Category> => {
+    return this._http.post<Category>(`${this.url}/api/category/${id}`, null);
+  };
 
   getAllPosts = (): Observable<Post[]> => {
     return this._http.get<Post[]>(`${this.url}/api/feed`);
