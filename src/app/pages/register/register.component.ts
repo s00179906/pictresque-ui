@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PictresqueAPIService } from 'src/app/services/pictresque-api.service';
 import { Router } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -8,12 +9,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+  display: Boolean = false;
+  test: Boolean = false;
+  registerForm: FormGroup;
+  loginForm: FormGroup;
+  registerErrors: string;
+  loginErrors: string;
+
   constructor(
     private pictresqueAPI: PictresqueAPIService,
     private router: Router
   ) {}
-  display: Boolean = false;
-  test: Boolean = false;
 
   showSignin = () => {
     this.display = true;
@@ -25,8 +31,14 @@ export class RegisterComponent implements OnInit {
     this.display = false;
   };
 
-  registerUser = (email, password) => {
+  registerUser = () => {
     let canLogin = false;
+
+    let email = this.registerForm.get('emailSignup').value;
+    let password = this.registerForm.get('passwordSignup').value;
+
+    console.log(email, password);
+
     this.pictresqueAPI.registerUser(email, password).subscribe(
       data => {
         console.log('success', data);
@@ -36,23 +48,66 @@ export class RegisterComponent implements OnInit {
           this.showSignin();
         }
       },
-      error => console.log(error.error.message)
+      error => {
+        console.log(error.error.message), (this.registerErrors = error);
+      }
     );
   };
 
-  loginUser = (email, password) => {
-    if (!email || !password) {
-      alert('Please enter all fields!');
-    } else {
-      this.pictresqueAPI.loginUser(email, password).subscribe(
-        data => {
-          this.router.navigate(['home']);
-          console.log('success', data);
-        },
-        error => console.log(error.error.message)
-      );
-    }
+  loginUser = () => {
+    let email = this.loginForm.get('emailSignin').value;
+    let password = this.loginForm.get('passwordSignin').value;
+
+    console.log('EMAIL AND PASSWORD FROM LOGIN: ', email, password);
+
+    this.pictresqueAPI.loginUser(email, password).subscribe(
+      data => {
+        this.router.navigate(['home']);
+        console.log('success', data);
+      },
+      error => {
+        console.log(error.error.message), (this.loginErrors = error);
+      }
+    );
   };
 
-  ngOnInit() {}
+  get emailSignup() {
+    return this.registerForm.get('emailSignup');
+  }
+
+  get passwordSignup() {
+    return this.registerForm.get('passwordSignup');
+  }
+
+  get emailSignin() {
+    return this.loginForm.get('emailSignin');
+  }
+
+  get passwordSignin() {
+    return this.loginForm.get('passwordSignin');
+  }
+
+  ngOnInit() {
+    this.registerForm = new FormGroup({
+      emailSignup: new FormControl(null, {
+        updateOn: 'blur',
+        validators: [Validators.required, Validators.email]
+      }),
+      passwordSignup: new FormControl(null, {
+        updateOn: 'blur',
+        validators: [Validators.required, Validators.minLength(6)]
+      })
+    });
+
+    this.loginForm = new FormGroup({
+      emailSignin: new FormControl(null, {
+        updateOn: 'blur',
+        validators: [Validators.required, Validators.email]
+      }),
+      passwordSignin: new FormControl(null, {
+        updateOn: 'blur',
+        validators: [Validators.required, Validators.minLength(6)]
+      })
+    });
+  }
 }

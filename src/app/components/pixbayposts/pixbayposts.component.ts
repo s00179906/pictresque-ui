@@ -8,24 +8,24 @@ import { Pixbay } from 'src/app/models/pixbay';
   styleUrls: ['./pixbayposts.component.scss']
 })
 export class PixbayPostsComponent implements OnInit {
-  hits: any = [];
+  posts: any = [];
   searchWord: any;
 
-  constructor(private apiService: PixbayApiService) {
-    this.apiService.getImageData().subscribe(hits => {
-      this.hits = hits;
-      console.log(this.hits);
-    });
-  }
-  Search(searchTerm: string): boolean {
+  constructor(private apiService: PixbayApiService) {}
+
+  Search = (searchTerm: string): boolean => {
     console.log('Search Works');
     this.apiService.getSearchTerm(searchTerm).subscribe(searchWord => {
       this.searchWord = this.searchWord;
     });
     return false;
-  }
+  };
 
   ngOnInit() {
     this.Search('');
+    this.apiService.getImageData().subscribe(hits => {
+      this.posts = hits['hits'];
+      console.log(this.posts);
+    });
   }
 }
