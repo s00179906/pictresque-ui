@@ -8,7 +8,7 @@ import { Category } from 'src/app/models/Category';
   styleUrls: ['./categories.component.scss']
 })
 export class CategoriesComponent implements OnInit {
-  categories: any;
+  categories: Category[];
 
   constructor(private pictresqueService: PictresqueAPIService) {}
 

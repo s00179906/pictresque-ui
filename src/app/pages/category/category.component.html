@@ -1,1 +1,6 @@
-<p>category works!</p>
+<app-navbar></app-navbar>
+
+<div class="category-container" style="margin-top: 5%;" *ngIf="category">
+  <img [src]="category.category.image" alt="category image" id="category-img" />
+  <h1>{{ category.category.count }} Posts</h1>
+</div>
