@@ -16,23 +16,20 @@ export class RegisterComponent implements OnInit {
   loginForm: FormGroup;
   registerErrors: string;
   loginErrors: string;
+  title = 'FacebookLogin';
 
   constructor(
     private FBauthService: FacebookAuthService,
     private pictresqueAPI: PictresqueAPIService,
     private router: Router
   ) {}
-  
-  display: Boolean = false;
-  test: Boolean = false;
-  title = 'FacebookLogin';
 
   loggedIn: any;
   user: any;
 
   signInWithFacebook(): void {
     this.FBauthService.signInWithFB();
-  };
+  }
 
   showSignin = () => {
     this.display = true;

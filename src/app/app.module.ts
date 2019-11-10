@@ -44,7 +44,8 @@ export function provideConfig() {
     PixbayPostsComponent,
     HighlightDirective,
     CategoriesComponent,
-    CategoryComponent
+    CategoryComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -52,13 +53,14 @@ export function provideConfig() {
     NgbModule,
     HttpClientModule,
     DragDropModule,
-    SocialLoginModule
+    SocialLoginModule,
+    ReactiveFormsModule
   ],
   providers: [
     {
       provide: AuthServiceConfig,
       useFactory: provideConfig
-    }
+    },
     ReactiveFormsModule,
     FormsModule
   ],
