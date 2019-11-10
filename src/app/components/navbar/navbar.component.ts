@@ -7,9 +7,11 @@ import { Component, OnInit, HostListener } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
   scrollPost: any = null;
+  userName: string;
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   // @HostListener('window:scroll', ['$event'])
   // doSomething(event) {
