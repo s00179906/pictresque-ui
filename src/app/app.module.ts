@@ -24,6 +24,10 @@ const config = new AuthServiceConfig([
     provider: new FacebookLoginProvider('771480609961730')
   }
 ]);
+import { HighlightDirective } from './directives/highlight.directive';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { CategoriesComponent } from './components/categories/categories.component';
+import { CategoryComponent } from './pages/category/category.component';
 
 export function provideConfig() {
   return config;
@@ -37,7 +41,10 @@ export function provideConfig() {
     ModelcontentComponent,
     PostsComponent,
     PostDetailsComponent,
-    PixbayPostsComponent
+    PixbayPostsComponent,
+    HighlightDirective,
+    CategoriesComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +59,8 @@ export function provideConfig() {
       provide: AuthServiceConfig,
       useFactory: provideConfig
     }
+    ReactiveFormsModule,
+    FormsModule
   ],
   bootstrap: [AppComponent],
   entryComponents: [ModelcontentComponent]

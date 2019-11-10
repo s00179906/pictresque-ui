@@ -1,11 +1,17 @@
+<!-- ? MODAL HEADER -->
 <div class="modal-header">
   <h4 class="modal-title">Add a Photo!</h4>
 </div>
+
+<!-- ? MODAL CONTENT -->
 <div class="model-content">
   <div class="upload-btn-wrapper">
+    <!-- ? UPLOAD PHOTO BUTTON -->
     <button class="btn" [class.displayNone]="imageUploaded">
       Click to upload
     </button>
+
+    <!-- ? IMAGE PREVIEW -->
     <img
       [src]="imageSrc"
       width="100%"
@@ -13,10 +19,13 @@
       id="img-file"
       [class.displayNone]="!imageUploaded"
     />
+
     <input type="file" name="myfile" (change)="getImage($event.target.files)" />
   </div>
+
   <div class="input-container">
     <input type="text" placeholder="Add your title" id="input-title" #title />
+
     <input
       type="text"
       placeholder="What story does your picture tell?"
@@ -25,7 +34,10 @@
     />
   </div>
 </div>
+
+<!-- ? MODAL FOOTER CONTENT -->
 <div class="modal-footer">
+  <!-- ? CLOSE BUTTON -->
   <button
     type="button"
     class="btn-close"
@@ -33,6 +45,8 @@
   >
     Close
   </button>
+
+  <!-- ? UPLOAD BUTTON -->
   <button
     type="button"
     class="btn-upload"

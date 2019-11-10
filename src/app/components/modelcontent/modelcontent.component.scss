@@ -45,14 +45,15 @@
 .upload-btn-wrapper {
   position: relative;
   overflow: hidden;
-  display: inline-block;
+  // display: inline-block;
+  // left: 25%;
 }
 
 .btn {
   border: 1.5px solid gray;
   color: gray;
   background: rgb(240, 240, 240);
-  width: 150px;
+  width: 100%;
   height: 150px;
   border-radius: 15px;
   font-size: 20px;
@@ -73,7 +74,7 @@
 }
 
 .model-content {
-  display: flex;
+  // display: flex;
   padding: 25px;
   justify-content: space-evenly;
 }

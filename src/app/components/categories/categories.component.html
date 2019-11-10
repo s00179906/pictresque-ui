@@ -1,0 +1,20 @@
+<div class="categories-container" *ngIf="categories">
+  <div *ngFor="let cat of categories">
+    <div
+      class="card"
+      style="width: 10rem;"
+      [routerLink]="['/category', cat._id]"
+    >
+      <img
+        class="card-img-top"
+        [src]="cat.image"
+        alt="Card image cap"
+        width="50px"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ cat.category | titlecase }}</h5>
+        <p class="card-text">{{ cat.count }} Posts</p>
+      </div>
+    </div>
+  </div>
+</div>
