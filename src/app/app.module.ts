@@ -12,11 +12,26 @@ import { PostsComponent } from './components/posts/posts.component';
 import { PostDetailsComponent } from './pages/post-details/post-details.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { PixbayPostsComponent } from './components/pixbayposts/pixbayposts.component';
+import {
+  SocialLoginModule,
+  AuthServiceConfig,
+  FacebookLoginProvider
+} from 'angularx-social-login';
+import { RegisterComponent } from './pages/register/register.component';
+const config = new AuthServiceConfig([
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider('771480609961730')
+  }
+]);
 import { HighlightDirective } from './directives/highlight.directive';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { CategoryComponent } from './pages/category/category.component';
 
+export function provideConfig() {
+  return config;
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +44,8 @@ import { CategoryComponent } from './pages/category/category.component';
     PixbayPostsComponent,
     HighlightDirective,
     CategoriesComponent,
-    CategoryComponent
+    CategoryComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -37,10 +53,18 @@ import { CategoryComponent } from './pages/category/category.component';
     NgbModule,
     HttpClientModule,
     DragDropModule,
+    SocialLoginModule,
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    },
+    ReactiveFormsModule,
+    FormsModule
+  ],
   bootstrap: [AppComponent],
   entryComponents: [ModelcontentComponent]
 })
