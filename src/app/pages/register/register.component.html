@@ -7,7 +7,7 @@
       [class.animation-forward]="test"
     >
       <h1>Register</h1>
-      <h5>Hey there! Signup to continue</h5>
+      <h5>Hey there! register to continue</h5>
 
       <div class="input-container">
         <label for="emailSignup">Email</label>
@@ -55,9 +55,6 @@
           <!-- <button class="btn-signup" (click)="registerUser()">
             Sign Up
           </button> -->
-          <button class="btn-signup" (click)="showSignin($event)">
-            Sign In
-          </button>
 
           <button
             type="submit"
@@ -65,6 +62,12 @@
             class="btn-signup"
           >
             Sign Up
+          </button>
+
+          <h4>Or</h4>
+
+          <button class="btn-signup" (click)="showSignin($event)">
+            Sign In Instead
           </button>
         </div>
       </div>
@@ -119,8 +122,6 @@
         />
 
         <div class="btn-container">
-          <button class="btn-signup" (click)="showSignup()">Sign Up</button>
-
           <button
             type="submit"
             class="btn-signup"
@@ -129,6 +130,11 @@
             Sign In
           </button>
 
+          <h4>Or</h4>
+
+          <button class="btn-signup" (click)="showSignup()">
+            Sign Up Instead
+          </button>
           <!-- <button class="btn-signup" (click)="loginUser()">
             Sign In
           </button> -->
