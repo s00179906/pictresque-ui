@@ -1,5 +1,5 @@
 <div id="columns">
-  <div appHighlight *ngFor="let post of posts" cdkDrag>
+  <div *ngFor="let post of posts">
     <button (dblclick)="goToDetails(post)" id="btn-post">
       <figure>
         <button class="btn-pin">
