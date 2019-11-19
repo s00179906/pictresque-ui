@@ -17,11 +17,11 @@ export class PictresqueAPIService {
   };
 
   getSingleCategory = (id): Observable<Category> => {
-    return this._http.post<Category>(`${this.url}/api/category/${id}`, null);
+    return this._http.get<Category>(`${this.url}/api/category/${id}`);
   };
 
   getAllPosts = (): Observable<Post[]> => {
-    return this._http.get<Post[]>(`${this.url}/api/feed`);
+    return this._http.get<Post[]>(`${this.url}/api/posts`);
   };
 
   uploadImage = (file: FileList, title, desc) => {
@@ -33,7 +33,7 @@ export class PictresqueAPIService {
     formData.append('title', title);
     formData.append('description', desc);
     console.log(formData);
-    return this._http.post(`${this.url}/api/post`, formData);
+    return this._http.post(`${this.url}/api/post/create`, formData);
   };
 
   registerUser = (email, password) => {
@@ -53,6 +53,6 @@ export class PictresqueAPIService {
   };
 
   getSinglePost = id => {
-    return this._http.post(`${this.url}/api/post/${id}`, null);
+    return this._http.get(`${this.url}/api/post/${id}`);
   };
 }
