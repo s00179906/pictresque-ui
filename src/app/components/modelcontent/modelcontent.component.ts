@@ -9,7 +9,6 @@ import { PictresqueAPIService } from 'src/app/services/pictresque-api.service';
   styleUrls: ['./modelcontent.component.scss']
 })
 export class ModelcontentComponent implements OnInit {
-  name: String = 'Ibrah';
   url: String = 'https://pictresqueapi.herokuapp.com/';
   imageUploaded: Boolean = false;
   fileToUpload: any;
@@ -17,12 +16,12 @@ export class ModelcontentComponent implements OnInit {
   imageSelected: String = '';
   userFile: any;
   file: any;
+
   constructor(
     public activeModal: NgbActiveModal,
     private pictrService: PictresqueAPIService
   ) {}
 
-  ngOnInit() {}
   getImage(files: FileList) {
     this.file = files;
     this.userFile = files[0];
@@ -38,8 +37,14 @@ export class ModelcontentComponent implements OnInit {
   }
 
   createPost = (title, desc) => {
+    if (!title || !desc) return alert('Please a title and description');
+
     this.pictrService.uploadImage(this.file, title, desc).subscribe(result => {
       console.log(result);
     });
+
+    return this.activeModal.dismiss();
   };
+
+  ngOnInit() {}
 }
