@@ -28,6 +28,7 @@ import { HighlightDirective } from './directives/highlight.directive';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { CategoryComponent } from './pages/category/category.component';
+import { SearchComponent } from './components/search/search.component';
 
 export function provideConfig() {
   return config;
@@ -45,7 +46,8 @@ export function provideConfig() {
     HighlightDirective,
     CategoriesComponent,
     CategoryComponent,
-    RegisterComponent
+    RegisterComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
