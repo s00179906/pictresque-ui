@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { Post } from 'src/app/models/Post';
-import { PictresqueAPIService } from 'src/app/services/pictresque-api.service';
-import { Router } from '@angular/router';
-import { HighlightDirective } from 'src/app/directives/highlight.directive';
+import { Component, OnInit } from "@angular/core";
+import { Post } from "src/app/models/Post";
+import { PictresqueAPIService } from "src/app/services/pictresque-api.service";
+import { Router } from "@angular/router";
+import { HighlightDirective } from "src/app/directives/highlight.directive";
 
 @Component({
-  selector: 'app-posts',
-  templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.scss']
+  selector: "app-posts",
+  templateUrl: "./posts.component.html",
+  styleUrls: ["./posts.component.scss"]
 })
 export class PostsComponent implements OnInit {
   posts: Post[];
@@ -22,10 +22,14 @@ export class PostsComponent implements OnInit {
     this.router.navigate([`post/${id}`]);
   };
 
+  addToFavourites = post => {
+    alert("pin clicked");
+  };
+
   ngOnInit() {
     this.apiService.getAllPosts().subscribe(posts => {
       this.posts = posts;
-      console.log('POSTS IN POST COMPONENT', this.posts);
+      console.log("POSTS IN POST COMPONENT", this.posts);
     });
   }
 }

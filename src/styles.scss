@@ -11,3 +11,17 @@
 button:focus {
   outline: 0;
 }
+
+.modal-holder {
+  animation-name: scaleAnim;
+  animation-duration: 0.3s;
+}
+
+@keyframes scaleAnim {
+  0% {
+    transform: scale(0.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

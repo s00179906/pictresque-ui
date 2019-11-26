@@ -14,7 +14,9 @@ export class SearchComponent implements OnInit {
 
   openSearchModal() {
     const modalRef = this.modalService.open(SearchModalComponent, {
-      size: "lg"
+      size: "lg",
+      windowClass: "modal-holder",
+      centered: true
     });
     modalRef.componentInstance.name = "World";
   }
