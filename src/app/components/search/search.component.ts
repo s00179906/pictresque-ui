@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: "app-search",
@@ -8,7 +9,14 @@ import { Component, OnInit } from "@angular/core";
 export class SearchComponent implements OnInit {
   imgSearch = "../../assets/search.png";
 
-  constructor() {}
+  constructor(private modalService: NgbModal) {}
+
+  openSearchModal() {
+    const modalRef = this.modalService.open('ModelcontentComponent', {
+      size: "lg"
+    });
+    modalRef.componentInstance.name = "World";
+  }
 
   ngOnInit() {}
 }

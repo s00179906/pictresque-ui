@@ -29,6 +29,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { CategoryComponent } from './pages/category/category.component';
 import { SearchComponent } from './components/search/search.component';
+import { SearchModalComponent } from './search-modal/search-modal.component';
 
 export function provideConfig() {
   return config;
@@ -47,7 +48,8 @@ export function provideConfig() {
     CategoriesComponent,
     CategoryComponent,
     RegisterComponent,
-    SearchComponent
+    SearchComponent,
+    SearchModalComponent
   ],
   imports: [
     BrowserModule,
