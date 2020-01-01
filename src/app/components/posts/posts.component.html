@@ -1,23 +1,23 @@
-<div id="columns">
-  <div *ngFor="let post of posts">
-    <button (dblclick)="goToDetails(post)" id="btn-post">
-      <figure>
-        <button class="btn-pin" (click)="addToFavourites(post)">
-          <img src="../../../assets/pin.jpg" style="width:100%" />
-        </button>
-
-        <img [src]="post.imageUrl" />
-
-        <div class="container">
-          <h4>
-            <b>{{ post.title }}</b>
-          </h4>
-          <p>
-            {{ post.description }}
-          </p>
-        </div>
-      </figure>
-    </button>
+<div class="card-columns pt-5">
+  <div
+    class="card my-2 text-light shadow "
+    style="background-color: var(--secondary); 
+    border-radius: 20px; 
+    border:none;"
+    *ngFor="let post of posts"
+    (dblclick)="goToDetails(post)"
+  >
+    <img
+      style="border-radius: 20px;"
+      [src]="post.imageUrl"
+      class="card-img-top"
+      alt=""
+    />
+    <div class="card-body">
+      <h5 class="card-title font-weight-bold">{{ post.title }}</h5>
+      <p class="card-text">
+        {{ post.description }}
+      </p>
+    </div>
   </div>
 </div>
-<app-upload class="btn-add"></app-upload>

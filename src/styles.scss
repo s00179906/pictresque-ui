@@ -1,11 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import url("https://fonts.googleapis.com/css?family=Montserrat:500&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
+
+// ** GLOBAL STYLE VARIABLES
+
+:root {
+  --primary: #121212;
+  --secondary: #1d1d1d;
+  --tertiary: #ffc68a;
+}
 
 * {
   padding: 0;
   margin: 0;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", "Montserrat";
 }
 
 button:focus {

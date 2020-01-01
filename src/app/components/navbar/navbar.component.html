@@ -1,7 +1,14 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light nav-container">
-  <header class="nav-header navbar-brand">Pictresque.</header>
+<nav
+  class="navbar navbar-expand-lg  nav-container text-light sticky"
+  style="background-color: var(--secondary)"
+>
+  <header
+    class="nav-header navbar-brand font-weight-bold"
+    style="font-size: 26px;"
+  >
+    Pictresque.
+  </header>
 
-  <!-- ? NAVBAR HAMBURGER TOGGLER -->
   <button
     class="navbar-toggler"
     type="button"
@@ -18,18 +25,21 @@
     <ul class="navbar-nav mr-auto"></ul>
 
     <form class="form-inline my-2 my-lg-0">
-      <!-- <input
-        class="form-control mr-sm-2 btn"
-        type="search"
-        placeholder="Search"
-        aria-label="Search"
-      />
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-        Search
-      </button> -->
-
       <app-search></app-search>
-      <button class="btn-logout" (click)="logout()">
+
+      <button
+        type="button"
+        class="btn btn-outline-dark mx-2"
+        (click)="logout()"
+      >
+        Sign Up
+      </button>
+
+      <button type="button" class="btn btn-dark mx-2" (click)="logout()">
+        Sign In
+      </button>
+
+      <button type="button" class="btn btn-dark" (click)="logout()">
         Logout
       </button>
     </form>
