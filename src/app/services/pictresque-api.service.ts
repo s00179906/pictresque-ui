@@ -1,15 +1,16 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Post } from '../models/Post';
-import { Category } from '../models/Category';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { Post } from "../models/Post";
+import { Category } from "../models/Category";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class PictresqueAPIService {
-  url: String = 'https://pictresque-api.herokuapp.com';
+  url: String = "https://pictresque-api.herokuapp.com";
   fileToUpload: any;
+  userLoggedIn = localStorage.getItem("userLoggedIn");
   constructor(private _http: HttpClient) {}
 
   getCategories = (): Observable<Category[]> => {
@@ -29,9 +30,9 @@ export class PictresqueAPIService {
     console.log(this.fileToUpload);
 
     let formData = new FormData();
-    formData.append('image', this.fileToUpload, this.fileToUpload.name);
-    formData.append('title', title);
-    formData.append('description', desc);
+    formData.append("image", this.fileToUpload, this.fileToUpload.name);
+    formData.append("title", title);
+    formData.append("description", desc);
     console.log(formData);
     return this._http.post(`${this.url}/api/post/create`, formData);
   };

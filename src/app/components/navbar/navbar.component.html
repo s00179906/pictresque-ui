@@ -31,15 +31,26 @@
         type="button"
         class="btn btn-outline-dark mx-2"
         (click)="logout()"
+        *ngIf="!userLoggedIn"
       >
         Sign Up
       </button>
 
-      <button type="button" class="btn btn-dark mx-2" (click)="logout()">
+      <button
+        type="button"
+        class="btn btn-dark mx-2"
+        (click)="login()"
+        *ngIf="!userLoggedIn"
+      >
         Sign In
       </button>
 
-      <button type="button" class="btn btn-dark" (click)="logout()">
+      <button
+        type="button"
+        class="btn btn-dark"
+        (click)="logout()"
+        *ngIf="userLoggedIn"
+      >
         Logout
       </button>
     </form>
