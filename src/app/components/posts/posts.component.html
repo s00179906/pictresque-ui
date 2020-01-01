@@ -5,7 +5,8 @@
     border-radius: 20px; 
     border:none;"
     *ngFor="let post of posts"
-    (click)="goToDetails(post)"
+    [routerLink]="['/post', post._id]"
+    routerLinkActive="router-link-active"
   >
     <img
       style="border-radius: 20px;"

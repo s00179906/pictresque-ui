@@ -3,12 +3,32 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:500&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
 
+$ionicons-font-path: "~ionicons/dist/fonts";
+@import "~ionicons/dist/scss/ionicons.scss";
+
 // ** GLOBAL STYLE VARIABLES
 
 :root {
   --primary: #121212;
   --secondary: #1d1d1d;
-  --tertiary: #ffc68a;
+  --tertiary: #ffc107;
+}
+
+.swal2-popup {
+  background: var(--primary) !important;
+}
+
+.swal2-container.swal2-backdrop-show {
+  background: rgba(0, 0, 0, 0.8) !important;
+}
+
+.swal2-styled.swal2-cancel {
+  background: var(--danger) !important;
+}
+
+.swal2-styled.swal2-confirm {
+  background: var(--warning) !important;
+  color: var(--primary) !important;
 }
 
 * {

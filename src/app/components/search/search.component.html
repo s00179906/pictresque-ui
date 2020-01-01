@@ -1,3 +1,13 @@
-<button (click)="openSearchModal()" id="btn-search">
-  <img [src]="imgSearch" id="img-search" />
-</button>
+<div class="input-group mx-3">
+  <input
+    type="text"
+    class="form-control border-0 text-light"
+    style="background-color: var(--primary);"
+    placeholder="Find something new ..."
+  />
+  <div class="input-group-append">
+    <span class="input-group-text bg-warning border-0"
+      ><i class="icon ion-ios-search"></i>
+    </span>
+  </div>
+</div>

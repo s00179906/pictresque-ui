@@ -1,5 +1,5 @@
 <nav
-  class="navbar navbar-expand-lg  nav-container text-light sticky"
+  class="navbar navbar-expand-lg nav-container text-light fixed-top"
   style="background-color: var(--secondary)"
 >
   <header
@@ -8,9 +8,13 @@
   >
     Pictresque.
   </header>
+  <app-upload
+    *ngIf="userLoggedIn"
+    class="d-none d-md-block d-sm-none"
+  ></app-upload>
 
   <button
-    class="navbar-toggler"
+    class="navbar-toggler btn-dark d-sm-block d-md-none"
     type="button"
     data-toggle="collapse"
     data-target="#navbarSupportedContent"
@@ -18,7 +22,7 @@
     aria-expanded="false"
     aria-label="Toggle navigation"
   >
-    <span class="navbar-toggler-icon"></span>
+    <i class="icon ion-ios-menu"></i>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -29,8 +33,8 @@
 
       <button
         type="button"
-        class="btn btn-outline-dark mx-2"
-        (click)="logout()"
+        class="btn btn-outline-info mx-2"
+        (click)="login()"
         *ngIf="!userLoggedIn"
       >
         Sign Up
@@ -38,7 +42,7 @@
 
       <button
         type="button"
-        class="btn btn-dark mx-2"
+        class="btn btn-success mx-2"
         (click)="login()"
         *ngIf="!userLoggedIn"
       >
@@ -47,7 +51,7 @@
 
       <button
         type="button"
-        class="btn btn-dark"
+        class="btn btn-danger"
         (click)="logout()"
         *ngIf="userLoggedIn"
       >

@@ -1,9 +1,4 @@
-#img-search {
-  width: 15%;
-  cursor: pointer;
-}
-
-#btn-search {
-  background: none;
-  border: none;
+.form-control:focus {
+  border-color: var(--tertiary);
+  box-shadow: 0 0 0 0.1rem var(--tertiary);
 }

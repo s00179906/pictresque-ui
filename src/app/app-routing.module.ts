@@ -6,9 +6,17 @@ import { PostDetailsComponent } from "./pages/post-details/post-details.componen
 import { CategoryComponent } from "./pages/category/category.component";
 
 const routes: Routes = [
-  { path: "", component: HomeComponent },
-  { path: "register", component: RegisterComponent },
-  { path: "post/:id", component: PostDetailsComponent },
+  { path: "", component: HomeComponent, data: { animation: "isLeft" } },
+  {
+    path: "register",
+    component: RegisterComponent,
+    data: { animation: "isLeft" }
+  },
+  {
+    path: "post/:id",
+    component: PostDetailsComponent,
+    data: { animation: "isRight" }
+  },
   { path: "category/:id", component: CategoryComponent }
 ];
 

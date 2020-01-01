@@ -30,6 +30,7 @@ import { CategoriesComponent } from "./components/categories/categories.componen
 import { CategoryComponent } from "./pages/category/category.component";
 import { SearchComponent } from "./components/search/search.component";
 import { SearchModalComponent } from "./components/search-modal/search-modal.component";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 export function provideConfig() {
   return config;
@@ -59,7 +60,8 @@ export function provideConfig() {
     DragDropModule,
     SocialLoginModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {
