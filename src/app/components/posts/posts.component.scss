@@ -8,3 +8,11 @@
     column-count: 1;
   }
 }
+
+.card:hover {
+  cursor: zoom-in;
+  .post-img {
+    opacity: 0.5;
+    transition: all 0.2s ease-in-out;
+  }
+}

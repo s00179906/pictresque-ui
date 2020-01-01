@@ -1,16 +1,16 @@
-<div class="card-columns pt-5">
+<div class="card-columns container" style="padding-top: 5rem">
   <div
-    class="card my-2 text-light shadow "
+    class="card my-2 text-light shadow"
     style="background-color: var(--secondary); 
     border-radius: 20px; 
     border:none;"
     *ngFor="let post of posts"
-    (dblclick)="goToDetails(post)"
+    (click)="goToDetails(post)"
   >
     <img
       style="border-radius: 20px;"
       [src]="post.imageUrl"
-      class="card-img-top"
+      class="card-img-top post-img"
       alt=""
     />
     <div class="card-body">

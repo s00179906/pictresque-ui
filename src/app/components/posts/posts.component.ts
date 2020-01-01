@@ -3,6 +3,8 @@ import { Post } from "src/app/models/Post";
 import { PictresqueAPIService } from "src/app/services/pictresque-api.service";
 import { Router } from "@angular/router";
 import { HighlightDirective } from "src/app/directives/highlight.directive";
+import { PixbayApiService } from "src/app/services/pixbay-api.service";
+import { compileNgModule } from "@angular/compiler";
 
 @Component({
   selector: "app-posts",
@@ -13,7 +15,8 @@ export class PostsComponent implements OnInit {
   posts: Post[];
 
   constructor(
-    private apiService: PictresqueAPIService,
+    private pictresqueService: PictresqueAPIService,
+    private pixbayService: PixbayApiService,
     private router: Router
   ) {}
 
@@ -27,9 +30,8 @@ export class PostsComponent implements OnInit {
   };
 
   ngOnInit() {
-    this.apiService.getAllPosts().subscribe(posts => {
+    this.pictresqueService.getAllPosts().subscribe(posts => {
       this.posts = posts;
-      console.log("POSTS IN POST COMPONENT", this.posts);
     });
   }
 }
