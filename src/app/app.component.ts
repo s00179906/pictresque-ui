@@ -10,6 +10,14 @@ import { slider } from "./animations/route-animations";
 })
 export class AppComponent {
   title = "Pictresque";
+  showNavbar: Boolean = true;
+
+  /**
+   *
+   */
+  constructor() {
+    this.showNavbar = window.location.href.includes("/register") ? false : true;
+  }
 
   prepareRoute(outlet: RouterOutlet) {
     return (
