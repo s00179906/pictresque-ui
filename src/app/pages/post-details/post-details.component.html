@@ -1,6 +1,9 @@
-<app-navbar></app-navbar>
+<!-- <app-navbar></app-navbar> -->
 
-<div class="post-container">
+<div class="post-container mt-5">
+  <button type="button" [routerLink]="['/']">
+    Back
+  </button>
   <h1>{{ post.title }}</h1>
   <h1>{{ post.description }}</h1>
   <img [src]="post.imageUrl" />
