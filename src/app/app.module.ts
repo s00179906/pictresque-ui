@@ -31,6 +31,7 @@ import { CategoryComponent } from "./pages/category/category.component";
 import { SearchComponent } from "./components/search/search.component";
 import { SearchModalComponent } from "./components/search-modal/search-modal.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { FollowingComponent } from './pages/following/following.component';
 
 export function provideConfig() {
   return config;
@@ -50,7 +51,8 @@ export function provideConfig() {
     CategoryComponent,
     RegisterComponent,
     SearchComponent,
-    SearchModalComponent
+    SearchModalComponent,
+    FollowingComponent
   ],
   imports: [
     BrowserModule,

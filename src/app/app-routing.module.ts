@@ -4,6 +4,7 @@ import { HomeComponent } from "./pages/home/home.component";
 import { RegisterComponent } from "./pages/register/register.component";
 import { PostDetailsComponent } from "./pages/post-details/post-details.component";
 import { CategoryComponent } from "./pages/category/category.component";
+import { FollowingComponent } from "./pages/following/following.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent, data: { animation: "isLeft" } },
@@ -14,10 +15,18 @@ const routes: Routes = [
   },
   {
     path: "post/:id",
-    component: PostDetailsComponent,
+    component: PostDetailsComponent
+  },
+  {
+    path: "categories",
+    component: CategoryComponent,
     data: { animation: "isRight" }
   },
-  { path: "category/:id", component: CategoryComponent }
+  {
+    path: "following",
+    component: FollowingComponent,
+    data: { animation: "isLeft" }
+  }
 ];
 
 @NgModule({
