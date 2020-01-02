@@ -10,7 +10,7 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
   styleUrls: ["./register.component.scss"]
 })
 export class RegisterComponent implements OnInit {
-  display: Boolean = false;
+  display: Boolean = true;
   test: Boolean = false;
   registerForm: FormGroup;
   loginForm: FormGroup;
@@ -32,13 +32,18 @@ export class RegisterComponent implements OnInit {
   }
 
   showSignin = () => {
-    this.display = true;
-    this.test = false;
+    // this.display = true;
+    // this.test = false;
+
+    this.display = !this.display;
+    console.log(this.display);
   };
 
   showSignup = () => {
-    this.test = true;
-    this.display = false;
+    // this.test = true;
+    // this.display = false;
+    this.display = !this.display;
+    console.log(this.display);
   };
 
   registerUser = () => {

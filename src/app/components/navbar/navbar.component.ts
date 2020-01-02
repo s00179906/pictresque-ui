@@ -33,6 +33,7 @@ export class NavbarComponent implements OnInit {
       if (res.value) {
         localStorage.removeItem("auth");
         this.userLoggedIn = false;
+        localStorage.setItem("userLoggedIn", "false");
       }
     });
 
