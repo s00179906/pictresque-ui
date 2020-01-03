@@ -32,6 +32,7 @@ import { SearchComponent } from "./components/search/search.component";
 import { SearchModalComponent } from "./components/search-modal/search-modal.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FollowingComponent } from './pages/following/following.component';
+import { FilterPostsComponent } from './components/filter-posts/filter-posts.component';
 
 export function provideConfig() {
   return config;
@@ -52,7 +53,8 @@ export function provideConfig() {
     RegisterComponent,
     SearchComponent,
     SearchModalComponent,
-    FollowingComponent
+    FollowingComponent,
+    FilterPostsComponent
   ],
   imports: [
     BrowserModule,

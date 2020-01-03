@@ -37,7 +37,7 @@
         style="border:none;"
         [routerLink]="['']"
       >
-        Home
+        BROWSE
       </button>
 
       <button
@@ -47,7 +47,7 @@
         style="border:none;"
         [routerLink]="['/following']"
       >
-        Following
+        FOLLOWING
       </button>
 
       <button
@@ -56,7 +56,7 @@
         style="border:none;"
         [routerLink]="['/categories']"
       >
-        Categories
+        CATEGORIES
       </button>
       <button
         type="button"
@@ -64,7 +64,7 @@
         (click)="login()"
         *ngIf="!userLoggedIn"
       >
-        Sign Up
+        SIGN UP
       </button>
 
       <button
@@ -73,7 +73,7 @@
         (click)="login()"
         *ngIf="!userLoggedIn"
       >
-        Sign In
+        SIGN IN
       </button>
 
       <button
@@ -82,7 +82,7 @@
         (click)="logout()"
         *ngIf="userLoggedIn"
       >
-        Logout
+        LOGOUT
       </button>
     </form>
   </div>
