@@ -10,9 +10,20 @@
 }
 
 .card:hover {
-  cursor: zoom-in;
+  cursor: pointer;
   .post-img {
-    opacity: 0.5;
+    opacity: 1.5;
     transition: all 0.2s ease-in-out;
   }
+}
+
+#hover {
+  z-index: 1;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0,
+    #fff 100%
+  );
+  widows: 200px;
+  height: 200px;
 }

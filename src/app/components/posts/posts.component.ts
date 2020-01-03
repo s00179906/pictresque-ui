@@ -4,7 +4,7 @@ import { PictresqueAPIService } from "src/app/services/pictresque-api.service";
 import { Router } from "@angular/router";
 import { HighlightDirective } from "src/app/directives/highlight.directive";
 import { PixbayApiService } from "src/app/services/pixbay-api.service";
-import { compileNgModule } from "@angular/compiler";
+import { compileNgModule, CompilerConfig } from "@angular/compiler";
 
 @Component({
   selector: "app-posts",

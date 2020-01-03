@@ -13,6 +13,7 @@ export class NavbarComponent implements OnInit {
   userName: string;
   userLoggedIn: Boolean =
     false || localStorage.getItem("userLoggedIn") == "true";
+  show: boolean = false;
 
   constructor(private router: Router) {
     console.log("IS USER LOGGED IN --> ", this.userLoggedIn);
@@ -43,6 +44,10 @@ export class NavbarComponent implements OnInit {
 
   login() {
     this.router.navigate(["/register"]);
+  }
+
+  toggleCollapse() {
+    this.show = !this.show;
   }
 
   ngOnInit() {}

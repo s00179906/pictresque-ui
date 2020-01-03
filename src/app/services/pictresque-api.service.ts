@@ -11,6 +11,7 @@ export class PictresqueAPIService {
   url: String = "https://pictresque-api.herokuapp.com";
   fileToUpload: any;
   userLoggedIn = localStorage.getItem("userLoggedIn");
+  posts: Post[];
   constructor(private _http: HttpClient) {}
 
   getCategories = (): Observable<Category[]> => {
