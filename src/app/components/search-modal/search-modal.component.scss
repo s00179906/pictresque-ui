@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  animation: slideIn;
+
+  .input-search-container {
+    display: flex;
+    flex-direction: row;
+    #img-search {
+      width: 50px;
+    }
+
+    #input-search {
+      outline: none;
+      border: none;
+    }
+  }
+
+  #bottom-border {
+    border-bottom: 10px solid #ff0000;
+    //   linear-gradient(to right, #d31027 0%, #ea384d 51%, #d31027 100%);
+    width: 100%;
+    background-image: linear-gradient(
+      to right,
+      #d31027 0%,
+      #ea384d 51%,
+      #d31027 100%
+    );
+  }
+}

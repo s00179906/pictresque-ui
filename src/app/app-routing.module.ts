@@ -1,16 +1,32 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
-import { RegisterComponent } from './pages/register/register.component';
-import { PostDetailsComponent } from './pages/post-details/post-details.component';
-import { CategoryComponent } from './pages/category/category.component';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
+import { HomeComponent } from "./pages/home/home.component";
+import { RegisterComponent } from "./pages/register/register.component";
+import { PostDetailsComponent } from "./pages/post-details/post-details.component";
+import { CategoryComponent } from "./pages/category/category.component";
+import { FollowingComponent } from "./pages/following/following.component";
 
 const routes: Routes = [
-  { path: '', component: RegisterComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'post/:id', component: PostDetailsComponent },
-  { path: 'category/:id', component: CategoryComponent }
-  // { path: '**', component: PageNotFoundComponent }
+  { path: "", component: HomeComponent, data: { animation: "isLeft" } },
+  {
+    path: "register",
+    component: RegisterComponent,
+    data: { animation: "isLeft" }
+  },
+  {
+    path: "post/:id",
+    component: PostDetailsComponent
+  },
+  {
+    path: "categories",
+    component: CategoryComponent,
+    data: { animation: "isRight" }
+  },
+  {
+    path: "following",
+    component: FollowingComponent,
+    data: { animation: "isRight" }
+  }
 ];
 
 @NgModule({

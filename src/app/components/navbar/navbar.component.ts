@@ -1,6 +1,7 @@
-import { Component, OnInit, HostListener } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { Router } from "@angular/router";
 import Swal from "sweetalert2";
+import { Post } from "src/app/store/models/Post";
 
 @Component({
   selector: "app-navbar",
@@ -10,7 +11,13 @@ import Swal from "sweetalert2";
 export class NavbarComponent implements OnInit {
   scrollPost: any = null;
   userName: string;
-  constructor(private router: Router) {}
+  userLoggedIn: Boolean =
+    false || localStorage.getItem("userLoggedIn") == "true";
+  show: boolean = false;
+
+  constructor(private router: Router) {
+    console.log("IS USER LOGGED IN --> ", this.userLoggedIn);
+  }
 
   logout = () => {
     Swal.fire({
@@ -25,16 +32,23 @@ export class NavbarComponent implements OnInit {
       cancelButtonAriaLabel: "Thumbs down"
     }).then(res => {
       if (res.value) {
-        // then clear token from storage
-        this.router.navigate([""]);
+        localStorage.removeItem("auth");
+        this.userLoggedIn = false;
+        localStorage.setItem("userLoggedIn", "false");
       }
     });
 
     let confirmBtn = Swal.getConfirmButton();
     let o = confirmBtn;
-
-    // this.router.navigate(["/login"]);
   };
+
+  login() {
+    this.router.navigate(["/register"]);
+  }
+
+  toggleCollapse() {
+    this.show = !this.show;
+  }
 
   ngOnInit() {}
 

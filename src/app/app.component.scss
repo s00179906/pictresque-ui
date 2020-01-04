@@ -1,0 +1,9 @@
+.app {
+  // background-color: var(--primary);
+  background: rgb(25, 29, 35);
+  background: linear-gradient(
+    180deg,
+    rgba(25, 29, 35, 1) 0%,
+    rgba(6, 7, 13, 1) 59%
+  );
+}
