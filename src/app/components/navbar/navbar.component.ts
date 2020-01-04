@@ -1,7 +1,7 @@
-import { Component, OnInit, HostListener } from "@angular/core";
-import { Router, RouterPreloader } from "@angular/router";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Router } from "@angular/router";
 import Swal from "sweetalert2";
-import { PictresqueAPIService } from "src/app/services/pictresque-api.service";
+import { Post } from "src/app/models/Post";
 
 @Component({
   selector: "app-navbar",
