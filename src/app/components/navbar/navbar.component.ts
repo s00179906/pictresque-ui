@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { Router } from "@angular/router";
 import Swal from "sweetalert2";
-import { Post } from "src/app/models/Post";
+import { Post } from "src/app/store/models/Post";
 
 @Component({
   selector: "app-navbar",

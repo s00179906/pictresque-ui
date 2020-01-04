@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Post } from "src/app/models/Post";
+import { Post } from "src/app/store/models/Post";
 import { PictresqueAPIService } from "src/app/services/pictresque-api.service";
 import { Router } from "@angular/router";
 import { HighlightDirective } from "src/app/directives/highlight.directive";
