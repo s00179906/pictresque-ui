@@ -1,7 +1,7 @@
-import { Component, OnInit, HostListener } from "@angular/core";
-import { Router, RouterPreloader } from "@angular/router";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Router } from "@angular/router";
 import Swal from "sweetalert2";
-import { PictresqueAPIService } from "src/app/services/pictresque-api.service";
+import { Post } from "src/app/store/models/Post";
 
 @Component({
   selector: "app-navbar",
@@ -13,6 +13,7 @@ export class NavbarComponent implements OnInit {
   userName: string;
   userLoggedIn: Boolean =
     false || localStorage.getItem("userLoggedIn") == "true";
+  show: boolean = false;
 
   constructor(private router: Router) {
     console.log("IS USER LOGGED IN --> ", this.userLoggedIn);
@@ -43,6 +44,10 @@ export class NavbarComponent implements OnInit {
 
   login() {
     this.router.navigate(["/register"]);
+  }
+
+  toggleCollapse() {
+    this.show = !this.show;
   }
 
   ngOnInit() {}
