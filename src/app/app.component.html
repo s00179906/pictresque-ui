@@ -1,1 +1,7 @@
-<router-outlet></router-outlet>
+<!-- <app-navbar *ngIf="showNavbar"></app-navbar> -->
+
+<main [@routeAnimations]="prepareRoute(outlet)" class="content">
+  <div class="app">
+    <router-outlet #outlet="outlet"></router-outlet>
+  </div>
+</main>
