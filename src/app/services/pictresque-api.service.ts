@@ -26,17 +26,31 @@ export class PictresqueAPIService {
     return this._http.get<Post[]>(`${this.url}/api/posts`);
   };
 
-  uploadImage = (file: FileList, title, desc) => {
-    this.fileToUpload = file.item(0);
-    console.log(this.fileToUpload);
+  uploadImage = (post: any) => {
+    this.fileToUpload = post.file.item(0);
+    console.log(post);
 
     let formData = new FormData();
     formData.append("image", this.fileToUpload, this.fileToUpload.name);
-    formData.append("title", title);
-    formData.append("description", desc);
-    console.log(formData);
+    formData.append("title", post.title);
+    formData.append("description", post.desc);
+    // for (var pair of formData.entries()) {
+    //   console.log(pair[0] + ", " + pair[1]);
+    // }
     return this._http.post(`${this.url}/api/post/create`, formData);
   };
+
+  // uploadImage = (file: FileList, title, desc) => {
+  //   this.fileToUpload = file.item(0);
+  //   console.log(this.fileToUpload);
+
+  //   let formData = new FormData();
+  //   formData.append("image", this.fileToUpload, this.fileToUpload.name);
+  //   formData.append("title", title);
+  //   formData.append("description", desc);
+  //   console.log(formData);
+  //   return this._http.post(`${this.url}/api/post/create`, formData);
+  // };
 
   registerUser = (email, password) => {
     const newUser = {

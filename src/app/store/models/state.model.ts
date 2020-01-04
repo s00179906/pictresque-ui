@@ -1,5 +1,5 @@
-import { Post } from "./Post";
+import { PictresqueState } from "../reducers/pictresque.reducer";
 
 export interface State {
-  readonly posts: Array<Post>;
+  readonly pictresque: PictresqueState;
 }

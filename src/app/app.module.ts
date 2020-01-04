@@ -36,6 +36,8 @@ import { FilterPostsComponent } from "./components/filter-posts/filter-posts.com
 import { PostDateFiltererComponent } from "./components/post-date-filterer/post-date-filterer.component";
 import { StoreModule } from "@ngrx/store";
 import { PictresqueReducer } from "./store/reducers/pictresque.reducer";
+import { PictresqueEffects } from "./store/effects/pictresque.effects";
+import { EffectsModule } from "@ngrx/effects";
 
 export function provideConfig() {
   return config;
@@ -72,7 +74,8 @@ export function provideConfig() {
     BrowserAnimationsModule,
     StoreModule.forRoot({
       pictresque: PictresqueReducer
-    })
+    }),
+    EffectsModule.forRoot([PictresqueEffects])
   ],
   providers: [
     {

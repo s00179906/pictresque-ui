@@ -11,11 +11,14 @@ export enum PictresqueActionTypes {
 }
 export class AddPostAction implements Action {
   readonly type = PictresqueActionTypes.ADD_POST;
+  constructor(public payload: any) {}
 }
 export class AddPostSuccessAction implements Action {
   readonly type = PictresqueActionTypes.ADD_POST_SUCCESS;
 
-  constructor(public payload: Post) {}
+  constructor(public payload: Post) {
+    console.log("NEW POST -->", payload);
+  }
 }
 export class AddPostFailureAction implements Action {
   readonly type = PictresqueActionTypes.ADD_POST_FAILURE;
@@ -28,7 +31,9 @@ export class GetPostsAction implements Action {
 export class GetPostsSuccessAction implements Action {
   readonly type = PictresqueActionTypes.GET_POSTS_SUCCESS;
 
-  constructor(public payload: Array<Post>) {}
+  constructor(public payload: Array<Post>) {
+    console.log("POSTS -->", payload);
+  }
 }
 export class GetPostsFailureAction implements Action {
   readonly type = PictresqueActionTypes.GET_POSTS_FAILURE;
