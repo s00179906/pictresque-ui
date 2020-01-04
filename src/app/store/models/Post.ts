@@ -3,5 +3,5 @@ export interface Post {
   title?: String;
   description?: String;
   imageUrl?: String;
-  __v?: string;
+  // __v?: string;
 }

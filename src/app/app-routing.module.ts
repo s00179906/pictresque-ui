@@ -25,7 +25,7 @@ const routes: Routes = [
   {
     path: "following",
     component: FollowingComponent,
-    data: { animation: "isLeft" }
+    data: { animation: "isRight" }
   }
 ];
 

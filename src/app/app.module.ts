@@ -31,7 +31,13 @@ import { CategoryComponent } from "./pages/category/category.component";
 import { SearchComponent } from "./components/search/search.component";
 import { SearchModalComponent } from "./components/search-modal/search-modal.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { FollowingComponent } from './pages/following/following.component';
+import { FollowingComponent } from "./pages/following/following.component";
+import { FilterPostsComponent } from "./components/filter-posts/filter-posts.component";
+import { PostDateFiltererComponent } from "./components/post-date-filterer/post-date-filterer.component";
+import { StoreModule } from "@ngrx/store";
+import { PictresqueReducer } from "./store/reducers/pictresque.reducer";
+import { PictresqueEffects } from "./store/effects/pictresque.effects";
+import { EffectsModule } from "@ngrx/effects";
 
 export function provideConfig() {
   return config;
@@ -52,7 +58,9 @@ export function provideConfig() {
     RegisterComponent,
     SearchComponent,
     SearchModalComponent,
-    FollowingComponent
+    FollowingComponent,
+    FilterPostsComponent,
+    PostDateFiltererComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +71,11 @@ export function provideConfig() {
     SocialLoginModule,
     ReactiveFormsModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    StoreModule.forRoot({
+      pictresque: PictresqueReducer
+    }),
+    EffectsModule.forRoot([PictresqueEffects])
   ],
   providers: [
     {

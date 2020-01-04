@@ -21,11 +21,33 @@
     aria-controls="navbarSupportedContent"
     aria-expanded="false"
     aria-label="Toggle navigation"
+    (click)="toggleCollapse()"
   >
     <i class="icon ion-ios-menu"></i>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <!-- <div>
+    <div ngbDropdown class="d-inline-block">
+      <i
+        class="icon ion-ios-menu"
+        class="text-light"
+        id="dropdownBasic1"
+        ngbDropdownToggle
+      ></i>
+
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button ngbDropdownItem>
+          asds
+        </button>
+      </div>
+    </div>
+  </div> -->
+
+  <div
+    class="collapse navbar-collapse"
+    id="navbarSupportedContent"
+    [class.show]="show"
+  >
     <ul class="navbar-nav mr-auto"></ul>
 
     <form class="form-inline my-2 my-lg-0">
@@ -37,7 +59,7 @@
         style="border:none;"
         [routerLink]="['']"
       >
-        Home
+        BROWSE
       </button>
 
       <button
@@ -47,24 +69,24 @@
         style="border:none;"
         [routerLink]="['/following']"
       >
-        Following
+        FOLLOWING
       </button>
 
-      <button
+      <!-- <button
         type="button"
         class="btn btn-outline-light mx-1"
         style="border:none;"
         [routerLink]="['/categories']"
       >
-        Categories
-      </button>
+        CATEGORIES
+      </button> -->
       <button
         type="button"
         class="btn btn-outline-info mx-2"
         (click)="login()"
         *ngIf="!userLoggedIn"
       >
-        Sign Up
+        SIGN UP
       </button>
 
       <button
@@ -73,7 +95,7 @@
         (click)="login()"
         *ngIf="!userLoggedIn"
       >
-        Sign In
+        SIGN IN
       </button>
 
       <button
@@ -82,7 +104,7 @@
         (click)="logout()"
         *ngIf="userLoggedIn"
       >
-        Logout
+        LOGOUT
       </button>
     </form>
   </div>

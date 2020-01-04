@@ -9,8 +9,8 @@ $ionicons-font-path: "~ionicons/dist/fonts";
 // ** GLOBAL STYLE VARIABLES
 
 :root {
-  --primary: #121212;
-  --secondary: #1d1d1d;
+  --primary: #06070d; //121212
+  --secondary: #06070d; //1d1d1d
   --tertiary: #ffc107;
 }
 
@@ -46,11 +46,11 @@ button:focus {
   animation-duration: 0.3s;
 }
 
-@keyframes scaleAnim {
-  0% {
-    transform: scale(0.5);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
+// @keyframes scaleAnim {
+//   0% {
+//     transform: scale(0.5);
+//   }
+//   100% {
+//     transform: scale(1);
+//   }
+// }
