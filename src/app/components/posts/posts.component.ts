@@ -1,11 +1,9 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Post } from "src/app/store/models/Post";
-import { PictresqueAPIService } from "src/app/services/pictresque-api.service";
+import { PictresqueAPIService } from "src/app/services/pictresque-service/pictresque-api.service";
 import { Router } from "@angular/router";
-import { HighlightDirective } from "src/app/directives/highlight.directive";
-import { PixbayApiService } from "src/app/services/pixbay-api.service";
-import { compileNgModule, CompilerConfig } from "@angular/compiler";
-import { Observable } from "rxjs";
+import { PixbayApiService } from "src/app/services/pixbay-service/pixbay-api.service";
+import { Observable, Subscription } from "rxjs";
 import { Store } from "@ngrx/store";
 import { State } from "src/app/store/models/state.model";
 import { GetPostsAction } from "src/app/store/actions/pictresque.actions";
@@ -16,31 +14,24 @@ import { GetPostsAction } from "src/app/store/actions/pictresque.actions";
   styleUrls: ["./posts.component.scss"]
 })
 export class PostsComponent implements OnInit {
-  // posts: Post[];
-  posts$: Observable<Array<Post>>;
+  // posts$: Observable<Array<Post>>;
+  public posts$: Post[] = [];
 
   constructor(
-    private pictresqueService: PictresqueAPIService,
-    private pixbayService: PixbayApiService,
-    private router: Router,
-    private store: Store<State>
-  ) {}
+    private store: Store<State>,
+    private pictresqueService: PictresqueAPIService
+  ) {
+    this.pictresqueService.getAllPosts().subscribe((posts: Post[]) => {
+      this.posts$ = posts;
+    });
 
-  goToDetails = e => {
-    const id = e._id;
-    this.router.navigate([`post/${id}`]);
-  };
-
-  addToFavourites = post => {
-    alert("pin clicked");
-  };
+    this.pictresqueService.getPosts().subscribe((post: Post) => {
+      this.posts$.push(post);
+    });
+  }
 
   ngOnInit() {
-    // this.pictresqueService.getAllPosts().subscribe(posts => {
-    //   this.posts = posts;
-    // });
-
-    this.posts$ = this.store.select(store => store.pictresque.posts);
-    this.store.dispatch(new GetPostsAction());
+    // this.posts$ = this.store.select(store => store.pictresque.posts);
+    // this.store.dispatch(new GetPostsAction());
   }
 }

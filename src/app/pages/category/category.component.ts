@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PictresqueAPIService } from 'src/app/services/pictresque-api.service';
+import { PictresqueAPIService } from 'src/app/services/pictresque-service/pictresque-api.service';
 import { Category } from 'src/app/models/Category';
 import { ActivatedRoute } from '@angular/router';
 

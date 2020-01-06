@@ -5,15 +5,20 @@ import {
   PictresqueActionTypes,
   GetPostsSuccessAction,
   GetPostsFailureAction,
-  AddPostFailureAction,
-  AddPostSuccessAction
+  CreatePostSuccessAction,
+  CreatePostFailureAction
 } from "../actions/pictresque.actions";
 import { map, mergeMap, catchError, switchMap } from "rxjs/operators";
-import { PictresqueAPIService } from "src/app/services/pictresque-api.service";
+import { PictresqueAPIService } from "src/app/services/pictresque-service/pictresque-api.service";
 import { of } from "rxjs";
 
 @Injectable()
 export class PictresqueEffects {
+  constructor(
+    private actions$: Actions,
+    private pictresqueService: PictresqueAPIService
+  ) {}
+
   @Effect() loadPosts$ = this.actions$.pipe(
     ofType<PictresqueAction>(PictresqueActionTypes.GET_POSTS),
     mergeMap(() =>
@@ -24,31 +29,14 @@ export class PictresqueEffects {
     )
   );
 
-  // @Effect() createNewPost$ = this.actions$.pipe(
-  //   ofType<PictresqueAction>(PictresqueActionTypes.ADD_POST),
-  //   mergeMap(() =>
-  //     this.pictresqueService.uploadImage().pipe(
-  //       map(data => {
-  //         // console.log(data);
-  //         new AddPostSuccessAction(data);
-  //       }),
-  //       catchError(error => of(new AddPostFailureAction(error)))
-  //     )
-  //   )
-  // );
-
   @Effect() createNewPost$ = this.actions$.pipe(
-    ofType<PictresqueAction>(PictresqueActionTypes.ADD_POST),
+    ofType<PictresqueAction>(PictresqueActionTypes.CREATE_POST),
     switchMap(action => {
-      console.log("in course effects", action);
-      return this.pictresqueService
-        .uploadImage(action["payload"])
-        .pipe(map(data => new AddPostSuccessAction(data["newPost"])));
+      console.log("in pictresque effects", action);
+      return this.pictresqueService.uploadImage(action["payload"]).pipe(
+        map(data => new CreatePostSuccessAction(data["newPost"])),
+        catchError(error => of(new CreatePostFailureAction(error)))
+      );
     })
   );
-
-  constructor(
-    private actions$: Actions,
-    private pictresqueService: PictresqueAPIService
-  ) {}
 }

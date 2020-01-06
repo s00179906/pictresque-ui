@@ -2,26 +2,26 @@ import { Action } from "@ngrx/store";
 import { Post } from "../models/Post";
 
 export enum PictresqueActionTypes {
-  ADD_POST = "[PICTRESQUE] Add Post",
-  ADD_POST_SUCCESS = "[PICTRESQUE] Add Post Success",
-  ADD_POST_FAILURE = "[PICTRESQUE] Add Post Failure",
+  CREATE_POST = "[PICTRESQUE] Create Post",
+  CREATE_POST_SUCCESS = "[PICTRESQUE] Create Post Success",
+  CREATE_POST_FAILURE = "[PICTRESQUE] Create Post Failure",
   GET_POSTS = "[PICTRESQUE] Get Posts",
   GET_POSTS_SUCCESS = "[PICTRESQUE] Get Posts Success",
   GET_POSTS_FAILURE = "[PICTRESQUE] Get Posts Failure"
 }
-export class AddPostAction implements Action {
-  readonly type = PictresqueActionTypes.ADD_POST;
+export class CreatePostAction implements Action {
+  readonly type = PictresqueActionTypes.CREATE_POST;
   constructor(public payload: any) {}
 }
-export class AddPostSuccessAction implements Action {
-  readonly type = PictresqueActionTypes.ADD_POST_SUCCESS;
+export class CreatePostSuccessAction implements Action {
+  readonly type = PictresqueActionTypes.CREATE_POST_SUCCESS;
 
   constructor(public payload: Post) {
     console.log("NEW POST -->", payload);
   }
 }
-export class AddPostFailureAction implements Action {
-  readonly type = PictresqueActionTypes.ADD_POST_FAILURE;
+export class CreatePostFailureAction implements Action {
+  readonly type = PictresqueActionTypes.CREATE_POST_FAILURE;
 
   constructor(public payload: Error) {}
 }
@@ -42,9 +42,9 @@ export class GetPostsFailureAction implements Action {
 }
 
 export type PictresqueAction =
-  | AddPostAction
-  | AddPostSuccessAction
-  | AddPostFailureAction
+  | CreatePostAction
+  | CreatePostSuccessAction
+  | CreatePostFailureAction
   | GetPostsAction
   | GetPostsSuccessAction
   | GetPostsFailureAction;

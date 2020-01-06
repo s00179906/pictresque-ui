@@ -1,14 +1,15 @@
 import { Component, OnInit } from "@angular/core";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
-import { PictresqueAPIService } from "src/app/services/pictresque-api.service";
+import { PictresqueAPIService } from "src/app/services/pictresque-service/pictresque-api.service";
 import Swal from "sweetalert2";
 import { PictresqueState } from "src/app/store/reducers/pictresque.reducer";
 import { Store } from "@ngrx/store";
 import {
-  AddPostAction,
-  AddPostSuccessAction
+  CreatePostAction,
+  CreatePostSuccessAction
 } from "src/app/store/actions/pictresque.actions";
 import { State } from "src/app/store/models/state.model";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-modelcontent",
@@ -16,13 +17,14 @@ import { State } from "src/app/store/models/state.model";
   styleUrls: ["./modelcontent.component.scss"]
 })
 export class ModelcontentComponent implements OnInit {
-  url: String = "https://pictresqueapi.herokuapp.com/";
+  // url: String = "https://pictresqueapi.herokuapp.com/";
   imageUploaded: Boolean = false;
   fileToUpload: any;
   imageSrc: any;
   imageSelected: String = "";
   userFile: any;
   file: any;
+  errorObservable$: Observable<Error>;
 
   constructor(
     public activeModal: NgbActiveModal,
@@ -50,7 +52,6 @@ export class ModelcontentComponent implements OnInit {
   //   if (!this.file) return this.alert("Oops, an image is required!");
 
   //   this.pictrService.uploadImage(this.file, title, desc).subscribe(result => {
-  //     console.log(result);
   //   });
 
   //   localStorage.setItem("newPost", "true");
@@ -59,7 +60,6 @@ export class ModelcontentComponent implements OnInit {
   // };
   createPost = (title, desc) => {
     if (!title || !desc) return this.alert("Title & Description required!");
-
     if (!this.file) return this.alert("Oops, an image is required!");
 
     const post = {
@@ -68,11 +68,14 @@ export class ModelcontentComponent implements OnInit {
       title
     };
 
-    // this.pictrService.uploadImage(post).subscribe(result => {
-    //   console.log(result);
-    // });
+    this.store.dispatch(new CreatePostAction(post));
+    this.errorObservable$ = this.store.select(state => state.pictresque.error);
 
-    this.store.dispatch(new AddPostAction(post));
+    this.errorObservable$.subscribe(error => {
+      if (error != undefined || error != null)
+        return this.alert("Whoops, That image is too large!");
+    });
+
     return this.activeModal.dismiss();
   };
 

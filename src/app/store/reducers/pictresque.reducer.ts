@@ -38,21 +38,23 @@ export function PictresqueReducer(
         error: action.payload,
         loading: false
       };
-    case PictresqueActionTypes.ADD_POST:
+    case PictresqueActionTypes.CREATE_POST:
       return {
         ...state,
         loading: true
       };
-    case PictresqueActionTypes.ADD_POST_SUCCESS:
+    case PictresqueActionTypes.CREATE_POST_SUCCESS:
       return {
         ...state,
         posts: [...state.posts, action.payload],
         loading: false
       };
-    case PictresqueActionTypes.ADD_POST_FAILURE:
+    case PictresqueActionTypes.CREATE_POST_FAILURE:
+      console.log("POSSIBLE ERROR -->", action.payload["error"]);
+
       return {
         ...state,
-        error: action.payload,
+        error: action.payload["error"],
         loading: false
       };
 
