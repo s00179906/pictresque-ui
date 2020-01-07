@@ -3,17 +3,23 @@ import {
   PictresqueAction
 } from "../actions/pictresque.actions";
 import { Post } from "../models/Post";
+import { Pixbay } from "src/app/models/pixbay";
+import { PictresqueAPIService } from "src/app/services/pictresque-service/pictresque-api.service";
 
 export interface PictresqueState {
   posts: Post[];
   loading: boolean;
   error: Error;
+  searchTerm: string;
+  pixabayPosts: Pixbay[];
 }
 
 const initialState: PictresqueState = {
   posts: [],
   loading: false,
-  error: undefined
+  error: undefined,
+  searchTerm: "",
+  pixabayPosts: []
 };
 
 export function PictresqueReducer(
@@ -51,13 +57,40 @@ export function PictresqueReducer(
       };
     case PictresqueActionTypes.CREATE_POST_FAILURE:
       console.log("POSSIBLE ERROR -->", action.payload["error"]);
-
       return {
         ...state,
         error: action.payload["error"],
         loading: false
       };
 
+    case PictresqueActionTypes.GET_PIXABAY_POSTS:
+      return {
+        ...state,
+        loading: true
+      };
+    case PictresqueActionTypes.GET_PIXABAY_POSTS_SUCCESS:
+      return {
+        ...state,
+        pixabayPosts: action.payload,
+        loading: false
+      };
+    case PictresqueActionTypes.GET_PIXABAY_POSTS_FAILURE:
+      return {
+        ...state,
+        error: action.payload["error"],
+        loading: false
+      };
+    case PictresqueActionTypes.GET_SEARCHWORD:
+      return {
+        ...state,
+        loading: true
+      };
+    case PictresqueActionTypes.GET_SEARCHWORD_SUCCESS:
+      return {
+        ...state,
+        searchTerm: action.payload,
+        loading: false
+      };
     default:
       return state;
   }
