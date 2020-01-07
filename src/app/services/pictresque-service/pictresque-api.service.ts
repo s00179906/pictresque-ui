@@ -74,19 +74,30 @@ export class PictresqueAPIService {
   };
 
   uploadImage = (post: any) => {
-    console.log("POST IN UPLOADIMAGE() -->", post);
+    const auth = JSON.parse(localStorage.getItem("auth"));
+
+    console.log(post);
+
+    const headers = new HttpHeaders({
+      "Content-Type": "application/form-data",
+      Authorization: `bearer ${auth.token}`
+    });
 
     this.fileToUpload = post.file.item(0);
     let formData = new FormData();
-    formData.append("image", this.fileToUpload, this.fileToUpload.name);
-    formData.append("title", post.title);
-    formData.append("description", post.desc);
+    formData.set("image", this.fileToUpload, this.fileToUpload.name);
+    formData.set("title", post.title);
+    formData.set("description", post.desc);
 
-    // for (var pair of formData.entries()) {
-    //   console.log(pair[0] + ", " + pair[1]);
-    // }
+    for (var pair of formData.entries()) {
+      console.log(pair[0] + ", " + pair[1]);
+    }
 
-    return this._http.post(`${this.url}/api/v1/post/create`, formData);
+    console.log(headers);
+
+    return this._http.post(`${this.url}/api/v1/post/create`, formData, {
+      headers
+    });
   };
 
   registerUser = (email, password) => {

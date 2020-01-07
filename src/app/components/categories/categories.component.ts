@@ -13,8 +13,8 @@ export class CategoriesComponent implements OnInit {
   constructor(private pictresqueService: PictresqueAPIService) {}
 
   ngOnInit() {
-    this.pictresqueService.getCategories().subscribe(categories => {
-      this.categories = categories;
-    });
+    // this.pictresqueService.getCategories().subscribe(categories => {
+    //   this.categories = categories;
+    // });
   }
 }

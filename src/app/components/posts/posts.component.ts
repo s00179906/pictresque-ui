@@ -24,7 +24,6 @@ export class PostsComponent implements OnInit {
     this.pictresqueService.getAllPosts().subscribe((posts: Post[]) => {
       this.posts$ = posts;
     });
-
     this.pictresqueService.getPosts().subscribe((post: Post) => {
       this.posts$.push(post);
     });
@@ -33,5 +32,6 @@ export class PostsComponent implements OnInit {
   ngOnInit() {
     // this.posts$ = this.store.select(store => store.pictresque.posts);
     // this.store.dispatch(new GetPostsAction());
+    // console.log(this.posts$);
   }
 }

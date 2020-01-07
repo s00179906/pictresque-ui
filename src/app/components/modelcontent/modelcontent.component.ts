@@ -17,7 +17,6 @@ import { Observable } from "rxjs";
   styleUrls: ["./modelcontent.component.scss"]
 })
 export class ModelcontentComponent implements OnInit {
-  // url: String = "https://pictresqueapi.herokuapp.com/";
   imageUploaded: Boolean = false;
   fileToUpload: any;
   imageSrc: any;
@@ -71,10 +70,10 @@ export class ModelcontentComponent implements OnInit {
     this.store.dispatch(new CreatePostAction(post));
     this.errorObservable$ = this.store.select(state => state.pictresque.error);
 
-    this.errorObservable$.subscribe(error => {
-      if (error != undefined || error != null)
-        return this.alert("Whoops, That image is too large!");
-    });
+    // this.errorObservable$.subscribe(error => {
+    //   if (error != undefined || error != null)
+    //     return this.alert("Whoops, That image is too large!");
+    // });
 
     return this.activeModal.dismiss();
   };

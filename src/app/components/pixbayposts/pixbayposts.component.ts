@@ -22,6 +22,7 @@ export class PixbayPostsComponent implements OnInit {
   };
 
   ngOnInit() {
+    
     this.Search('');
     this.apiService.getImageData().subscribe(hits => {
       this.posts = hits['hits'];
