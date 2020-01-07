@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PictresqueAPIService } from 'src/app/services/pictresque-api.service';
+import { PictresqueAPIService } from 'src/app/services/pictresque-service/pictresque-api.service';
 
 @Component({
   selector: 'app-post-details',

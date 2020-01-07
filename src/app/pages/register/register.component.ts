@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { PictresqueAPIService } from "src/app/services/pictresque-api.service";
+import { PictresqueAPIService } from "src/app/services/pictresque-service/pictresque-api.service";
 import { Router } from "@angular/router";
-import { FacebookAuthService } from "src/app/services/facebook-auth.service";
+import { FacebookAuthService } from "src/app/services/facebook-service/facebook-auth.service";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 
 @Component({
@@ -11,12 +11,13 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 })
 export class RegisterComponent implements OnInit {
   display: Boolean = true;
-  test: Boolean = false;
   registerForm: FormGroup;
   loginForm: FormGroup;
   registerErrors: string;
   loginErrors: string;
   title = "FacebookLogin";
+  loggedIn: any;
+  user: any;
 
   constructor(
     private FBauthService: FacebookAuthService,
@@ -24,26 +25,16 @@ export class RegisterComponent implements OnInit {
     private router: Router
   ) {}
 
-  loggedIn: any;
-  user: any;
-
   signInWithFacebook(): void {
     this.FBauthService.signInWithFB();
   }
 
   showSignin = () => {
-    // this.display = true;
-    // this.test = false;
-
     this.display = !this.display;
-    console.log(this.display);
   };
 
   showSignup = () => {
-    // this.test = true;
-    // this.display = false;
     this.display = !this.display;
-    console.log(this.display);
   };
 
   registerUser = () => {
@@ -73,8 +64,6 @@ export class RegisterComponent implements OnInit {
     let email = this.loginForm.get("emailSignin").value;
     let password = this.loginForm.get("passwordSignin").value;
 
-    // console.log("EMAIL AND PASSWORD FROM LOGIN: ", email, password);
-
     this.pictresqueAPI.loginUser(email, password).subscribe(
       data => {
         const auth = {
@@ -84,12 +73,6 @@ export class RegisterComponent implements OnInit {
 
         localStorage.setItem("auth", JSON.stringify(auth));
         localStorage.setItem("userLoggedIn", "true");
-
-        // console.log(
-        //   "auth object parsed",
-        //   JSON.parse(localStorage.getItem("auth"))
-        // );
-
         this.router.navigate([""]);
       },
       error => {

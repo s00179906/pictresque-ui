@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PixbayApiService } from 'src/app/services/pixbay-api.service';
+import { PixbayApiService } from 'src/app/services/pixbay-service/pixbay-api.service';
 import { Pixbay } from 'src/app/models/pixbay';
 
 @Component({
