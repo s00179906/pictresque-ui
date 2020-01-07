@@ -51,6 +51,13 @@ export class PostDetailsComponent implements OnInit {
     });
   }
 
+  unlike() {
+    console.log(this.id);
+    this.pictresqueService.unlikeImage(this.id).subscribe(res => {
+      console.log(res);
+    });
+  }
+
   ngOnInit() {
     console.log(this.posts$);
     console.log(this.singlePost);
