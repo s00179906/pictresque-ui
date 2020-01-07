@@ -38,7 +38,6 @@ import { StoreModule } from "@ngrx/store";
 import { PictresqueReducer } from "./store/reducers/pictresque.reducer";
 import { PictresqueEffects } from "./store/effects/pictresque.effects";
 import { EffectsModule } from "@ngrx/effects";
-
 export function provideConfig() {
   return config;
 }

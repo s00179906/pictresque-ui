@@ -34,4 +34,8 @@ export class PostsComponent implements OnInit {
     // this.posts$ = this.store.select(store => store.pictresque.posts);
     // this.store.dispatch(new GetPostsAction());
   }
+
+  ngAfterViewChecked() {
+    console.log(this.posts$);
+  }
 }

@@ -6,11 +6,11 @@ import { Directive, ElementRef, HostListener } from "@angular/core";
 export class HighlightDirective {
   constructor(private el: ElementRef) {}
 
-  @HostListener("click") onMouseEnter() {
+  @HostListener("mousedown") onMouseEnter() {
     this.highlight("lightblue");
   }
 
-  @HostListener("dblclick") onMouseLeave() {
+  @HostListener("mouseup") onMouseLeave() {
     this.highlight(null);
   }
 

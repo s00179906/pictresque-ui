@@ -9,6 +9,36 @@
 }
 
 img {
-  max-width: 35rem;
-  max-height: 35rem;
+  max-width: 30rem;
+  max-height: 30rem;
+}
+
+.card-body {
+  margin: 10px;
+}
+
+.card {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  margin-bottom: 5rem;
+}
+
+.back {
+  margin: 2rem;
+  margin-top: 4rem;
+}
+.btn-label {
+  position: relative;
+  left: -12px;
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 3px 0 0 3px;
+}
+.btn-labeled {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.btn {
+  margin-bottom: 10px;
 }

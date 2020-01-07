@@ -1,26 +1,36 @@
 <app-navbar></app-navbar>
-<<<<<<< HEAD
-<div
-  class="detail"
-  fxLayout
-  fxFill
-  fxLayoutAlign="space-around center"
-  appHighlight
->
-  <div class="post-container">
-    <h1>{{ post.title }}</h1>
-    <h1>{{ post.description }}</h1>
-    <img [src]="post.imageUrl" />
-    <hr />
+<br />
+<br />
+<div appHighlight *ngIf="post" class="card text-center" cdkDrag>
+  <div class="card-header">
+    Featured
   </div>
-=======
+  <div class="card-body">
+    <h5 class="card-title">{{ post.title }}</h5>
+    <p class="card-text">{{ post.description }}</p>
+    <img [src]="post.imageUrl" />
+    <br />
+    <br />
+  </div>
 
-<div class="post-container" style="padding-top: 5rem">
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-labeled btn-success">
+      <span class="btn-label"><i class="material-icons">thumb_up</i></span
+      >Like
+    </button>
+    <button type="button" class="btn btn-labeled btn-danger">
+      <span class="btn-label"><i class="material-icons">thumb_down</i></span
+      >Dislike
+    </button>
+  </div>
+
+  <div class="card-footer text-muted">
+    2 days ago
+  </div>
+</div>
+
+<div class="back">
   <button type="button" [routerLink]="['/']">
     Back
   </button>
-  <h1>{{ post.title }}</h1>
-  <h1>{{ post.description }}</h1>
-  <img [src]="post.imageUrl" />
->>>>>>> fd49ca8e432ba2d65514ac18bb1703f524c1480f
 </div>
