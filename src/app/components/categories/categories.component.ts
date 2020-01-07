@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { PictresqueAPIService } from "src/app/services/pictresque-api.service";
+import { PictresqueAPIService } from "src/app/services/pictresque-service/pictresque-api.service";
 import { Category } from "src/app/models/Category";
 
 @Component({
@@ -14,7 +14,6 @@ export class CategoriesComponent implements OnInit {
 
   ngOnInit() {
     this.pictresqueService.getCategories().subscribe(categories => {
-      // console.log('CATEGORIES IN CATEGORY COMPONENT:', categories);
       this.categories = categories;
     });
   }

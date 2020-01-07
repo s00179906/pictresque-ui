@@ -1,29 +1,18 @@
 .card-columns {
   column-count: 4;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1024px) {
     column-count: 3;
   }
   @media screen and (max-width: 425px) {
-    column-count: 1;
+    column-count: 2;
   }
 }
 
 .card:hover {
   cursor: pointer;
   .post-img {
-    opacity: 1.5;
+    opacity: 0.5;
     transition: all 0.2s ease-in-out;
   }
-}
-
-#hover {
-  z-index: 1;
-  background-image: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0) 0,
-    #fff 100%
-  );
-  widows: 200px;
-  height: 200px;
 }

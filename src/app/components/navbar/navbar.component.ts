@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit {
   show: boolean = false;
 
   constructor(private router: Router) {
-    console.log("IS USER LOGGED IN --> ", this.userLoggedIn);
+    // console.log("IS USER LOGGED IN --> ", this.userLoggedIn);
   }
 
   logout = () => {
@@ -39,7 +39,7 @@ export class NavbarComponent implements OnInit {
     });
 
     let confirmBtn = Swal.getConfirmButton();
-    let o = confirmBtn;
+    // let o = confirmBtn;
   };
 
   login() {
@@ -56,7 +56,6 @@ export class NavbarComponent implements OnInit {
   // doSomething(event) {
   //   // console.debug("Scroll Event", document.body.scrollTop);
   //   // see András Szepesházi's comment below
-  //   console.log('Scroll Event', window.pageYOffset);
   //   let navbar = document.getElementsByClassName('nav-container');
   //   this.scrollPost = window.pageYOffset;
   //   if (this.scrollPost >= navbar.offsetTop) {
