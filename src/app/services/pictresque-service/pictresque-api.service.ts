@@ -89,9 +89,9 @@ export class PictresqueAPIService {
     formData.set("title", post.title);
     formData.set("description", post.desc);
 
-    for (var pair of formData.entries()) {
-      console.log(pair[0] + ", " + pair[1]);
-    }
+    // for (var pair of formData.entries()) {
+    //   console.log(pair[0] + ", " + pair[1]);
+    // }
 
     console.log(headers);
 

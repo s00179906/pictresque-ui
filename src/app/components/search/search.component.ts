@@ -19,6 +19,8 @@ export class SearchComponent implements OnInit {
     // this.imgSearchObservable = this.store.select(
     //   store => store.pictresque.searchTerm
     // );
+
+    console.log(searchTerm);
     this.store.dispatch(new GetSearchWordActionSuccess(searchTerm));
   }
   openSearchModal() {

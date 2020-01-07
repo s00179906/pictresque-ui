@@ -15,7 +15,8 @@ const routes: Routes = [
   },
   {
     path: "post/:id",
-    component: PostDetailsComponent
+    component: PostDetailsComponent,
+    data: { animation: "isRight" }
   },
   {
     path: "categories",
