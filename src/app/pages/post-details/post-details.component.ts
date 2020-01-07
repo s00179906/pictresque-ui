@@ -45,7 +45,10 @@ export class PostDetailsComponent implements OnInit {
   };
 
   like() {
-    this.pictresqueService.likeImage(this.id);
+    console.log(this.id);
+    this.pictresqueService.likeImage(this.id).subscribe(res => {
+      console.log(res);
+    });
   }
 
   ngOnInit() {
