@@ -1,8 +1,8 @@
-export interface Pixbay {
-  hits: IHits[];
-}
+// export interface Pixbay {
+//   hits: IHits[];
+// }
 
-export interface IHits {
+export interface Pixbay {
   webformatURL: string;
   likes: string;
   views: number;
