@@ -10,17 +10,14 @@
     <p class="card-text">{{ post.description }}</p>
     <img [src]="post.imageUrl" />
     <br />
-    <br />
   </div>
 
   <div class="btn-group" role="group" aria-label="Basic example">
-    <button type="button" class="btn btn-labeled btn-success">
-      <span class="btn-label"><i class="material-icons">thumb_up</i></span
-      >Like
+    <button type="button" class="btn btn-labeled btn-success" (click)="like($event)">
+      <span class="btn-label"><i class="material-icons">thumb_up</i></span>Like
     </button>
     <button type="button" class="btn btn-labeled btn-danger">
-      <span class="btn-label"><i class="material-icons">thumb_down</i></span
-      >Dislike
+      <span class="btn-label"><i class="material-icons">thumb_down</i></span>Dislike
     </button>
   </div>
 
@@ -29,8 +26,8 @@
   </div>
 </div>
 
-<div class="back">
-  <button type="button" [routerLink]="['/']">
-    Back
+<div class="text-center">
+  <button type="button" class="btn btn-warning" [routerLink]="['/']">
+    <span class="btn-label"><i class="material-icons">keyboard_backspace</i></span>Back
   </button>
 </div>

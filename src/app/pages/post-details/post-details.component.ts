@@ -44,13 +44,12 @@ export class PostDetailsComponent implements OnInit {
     );
   };
 
+  like() {
+    this.pictresqueService.likeImage(this.id);
+  }
+
   ngOnInit() {
     console.log(this.posts$);
-    // this.route.params.subscribe(params => {
-    //   console.log("THE ID IS ", params.id);
-    //   this.id = params.id;
-    // });
-    //this.getSinglePost(this.id);
     console.log(this.singlePost);
   }
 
