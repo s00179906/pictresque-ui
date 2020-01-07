@@ -16,8 +16,8 @@ import {
   providedIn: "root"
 })
 export class PictresqueAPIService {
-  url: String = "http://localhost:5001";
-  // url: String = "https://pictresque-api.herokuapp.com";
+  // url: String = "http://localhost:5001";
+  url: String = "https://pictresque-api.herokuapp.com";
   fileToUpload: any;
   userLoggedIn = localStorage.getItem("userLoggedIn");
   private post: Subject<Post> = new Subject<Post>();
@@ -49,18 +49,27 @@ export class PictresqueAPIService {
   }
 
   getCategories = (): Observable<Category[]> => {
-    return this._http.get<Category[]>(`${this.url}/api/categories`, {
+    return this._http.get<Category[]>(`${this.url}/api/v1/categories`, {
       headers: this.httpsOptions()
     });
   };
 
   getSingleCategory = (id): Observable<Category> => {
-    return this._http.get<Category>(`${this.url}/api/category/${id}`);
+    return this._http.get<Category>(`${this.url}/api/v1/category/${id}`);
   };
 
   getAllPosts = (): Observable<Post[]> => {
-    return this._http.get<Post[]>(`${this.url}/api/posts`, {
-      headers: this.httpsOptions()
+    const auth = JSON.parse(localStorage.getItem("auth"));
+
+    const headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      Authorization: `bearer ${auth.token}`
+    });
+
+    // user id is not being passed
+    console.log(auth.id);
+    return this._http.get<Post[]>(`${this.url}/api/v1/posts`, {
+      headers
     });
   };
 
@@ -77,7 +86,7 @@ export class PictresqueAPIService {
     //   console.log(pair[0] + ", " + pair[1]);
     // }
 
-    return this._http.post(`${this.url}/api/post/create`, formData);
+    return this._http.post(`${this.url}/api/v1/post/create`, formData);
   };
 
   registerUser = (email, password) => {
@@ -85,15 +94,15 @@ export class PictresqueAPIService {
       email,
       password
     };
-    return this._http.post(`${this.url}/api/register`, newUser);
+    return this._http.post(`${this.url}/api/v1/register`, newUser);
   };
 
   loginUser = (email, password) => {
-    return this._http.post(`${this.url}/api/login`, { email, password });
+    return this._http.post(`${this.url}/api/v1/login`, { email, password });
   };
 
   getSinglePost = id => {
-    return this._http.get(`${this.url}/api/post/${id}`);
+    return this._http.get(`${this.url}/api/v1/post/${id}`);
   };
 
   getPosts(): Observable<Post> {

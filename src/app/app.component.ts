@@ -12,11 +12,14 @@ export class AppComponent implements OnInit {
   title = "Pictresque";
   showNavbar: Boolean = true;
 
-  constructor() {}
+  constructor() {
+    console.log("CONSTRUCTOR CALLED");
+  }
 
   ngOnInit() {
     this.showNavbar = window.location.href.includes("/register") ? false : true;
 
+    console.log("ngOnInit CALLED");
     console.log("SHOW NAVBAR? -->", this.showNavbar);
     console.log("WINDOW URL -->", window.location.href);
   }
