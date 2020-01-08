@@ -133,4 +133,19 @@ export class PictresqueAPIService {
 
     return headers;
   }
+
+  likeImage = id => {
+    const auth = JSON.parse(localStorage.getItem("auth"));
+    return this._http.post(`${this.url}/api/v1/like/${id}`, {
+      userId: auth.id
+    });
+  };
+
+  unlikeImage = id => {
+    const auth = JSON.parse(localStorage.getItem("auth"));
+
+    return this._http.post(`${this.url}/api/v1/unlike/${id}`, {
+      userId: auth.id
+    });
+  };
 }

@@ -34,4 +34,8 @@ export class PostsComponent implements OnInit {
     // this.store.dispatch(new GetPostsAction());
     // console.log(this.posts$);
   }
+
+  ngAfterViewChecked() {
+    console.log(this.posts$);
+  }
 }
