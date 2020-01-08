@@ -12,7 +12,7 @@
 .card:hover {
   cursor: pointer;
   .post-img {
-    opacity: 0.5;
-    transition: all 0.2s ease-in-out;
+    filter: brightness(1.1) drop-shadow(1px 8px 30px rgb(22, 22, 22));
+    transition: all 0.1s ease-in;
   }
 }
