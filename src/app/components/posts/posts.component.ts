@@ -36,6 +36,6 @@ export class PostsComponent implements OnInit {
   }
 
   ngAfterViewChecked() {
-    console.log(this.posts$);
+    // console.log(this.posts$);
   }
 }

@@ -20,7 +20,7 @@ export class SearchComponent implements OnInit {
     //   store => store.pictresque.searchTerm
     // );
 
-    console.log(searchTerm);
+    // console.log(searchTerm);
     this.store.dispatch(new GetSearchWordActionSuccess(searchTerm));
   }
   openSearchModal() {

@@ -22,7 +22,11 @@
         All Categories
       </a>
       <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-        <button ngbDropdownItem *ngFor="let cat of categories">
+        <button
+          ngbDropdownItem
+          *ngFor="let cat of categories"
+          (click)="fetchCategoryPosts(cat.category, cat._id)"
+        >
           {{ cat.category | titlecase }}
         </button>
       </div>

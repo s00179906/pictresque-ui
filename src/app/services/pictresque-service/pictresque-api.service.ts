@@ -49,9 +49,7 @@ export class PictresqueAPIService {
   }
 
   getCategories = (): Observable<Category[]> => {
-    return this._http.get<Category[]>(`${this.url}/api/v1/categories`, {
-      headers: this.httpsOptions()
-    });
+    return this._http.get<Category[]>(`${this.url}/api/v1/categories`);
   };
 
   getSingleCategory = (id): Observable<Category> => {

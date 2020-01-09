@@ -29,7 +29,7 @@ export class PixbayPostsComponent implements OnInit {
     this.imgSearchObservable.subscribe(term => {
       this.apiService.getSearchTerm(term).subscribe(hits => {
         this.posts = hits["hits"];
-        console.log("Peters method", this.posts);
+        // console.log("Peters method", this.posts);
       });
     });
 
