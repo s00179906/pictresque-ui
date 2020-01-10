@@ -16,7 +16,9 @@ export enum PictresqueActionTypes {
   GET_SEARCHWORD_SUCCESS = "[PICTRESQUE] Get SearchWord Success",
   GET_SEARCHWORD_FAILURE = "[PICTRESQUE] Get SearchWord Failure",
   GET_CATEGORY_POSTS = "[PICTRESQUE] Get Cataegory Posts",
-  GET_CATEGORY_POSTS_SUCCESS = "[PICTRESQUE] Get Cataegory Posts Success"
+  GET_CATEGORY_POSTS_SUCCESS = "[PICTRESQUE] Get Cataegory Posts Success",
+  CREATE_POST_TEST = "[PICTRESQUE] Create Post Test",
+  CREATE_POST_TEST_SUCCESS = "[PICTRESQUE] Create Post Test Success"
 }
 export class CreatePostAction implements Action {
   readonly type = PictresqueActionTypes.CREATE_POST;
@@ -28,6 +30,16 @@ export class CreatePostSuccessAction implements Action {
   constructor(public payload: Post) {
     console.log("NEW POST -->", payload);
   }
+}
+
+export class CreatePostTestAction implements Action {
+  readonly type = PictresqueActionTypes.CREATE_POST_TEST;
+  constructor(public payload: any) {}
+}
+export class CreatePostSuccessTestAction implements Action {
+  readonly type = PictresqueActionTypes.CREATE_POST_TEST_SUCCESS;
+
+  constructor(public payload: Post) {}
 }
 export class CreatePostFailureAction implements Action {
   readonly type = PictresqueActionTypes.CREATE_POST_FAILURE;
@@ -98,6 +110,8 @@ export type PictresqueAction =
   | CreatePostAction
   | CreatePostSuccessAction
   | CreatePostFailureAction
+  | CreatePostTestAction
+  | CreatePostSuccessTestAction
   | GetPostsAction
   | GetPostsSuccessAction
   | GetPostsFailureAction

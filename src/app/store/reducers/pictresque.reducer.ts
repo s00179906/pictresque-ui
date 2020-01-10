@@ -50,16 +50,29 @@ export function PictresqueReducer(
         loading: true
       };
     case PictresqueActionTypes.CREATE_POST_SUCCESS:
+      console.log("POST IN ACTIONS -->", action.payload);
       return {
         ...state,
         posts: [...state.posts, action.payload],
         loading: false
       };
     case PictresqueActionTypes.CREATE_POST_FAILURE:
-      console.log("POSSIBLE ERROR -->", action.payload["error"]);
+      // console.log("POSSIBLE ERROR -->", action.payload["error"]);
       return {
         ...state,
         error: action.payload["error"],
+        loading: false
+      };
+    case PictresqueActionTypes.CREATE_POST_TEST:
+      return {
+        ...state,
+        loading: true
+      };
+    case PictresqueActionTypes.CREATE_POST_TEST_SUCCESS:
+      console.log(action.payload);
+      return {
+        ...state,
+        posts: [...state.posts, action.payload],
         loading: false
       };
 

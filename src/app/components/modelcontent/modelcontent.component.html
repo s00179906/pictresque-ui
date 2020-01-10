@@ -61,6 +61,24 @@
       placeholder="What story does your picture tell?"
       #description
     />
+
+    <div ngbDropdown class="d-inline-block mx-4 mt-3">
+      <button
+        class="btn btn-outline-warning"
+        id="dropdownBasic1"
+        ngbDropdownToggle
+        [innerHtml]="selectedCategory"
+      ></button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button
+          ngbDropdownItem
+          *ngFor="let cat of categories"
+          (click)="setCategory(cat.category, cat._id)"
+        >
+          {{ cat.category | titlecase }}
+        </button>
+      </div>
+    </div>
   </div>
 </div>
 

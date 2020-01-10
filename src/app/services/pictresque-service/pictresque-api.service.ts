@@ -65,16 +65,15 @@ export class PictresqueAPIService {
     });
 
     // user id is not being passed
-    console.log(auth.id);
+    // console.log(auth.id);
     return this._http.get<Post[]>(`${this.url}/api/v1/posts`, {
       headers
     });
   };
 
   uploadImage = (post: any) => {
+    console.log("POST IN UPLOADIMAGE -->", post);
     const auth = JSON.parse(localStorage.getItem("auth"));
-
-    console.log(post);
 
     const headers = new HttpHeaders({
       "Content-Type": "application/form-data",
@@ -86,16 +85,9 @@ export class PictresqueAPIService {
     formData.set("image", this.fileToUpload, this.fileToUpload.name);
     formData.set("title", post.title);
     formData.set("description", post.desc);
+    formData.set("categoryId", post.category);
 
-    // for (var pair of formData.entries()) {
-    //   console.log(pair[0] + ", " + pair[1]);
-    // }
-
-    console.log(headers);
-
-    return this._http.post(`${this.url}/api/v1/post/create`, formData, {
-      headers
-    });
+    return this._http.post(`${this.url}/api/v1/post/create`, formData);
   };
 
   registerUser = (email, password) => {

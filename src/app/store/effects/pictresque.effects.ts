@@ -57,9 +57,12 @@ export class PictresqueEffects {
   @Effect() createNewPost$ = this.actions$.pipe(
     ofType<PictresqueAction>(PictresqueActionTypes.CREATE_POST),
     switchMap(action => {
-      console.log("in pictresque effects", action);
+      console.log("IN PICTRESQUE EFFECTS --> ", action);
       return this.pictresqueService.uploadImage(action["payload"]).pipe(
-        map(data => new CreatePostSuccessAction(data["newPost"])),
+        map(data => {
+          console.log(data);
+          new CreatePostSuccessAction(data["newPost"]);
+        }),
         catchError(error => of(new CreatePostFailureAction(error)))
       );
     })
