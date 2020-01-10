@@ -14,7 +14,9 @@ export enum PictresqueActionTypes {
   GET_PIXABAY_POSTS_FAILURE = "[PICTRESQUE] Get Posts Failure",
   GET_SEARCHWORD = "[PICTRESQUE] Get SearchWord",
   GET_SEARCHWORD_SUCCESS = "[PICTRESQUE] Get SearchWord Success",
-  GET_SEARCHWORD_FAILURE = "[PICTRESQUE] Get SearchWord Failure"
+  GET_SEARCHWORD_FAILURE = "[PICTRESQUE] Get SearchWord Failure",
+  GET_CATEGORY_POSTS = "[PICTRESQUE] Get Cataegory Posts",
+  GET_CATEGORY_POSTS_SUCCESS = "[PICTRESQUE] Get Cataegory Posts Success"
 }
 export class CreatePostAction implements Action {
   readonly type = PictresqueActionTypes.CREATE_POST;
@@ -80,6 +82,18 @@ export class GetSearchWordActionFailure implements Action {
   constructor(public payload: Error) {}
 }
 
+export class GetCategoryPostsAction implements Action {
+  readonly type = PictresqueActionTypes.GET_CATEGORY_POSTS;
+
+  constructor(public payload: string) {}
+}
+
+export class GetCategoryPostsActionSuccess implements Action {
+  readonly type = PictresqueActionTypes.GET_CATEGORY_POSTS_SUCCESS;
+
+  constructor(public payload: Array<Post>) {}
+}
+
 export type PictresqueAction =
   | CreatePostAction
   | CreatePostSuccessAction
@@ -92,4 +106,6 @@ export type PictresqueAction =
   | GetPixabayFailureAction
   | GetSearchWordAction
   | GetSearchWordActionSuccess
-  | GetSearchWordActionFailure;
+  | GetSearchWordActionFailure
+  | GetCategoryPostsAction
+  | GetCategoryPostsActionSuccess;

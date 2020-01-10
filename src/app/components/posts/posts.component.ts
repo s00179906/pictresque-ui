@@ -14,24 +14,25 @@ import { GetPostsAction } from "src/app/store/actions/pictresque.actions";
   styleUrls: ["./posts.component.scss"]
 })
 export class PostsComponent implements OnInit {
-  // posts$: Observable<Array<Post>>;
-  public posts$: Post[] = [];
+  posts$: Observable<Array<Post>>;
+  // public posts$: Post[] = [];
 
   constructor(
     private store: Store<State>,
     private pictresqueService: PictresqueAPIService
   ) {
-    this.pictresqueService.getAllPosts().subscribe((posts: Post[]) => {
-      this.posts$ = posts;
-    });
-    this.pictresqueService.getPosts().subscribe((post: Post) => {
-      this.posts$.push(post);
-    });
+    // this.pictresqueService.getAllPosts().subscribe((posts: Post[]) => {
+    //   // this.posts$ = posts;
+    //   // this.store.dispatch(new GetPostsAction());
+    // });
+    // this.pictresqueService.getPosts().subscribe((post: Post) => {
+    //   this.posts$.push(post);
+    // });
   }
 
   ngOnInit() {
-    // this.posts$ = this.store.select(store => store.pictresque.posts);
-    // this.store.dispatch(new GetPostsAction());
+    this.posts$ = this.store.select(store => store.pictresque.posts);
+    this.store.dispatch(new GetPostsAction());
     // console.log(this.posts$);
   }
 

@@ -9,11 +9,12 @@ import {
   CreatePostFailureAction,
   GetPixabaySuccessAction,
   GetPixabayFailureAction,
-  GetPixabayAction
+  GetPixabayAction,
+  GetCategoryPostsActionSuccess
 } from "../actions/pictresque.actions";
 import { map, mergeMap, catchError, switchMap } from "rxjs/operators";
 import { PictresqueAPIService } from "src/app/services/pictresque-service/pictresque-api.service";
-import { of } from "rxjs";
+import { of, merge } from "rxjs";
 import { PixbayApiService } from "src/app/services/pixbay-service/pixbay-api.service";
 
 @Injectable()
@@ -33,6 +34,16 @@ export class PictresqueEffects {
       )
     )
   );
+
+  @Effect() getCategoryPosts$ = this.actions$.pipe(
+    ofType<PictresqueAction>(PictresqueActionTypes.GET_CATEGORY_POSTS),
+    mergeMap(action => {
+      return this.pictresqueService
+        .getSingleCategory(action["payload"])
+        .pipe(map(data => new GetCategoryPostsActionSuccess(data["posts"])));
+    })
+  );
+
   @Effect() loadPixabayPosts$ = this.actions$.pipe(
     ofType<PictresqueAction>(PictresqueActionTypes.GET_PIXABAY_POSTS),
     switchMap(action => {
@@ -42,6 +53,7 @@ export class PictresqueEffects {
       );
     })
   );
+
   @Effect() createNewPost$ = this.actions$.pipe(
     ofType<PictresqueAction>(PictresqueActionTypes.CREATE_POST),
     switchMap(action => {

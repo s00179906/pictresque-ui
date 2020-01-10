@@ -5,11 +5,11 @@
     <app-post-date-filterer></app-post-date-filterer>
   </div>
 
-  <div class="card-columns mx-5" style="padding-top: 1rem">
+  <div class="card-columns mx-5" style="padding-top: 1rem" *ngIf="posts$">
     <div
       class="card text-light shadow"
       style="border:none;"
-      *ngFor="let post of posts$"
+      *ngFor="let post of posts$ | async"
       [routerLink]="['/post', post._id]"
       routerLinkActive="router-link-active"
     >

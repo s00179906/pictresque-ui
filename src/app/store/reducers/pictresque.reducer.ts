@@ -91,6 +91,18 @@ export function PictresqueReducer(
         searchTerm: action.payload,
         loading: false
       };
+    case PictresqueActionTypes.GET_CATEGORY_POSTS:
+      return {
+        ...state,
+        loading: true
+      };
+    case PictresqueActionTypes.GET_CATEGORY_POSTS_SUCCESS:
+      console.log(action.payload);
+      return {
+        ...state,
+        posts: action.payload,
+        loading: false
+      };
     default:
       return state;
   }

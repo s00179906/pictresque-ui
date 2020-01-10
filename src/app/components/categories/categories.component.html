@@ -1,27 +1,18 @@
-<!-- 
-<div
-  class="row row-cols-1 row-cols-md-2 container-fluid row dark"
-  style="padding-top: 5rem;"
-  *ngIf="categories"
->
-  <div class="col-6 mb-4 text-center" *ngFor="let cat of categories">
-    <div class="card bg-warning mx-auto" style="border:none; width: 75%;">
-      <img class="card-img-top" [src]="cat.image" alt="Card image cap" />
-      <div class="card-body pt-1 pl-2" style="padding: 0">
-        <h5 class="card-title">{{ cat.category | titlecase }}</h5>
-        <p class="card-text">{{ cat.count }} Posts</p>
-      </div>
-    </div>
-  </div>
-</div> -->
-
 <div class="container" style="padding-top: 5rem;">
   <div class="col">
     <div ngbDropdown class="d-inline-block">
-      <a class="text-light" id="dropdownBasic1" ngbDropdownToggle>
+      <a
+        class="text-light"
+        [innerHtml]="selectedCategory"
+        id="dropdownBasic1"
+        ngbDropdownToggle
+      >
         All Categories
       </a>
       <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button ngbDropdownItem (click)="fetchAllCategoryPosts()">
+          All Categories
+        </button>
         <button
           ngbDropdownItem
           *ngFor="let cat of categories"
