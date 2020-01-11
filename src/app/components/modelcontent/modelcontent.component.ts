@@ -10,6 +10,7 @@ import {
 } from "src/app/store/actions/pictresque.actions";
 import { State } from "src/app/store/models/state.model";
 import { Observable } from "rxjs";
+import { Category } from "src/app/models/Category";
 
 @Component({
   selector: "app-modelcontent",
@@ -17,7 +18,6 @@ import { Observable } from "rxjs";
   styleUrls: ["./modelcontent.component.scss"]
 })
 export class ModelcontentComponent implements OnInit {
-  // url: String = "https://pictresqueapi.herokuapp.com/";
   imageUploaded: Boolean = false;
   fileToUpload: any;
   imageSrc: any;
@@ -25,12 +25,20 @@ export class ModelcontentComponent implements OnInit {
   userFile: any;
   file: any;
   errorObservable$: Observable<Error>;
+  categories: Category[];
+  selectedCategory: String = "Categories";
+  categoryId: string;
 
   constructor(
     public activeModal: NgbActiveModal,
     private store: Store<State>,
     private pictrService: PictresqueAPIService
   ) {}
+
+  setCategory(category: string, categoryId: string): void {
+    this.categoryId = categoryId;
+    this.selectedCategory = category;
+  }
 
   getImage(files: FileList) {
     this.file = files;
@@ -46,35 +54,26 @@ export class ModelcontentComponent implements OnInit {
     }
   }
 
-  // createPost = (title, desc) => {
-  //   if (!title || !desc) return this.alert("Title & Description required!");
-
-  //   if (!this.file) return this.alert("Oops, an image is required!");
-
-  //   this.pictrService.uploadImage(this.file, title, desc).subscribe(result => {
-  //   });
-
-  //   localStorage.setItem("newPost", "true");
-
-  //   return this.activeModal.dismiss();
-  // };
   createPost = (title, desc) => {
-    if (!title || !desc) return this.alert("Title & Description required!");
+    if (!title || !desc || this.selectedCategory == "Categories")
+      return this.alert("Title, Description & Category is required!");
+
     if (!this.file) return this.alert("Oops, an image is required!");
 
     const post = {
       file: this.file,
       desc,
-      title
+      title,
+      category: this.categoryId
     };
 
     this.store.dispatch(new CreatePostAction(post));
     this.errorObservable$ = this.store.select(state => state.pictresque.error);
 
-    this.errorObservable$.subscribe(error => {
-      if (error != undefined || error != null)
-        return this.alert("Whoops, That image is too large!");
-    });
+    // this.errorObservable$.subscribe(error => {
+    //   if (error != undefined || error != null)
+    //     return this.alert("Whoops, That image is too large!");
+    // });
 
     return this.activeModal.dismiss();
   };
@@ -89,5 +88,9 @@ export class ModelcontentComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.pictrService.getCategories().subscribe(categories => {
+      this.categories = categories;
+    });
+  }
 }

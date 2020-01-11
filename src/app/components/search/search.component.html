@@ -1,11 +1,12 @@
 <div class="input-group mx-3">
   <input
+    #imgSearch
     type="text"
-    class="form-control border-0 text-light"
+    class="form-control text-light border-dark"
     style="background-color: var(--primary);"
     placeholder="Find something new ..."
   />
-  <div class="input-group-append">
+  <div (click)="Search(imgSearch.value)" class="input-group-append">
     <span class="input-group-text bg-warning border-0"
       ><i class="icon ion-ios-search"></i>
     </span>

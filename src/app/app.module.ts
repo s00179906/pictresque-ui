@@ -17,7 +17,7 @@ import {
   AuthServiceConfig,
   FacebookLoginProvider
 } from "angularx-social-login";
-import { RegisterComponent } from "./pages/register/register.component";
+import { AuthComponent } from "./pages/auth/auth.component";
 const config = new AuthServiceConfig([
   {
     id: FacebookLoginProvider.PROVIDER_ID,
@@ -38,7 +38,8 @@ import { StoreModule } from "@ngrx/store";
 import { PictresqueReducer } from "./store/reducers/pictresque.reducer";
 import { PictresqueEffects } from "./store/effects/pictresque.effects";
 import { EffectsModule } from "@ngrx/effects";
-
+import { LoginComponent } from "./components/login/login.component";
+import { RegisterComponent } from "./components/register/register.component";
 export function provideConfig() {
   return config;
 }
@@ -55,12 +56,15 @@ export function provideConfig() {
     HighlightDirective,
     CategoriesComponent,
     CategoryComponent,
-    RegisterComponent,
+    AuthComponent,
     SearchComponent,
     SearchModalComponent,
     FollowingComponent,
     FilterPostsComponent,
-    PostDateFiltererComponent
+    PostDateFiltererComponent,
+    LoginComponent,
+    AuthComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

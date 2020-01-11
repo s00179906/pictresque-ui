@@ -1,0 +1,73 @@
+<div
+  class="vh-100 d-flex justify-content-center align-items-center"
+  *ngIf="!$showForm"
+>
+  <form
+    [formGroup]="registerForm"
+    (ngSubmit)="registerUser()"
+    class="container w-50"
+    style="z-index: 0;"
+  >
+    <div class="text-center text-light d-flex flex-column bg-dark px-5">
+      <h1 class="font-weight-bold py-4">Register</h1>
+      <h5 class="mb-5">Hey there! Signup to continue</h5>
+
+      <label for="emailSignup" class="d-none">Email</label>
+
+      <ngb-alert
+        [dismissible]="false"
+        type="danger"
+        *ngIf="emailSignup.invalid && emailSignup.touched"
+      >
+        <strong>Oh oh!</strong> Your email does not look right!
+      </ngb-alert>
+
+      <ngb-alert [dismissible]="false" type="danger" *ngIf="registerErrors">
+        {{ registerErrors.error.message }}
+      </ngb-alert>
+
+      <input
+        class="border-top-0 border-left-0 border-right-0 my-2 p-2 w-50 align-self-center"
+        id="emailSignup"
+        type="text"
+        formControlName="emailSignup"
+        placeholder="Email"
+        required
+      />
+
+      <label for="passwordSignup" class="d-none">Password</label>
+
+      <ngb-alert
+        [dismissible]="false"
+        type="danger"
+        *ngIf="passwordSignup.invalid && passwordSignup.touched"
+      >
+        <strong>Oops!</strong> Password is weak!
+      </ngb-alert>
+
+      <input
+        class="border-top-0 border-left-0 border-right-0 my-2 p-2 w-50 align-self-center"
+        id="passwordSignup"
+        name="passwordSignup"
+        type="password"
+        formControlName="passwordSignup"
+        placeholder="Password"
+        required
+      />
+
+      <div class="my-3 text-center">
+        <button class="btn btn-warning mx-1" (click)="toggleForm()">
+          Sign In Here
+        </button>
+
+        <button
+          type="submit"
+          [disabled]="!registerForm.valid"
+          class="btn btn-outline-light mx-1 font-weight-bold"
+        >
+          Sign Up
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
