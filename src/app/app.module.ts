@@ -38,6 +38,7 @@ import { StoreModule } from "@ngrx/store";
 import { PictresqueReducer } from "./store/reducers/pictresque.reducer";
 import { PictresqueEffects } from "./store/effects/pictresque.effects";
 import { EffectsModule } from "@ngrx/effects";
+import { CommentsComponent } from './components/comments/comments.component';
 export function provideConfig() {
   return config;
 }
@@ -59,7 +60,8 @@ export function provideConfig() {
     SearchModalComponent,
     FollowingComponent,
     FilterPostsComponent,
-    PostDateFiltererComponent
+    PostDateFiltererComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,
