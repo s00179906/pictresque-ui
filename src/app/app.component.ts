@@ -17,11 +17,11 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.showNavbar = window.location.href.includes("/register") ? false : true;
+    this.showNavbar = window.location.href.includes("/auth") ? false : true;
 
-    console.log("ngOnInit CALLED");
-    console.log("SHOW NAVBAR? -->", this.showNavbar);
-    console.log("WINDOW URL -->", window.location.href);
+    // console.log("ngOnInit CALLED");
+    // console.log("SHOW NAVBAR? -->", this.showNavbar);
+    // console.log("WINDOW URL -->", window.location.href);
   }
   prepareRoute(outlet: RouterOutlet) {
     return (

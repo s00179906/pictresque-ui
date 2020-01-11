@@ -49,9 +49,7 @@ export class PictresqueAPIService {
   }
 
   getCategories = (): Observable<Category[]> => {
-    return this._http.get<Category[]>(`${this.url}/api/v1/categories`, {
-      headers: this.httpsOptions()
-    });
+    return this._http.get<Category[]>(`${this.url}/api/v1/categories`);
   };
 
   getSingleCategory = (id): Observable<Category> => {
@@ -59,32 +57,24 @@ export class PictresqueAPIService {
   };
 
   getAllPosts = (): Observable<Post[]> => {
-    const auth = JSON.parse(localStorage.getItem("auth"));
-
-    const headers = new HttpHeaders({
-      "Content-Type": "application/json",
-      Authorization: `bearer ${auth.token}`
-    });
-
-    // user id is not being passed
-    console.log(auth.id);
-    return this._http.get<Post[]>(`${this.url}/api/v1/posts`, {
-      headers
-    });
+    return this._http.get<Post[]>(`${this.url}/api/v1/posts`);
   };
 
   uploadImage = (post: any) => {
-    console.log("POST IN UPLOADIMAGE() -->", post);
+    console.log("POST IN UPLOADIMAGE -->", post);
+    const auth = JSON.parse(localStorage.getItem("auth"));
+
+    const headers = new HttpHeaders({
+      "Content-Type": "application/form-data",
+      Authorization: `bearer ${auth.token}`
+    });
 
     this.fileToUpload = post.file.item(0);
     let formData = new FormData();
-    formData.append("image", this.fileToUpload, this.fileToUpload.name);
-    formData.append("title", post.title);
-    formData.append("description", post.desc);
-
-    // for (var pair of formData.entries()) {
-    //   console.log(pair[0] + ", " + pair[1]);
-    // }
+    formData.set("image", this.fileToUpload, this.fileToUpload.name);
+    formData.set("title", post.title);
+    formData.set("description", post.desc);
+    formData.set("categoryId", post.category);
 
     return this._http.post(`${this.url}/api/v1/post/create`, formData);
   };

@@ -1,5 +1,6 @@
 import { Action } from "@ngrx/store";
 import { Post } from "../models/Post";
+import { Pixbay } from "src/app/models/pixbay";
 
 export enum PictresqueActionTypes {
   CREATE_POST = "[PICTRESQUE] Create Post",
@@ -7,7 +8,18 @@ export enum PictresqueActionTypes {
   CREATE_POST_FAILURE = "[PICTRESQUE] Create Post Failure",
   GET_POSTS = "[PICTRESQUE] Get Posts",
   GET_POSTS_SUCCESS = "[PICTRESQUE] Get Posts Success",
-  GET_POSTS_FAILURE = "[PICTRESQUE] Get Posts Failure"
+  GET_POSTS_FAILURE = "[PICTRESQUE] Get Posts Failure",
+  GET_PIXABAY_POSTS = "[PICTRESQUE] Get Posts",
+  GET_PIXABAY_POSTS_SUCCESS = "[PICTRESQUE] Get Posts Success",
+  GET_PIXABAY_POSTS_FAILURE = "[PICTRESQUE] Get Posts Failure",
+  GET_SEARCHWORD = "[PICTRESQUE] Get SearchWord",
+  GET_SEARCHWORD_SUCCESS = "[PICTRESQUE] Get SearchWord Success",
+  GET_SEARCHWORD_FAILURE = "[PICTRESQUE] Get SearchWord Failure",
+  GET_CATEGORY_POSTS = "[PICTRESQUE] Get Cataegory Posts",
+  GET_CATEGORY_POSTS_SUCCESS = "[PICTRESQUE] Get Cataegory Posts Success",
+  CREATE_POST_TEST = "[PICTRESQUE] Create Post Test",
+  CREATE_POST_TEST_SUCCESS = "[PICTRESQUE] Create Post Test Success",
+  TOGGLE_FORM_SUCCESS = "[PICTRESQUE] Toggle Login/Register Form"
 }
 export class CreatePostAction implements Action {
   readonly type = PictresqueActionTypes.CREATE_POST;
@@ -19,6 +31,16 @@ export class CreatePostSuccessAction implements Action {
   constructor(public payload: Post) {
     console.log("NEW POST -->", payload);
   }
+}
+
+export class CreatePostTestAction implements Action {
+  readonly type = PictresqueActionTypes.CREATE_POST_TEST;
+  constructor(public payload: any) {}
+}
+export class CreatePostSuccessTestAction implements Action {
+  readonly type = PictresqueActionTypes.CREATE_POST_TEST_SUCCESS;
+
+  constructor(public payload: Post) {}
 }
 export class CreatePostFailureAction implements Action {
   readonly type = PictresqueActionTypes.CREATE_POST_FAILURE;
@@ -40,11 +62,72 @@ export class GetPostsFailureAction implements Action {
 
   constructor(public payload: Error) {}
 }
+// get SearchWord Actions
+export class GetPixabayAction implements Action {
+  readonly type = PictresqueActionTypes.GET_PIXABAY_POSTS;
+  constructor(public payload: any) {}
+}
+export class GetPixabaySuccessAction implements Action {
+  readonly type = PictresqueActionTypes.GET_PIXABAY_POSTS_SUCCESS;
+
+  constructor(public payload: Array<Pixbay>) {
+    console.log("pixbay posts -->", payload);
+  }
+}
+export class GetPixabayFailureAction implements Action {
+  readonly type = PictresqueActionTypes.GET_PIXABAY_POSTS_FAILURE;
+
+  constructor(public payload: Error) {}
+}
+// get searchword actions
+export class GetSearchWordAction implements Action {
+  readonly type = PictresqueActionTypes.GET_SEARCHWORD;
+}
+export class GetSearchWordActionSuccess implements Action {
+  readonly type = PictresqueActionTypes.GET_SEARCHWORD_SUCCESS;
+
+  constructor(public payload: any) {}
+}
+
+export class GetSearchWordActionFailure implements Action {
+  readonly type = PictresqueActionTypes.GET_SEARCHWORD_FAILURE;
+
+  constructor(public payload: Error) {}
+}
+
+export class GetCategoryPostsAction implements Action {
+  readonly type = PictresqueActionTypes.GET_CATEGORY_POSTS;
+
+  constructor(public payload: string) {}
+}
+
+export class GetCategoryPostsActionSuccess implements Action {
+  readonly type = PictresqueActionTypes.GET_CATEGORY_POSTS_SUCCESS;
+
+  constructor(public payload: Array<Post>) {}
+}
+
+export class ToggleFormActionSuccess implements Action {
+  readonly type = PictresqueActionTypes.TOGGLE_FORM_SUCCESS;
+
+  constructor(public payload: Boolean) {}
+}
 
 export type PictresqueAction =
   | CreatePostAction
   | CreatePostSuccessAction
   | CreatePostFailureAction
+  | CreatePostTestAction
+  | CreatePostSuccessTestAction
   | GetPostsAction
   | GetPostsSuccessAction
-  | GetPostsFailureAction;
+  | GetPostsFailureAction
+  | GetPixabayAction
+  | GetPixabaySuccessAction
+  | GetPixabayFailureAction
+  | GetSearchWordAction
+  | GetSearchWordActionSuccess
+  | GetSearchWordActionFailure
+  | GetCategoryPostsAction
+  | GetCategoryPostsActionSuccess
+  | ToggleFormActionSuccess;

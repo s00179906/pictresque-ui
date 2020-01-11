@@ -14,11 +14,21 @@
   </div>
 
   <div class="btn-group" role="group" aria-label="Basic example">
-    <button type="button" class="btn btn-labeled btn-success" (click)="like($event)">
-      <span class="btn-label"><i class="material-icons">thumb_up</i></span>Like
+    <button
+      type="button"
+      class="btn btn-labeled btn-success"
+      (click)="like($event)"
+    >
+      <span class="btn-label"><i class="material-icons">thumb_up</i></span
+      >Like
     </button>
-    <button type="button" class="btn btn-labeled btn-danger" (click)="unlike($event)">
-      <span class="btn-label"><i class="material-icons">thumb_down</i></span>Dislike
+    <button
+      type="button"
+      class="btn btn-labeled btn-danger"
+      (click)="unlike($event)"
+    >
+      <span class="btn-label"><i class="material-icons">thumb_down</i></span
+      >Dislike
     </button>
   </div>
 
@@ -28,6 +38,8 @@
 </div>
 <div class="text-center">
   <button type="button" class="btn btn-warning" [routerLink]="['/']">
-    <span class="btn-label"><i class="material-icons">keyboard_backspace</i></span>Back
+    <span class="btn-label"
+      ><i class="material-icons">keyboard_backspace</i></span
+    >Back
   </button>
 </div>

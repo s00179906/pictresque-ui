@@ -6,7 +6,12 @@ import { PixbayApiService } from "src/app/services/pixbay-service/pixbay-api.ser
 import { Observable, Subscription } from "rxjs";
 import { Store } from "@ngrx/store";
 import { State } from "src/app/store/models/state.model";
-import { GetPostsAction } from "src/app/store/actions/pictresque.actions";
+import {
+  GetPostsAction,
+  CreatePostAction,
+  CreatePostTestAction,
+  CreatePostSuccessTestAction
+} from "src/app/store/actions/pictresque.actions";
 
 @Component({
   selector: "app-posts",
@@ -14,28 +19,29 @@ import { GetPostsAction } from "src/app/store/actions/pictresque.actions";
   styleUrls: ["./posts.component.scss"]
 })
 export class PostsComponent implements OnInit {
-  // posts$: Observable<Array<Post>>;
-  public posts$: Post[] = [];
+  posts$: Observable<Array<Post>>;
+  // public posts$: Post[] = [];
 
   constructor(
     private store: Store<State>,
     private pictresqueService: PictresqueAPIService
   ) {
-    this.pictresqueService.getAllPosts().subscribe((posts: Post[]) => {
-      this.posts$ = posts;
-    });
-
+    // this.pictresqueService.getAllPosts().subscribe((posts: Post[]) => {
+    //   this.posts$ = posts;
+    //   this.store.dispatch(new GetPostsAction());
+    // });
     this.pictresqueService.getPosts().subscribe((post: Post) => {
-      this.posts$.push(post);
+      console.log(post);
+      this.store.dispatch(new CreatePostSuccessTestAction(post));
     });
   }
 
   ngOnInit() {
-    // this.posts$ = this.store.select(store => store.pictresque.posts);
-    // this.store.dispatch(new GetPostsAction());
+    this.posts$ = this.store.select(store => store.pictresque.posts);
+    this.store.dispatch(new GetPostsAction());
   }
 
   ngAfterViewChecked() {
-    console.log(this.posts$);
+    // console.log(this.posts$);
   }
 }

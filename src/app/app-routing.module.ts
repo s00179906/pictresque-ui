@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { HomeComponent } from "./pages/home/home.component";
-import { RegisterComponent } from "./pages/register/register.component";
+import { AuthComponent } from "./pages/auth/auth.component";
 import { PostDetailsComponent } from "./pages/post-details/post-details.component";
 import { CategoryComponent } from "./pages/category/category.component";
 import { FollowingComponent } from "./pages/following/following.component";
@@ -9,13 +9,14 @@ import { FollowingComponent } from "./pages/following/following.component";
 const routes: Routes = [
   { path: "", component: HomeComponent, data: { animation: "isLeft" } },
   {
-    path: "register",
-    component: RegisterComponent,
+    path: "auth",
+    component: AuthComponent,
     data: { animation: "isLeft" }
   },
   {
     path: "post/:id",
-    component: PostDetailsComponent
+    component: PostDetailsComponent,
+    data: { animation: "isRight" }
   },
   {
     path: "categories",
@@ -36,7 +37,7 @@ const routes: Routes = [
 export class AppRoutingModule {}
 export const routingComponents = [
   HomeComponent,
-  RegisterComponent,
+  AuthComponent,
   PostDetailsComponent,
   CategoryComponent
 ];
