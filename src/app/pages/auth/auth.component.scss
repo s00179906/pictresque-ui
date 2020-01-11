@@ -1,0 +1,16 @@
+.abstract {
+  z-index: -1;
+  right: 0;
+  top: 0;
+
+  img {
+    height: auto;
+    width: 50%;
+    position: absolute;
+    right: 0;
+  }
+}
+
+#leaf {
+  position: absolute;
+}

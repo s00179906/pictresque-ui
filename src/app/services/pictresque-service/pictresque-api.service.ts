@@ -57,18 +57,7 @@ export class PictresqueAPIService {
   };
 
   getAllPosts = (): Observable<Post[]> => {
-    const auth = JSON.parse(localStorage.getItem("auth"));
-
-    const headers = new HttpHeaders({
-      "Content-Type": "application/json",
-      Authorization: `bearer ${auth.token}`
-    });
-
-    // user id is not being passed
-    // console.log(auth.id);
-    return this._http.get<Post[]>(`${this.url}/api/v1/posts`, {
-      headers
-    });
+    return this._http.get<Post[]>(`${this.url}/api/v1/posts`);
   };
 
   uploadImage = (post: any) => {

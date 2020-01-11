@@ -12,6 +12,7 @@ export interface PictresqueState {
   error: Error;
   searchTerm: string;
   pixabayPosts: Pixbay[];
+  toggleForm: Boolean;
 }
 
 const initialState: PictresqueState = {
@@ -19,7 +20,8 @@ const initialState: PictresqueState = {
   loading: false,
   error: undefined,
   searchTerm: "",
-  pixabayPosts: []
+  pixabayPosts: [],
+  toggleForm: false
 };
 
 export function PictresqueReducer(
@@ -115,6 +117,11 @@ export function PictresqueReducer(
         ...state,
         posts: action.payload,
         loading: false
+      };
+    case PictresqueActionTypes.TOGGLE_FORM_SUCCESS:
+      return {
+        ...state,
+        toggleForm: action.payload
       };
     default:
       return state;

@@ -26,8 +26,6 @@ export class PostsComponent implements OnInit {
     private store: Store<State>,
     private pictresqueService: PictresqueAPIService
   ) {
-    this.posts$ = this.store.select(store => store.pictresque.posts);
-    this.store.dispatch(new GetPostsAction());
     // this.pictresqueService.getAllPosts().subscribe((posts: Post[]) => {
     //   this.posts$ = posts;
     //   this.store.dispatch(new GetPostsAction());
@@ -39,7 +37,8 @@ export class PostsComponent implements OnInit {
   }
 
   ngOnInit() {
-    // console.log(this.posts$);
+    this.posts$ = this.store.select(store => store.pictresque.posts);
+    this.store.dispatch(new GetPostsAction());
   }
 
   ngAfterViewChecked() {

@@ -18,7 +18,8 @@ export enum PictresqueActionTypes {
   GET_CATEGORY_POSTS = "[PICTRESQUE] Get Cataegory Posts",
   GET_CATEGORY_POSTS_SUCCESS = "[PICTRESQUE] Get Cataegory Posts Success",
   CREATE_POST_TEST = "[PICTRESQUE] Create Post Test",
-  CREATE_POST_TEST_SUCCESS = "[PICTRESQUE] Create Post Test Success"
+  CREATE_POST_TEST_SUCCESS = "[PICTRESQUE] Create Post Test Success",
+  TOGGLE_FORM_SUCCESS = "[PICTRESQUE] Toggle Login/Register Form"
 }
 export class CreatePostAction implements Action {
   readonly type = PictresqueActionTypes.CREATE_POST;
@@ -106,6 +107,12 @@ export class GetCategoryPostsActionSuccess implements Action {
   constructor(public payload: Array<Post>) {}
 }
 
+export class ToggleFormActionSuccess implements Action {
+  readonly type = PictresqueActionTypes.TOGGLE_FORM_SUCCESS;
+
+  constructor(public payload: Boolean) {}
+}
+
 export type PictresqueAction =
   | CreatePostAction
   | CreatePostSuccessAction
@@ -122,4 +129,5 @@ export type PictresqueAction =
   | GetSearchWordActionSuccess
   | GetSearchWordActionFailure
   | GetCategoryPostsAction
-  | GetCategoryPostsActionSuccess;
+  | GetCategoryPostsActionSuccess
+  | ToggleFormActionSuccess;
