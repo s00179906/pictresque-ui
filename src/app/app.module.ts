@@ -32,8 +32,7 @@ import { SearchComponent } from "./components/search/search.component";
 import { SearchModalComponent } from "./components/search-modal/search-modal.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FollowingComponent } from "./pages/following/following.component";
-import { FilterPostsComponent } from "./components/filter-posts/filter-posts.component";
-import { PostDateFiltererComponent } from "./components/post-date-filterer/post-date-filterer.component";
+import { PostDateFiltererComponent } from "./components/filter-by-date/post-date-filterer.component";
 import { StoreModule } from "@ngrx/store";
 import { PictresqueReducer } from "./store/reducers/pictresque.reducer";
 import { PictresqueEffects } from "./store/effects/pictresque.effects";
@@ -60,7 +59,6 @@ export function provideConfig() {
     SearchComponent,
     SearchModalComponent,
     FollowingComponent,
-    FilterPostsComponent,
     PostDateFiltererComponent,
     LoginComponent,
     AuthComponent,
