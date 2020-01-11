@@ -40,6 +40,7 @@ import { PictresqueEffects } from "./store/effects/pictresque.effects";
 import { EffectsModule } from "@ngrx/effects";
 import { LoginComponent } from "./components/login/login.component";
 import { RegisterComponent } from "./components/register/register.component";
+import { CommentsComponent } from './components/comments/comments.component';
 export function provideConfig() {
   return config;
 }
@@ -64,7 +65,8 @@ export function provideConfig() {
     PostDateFiltererComponent,
     LoginComponent,
     AuthComponent,
-    RegisterComponent
+    RegisterComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,
