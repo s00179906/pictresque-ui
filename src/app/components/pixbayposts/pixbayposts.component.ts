@@ -11,7 +11,8 @@ import { Pixbay } from "src/app/models/pixbay";
   styleUrls: ["./pixbayposts.component.scss"]
 })
 export class PixbayPostsComponent implements OnInit {
-  searchWord = "";
+  searchWord: string;
+  searchWordBool: boolean = false;
   // posts: Observable<Array<Pixbay>>;
   imgSearchObservable: Observable<string>;
 
@@ -21,6 +22,11 @@ export class PixbayPostsComponent implements OnInit {
     private store: Store<State>
   ) {}
 
+  async showResults(term: string) {
+    if (term != "") {
+      this.searchWordBool = true;
+    }
+  }
   ngOnInit() {
     this.imgSearchObservable = this.store.select(
       store => store.pictresque.searchTerm
@@ -30,6 +36,8 @@ export class PixbayPostsComponent implements OnInit {
       this.apiService.getSearchTerm(term).subscribe(hits => {
         this.posts = hits["hits"];
         console.log("Peters method", this.posts);
+        this.searchWord = term;
+        this.showResults(term);
       });
     });
 
