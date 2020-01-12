@@ -21,7 +21,7 @@ export class FacebookAuthService {
     this.authService.signOut();
     this.router.navigate(['']);
   }
-  authenticateUser(loggedIn: boolean): void {
+  authenticateUser(): void {
     this.authService.authState.subscribe(user => {
       this.user = user;
       this.loggedIn = user != null;

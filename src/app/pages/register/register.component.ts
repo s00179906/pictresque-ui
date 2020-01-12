@@ -27,6 +27,7 @@ export class RegisterComponent implements OnInit {
 
   signInWithFacebook(): void {
     this.FBauthService.signInWithFB();
+    console.log(this.FBauthService.user.firstName);
   }
 
   showSignin = () => {
