@@ -3,5 +3,7 @@ export interface Post {
   title?: String;
   description?: String;
   imageUrl?: String;
+  category: String;
+  createdAt: string;
   // __v?: string;
 }

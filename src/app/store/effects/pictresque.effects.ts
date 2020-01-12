@@ -20,47 +20,45 @@ import { PixbayApiService } from "src/app/services/pixbay-service/pixbay-api.ser
 @Injectable()
 export class PictresqueEffects {
   constructor(
-    private actions$: Actions,
-    private pictresqueService: PictresqueAPIService,
-    private pixabayService: PixbayApiService
+    private _actions: Actions,
+    private _pictresqueService: PictresqueAPIService,
+    private _pixabayService: PixbayApiService
   ) {}
 
-  @Effect() loadPosts$ = this.actions$.pipe(
+  @Effect() loadPosts$ = this._actions.pipe(
     ofType<PictresqueAction>(PictresqueActionTypes.GET_POSTS),
     mergeMap(() =>
-      this.pictresqueService.getAllPosts().pipe(
+      this._pictresqueService.getAllPosts().pipe(
         map(data => new GetPostsSuccessAction(data)),
         catchError(error => of(new GetPixabayFailureAction(error)))
       )
     )
   );
 
-  @Effect() getCategoryPosts$ = this.actions$.pipe(
+  @Effect() getCategoryPosts$ = this._actions.pipe(
     ofType<PictresqueAction>(PictresqueActionTypes.GET_CATEGORY_POSTS),
     mergeMap(action => {
-      return this.pictresqueService
+      return this._pictresqueService
         .getSingleCategory(action["payload"])
         .pipe(map(data => new GetCategoryPostsActionSuccess(data["posts"])));
     })
   );
 
-  @Effect() loadPixabayPosts$ = this.actions$.pipe(
+  @Effect() loadPixabayPosts$ = this._actions.pipe(
     ofType<PictresqueAction>(PictresqueActionTypes.GET_PIXABAY_POSTS),
     switchMap(action => {
-      return this.pixabayService.getSearchTerm(action["payload"]).pipe(
+      return this._pixabayService.getSearchTerm(action["payload"]).pipe(
         map(data => new GetPixabaySuccessAction(data["hits"])),
         catchError(error => of(new GetPixabayFailureAction(error)))
       );
     })
   );
 
-  @Effect() createNewPost$ = this.actions$.pipe(
+  @Effect() createNewPost$ = this._actions.pipe(
     ofType<PictresqueAction>(PictresqueActionTypes.CREATE_POST),
     switchMap(action => {
-      console.log("IN PICTRESQUE EFFECTS --> ", action);
-      return this.pictresqueService.uploadImage(action["payload"]).pipe(
+      return this._pictresqueService.uploadImage(action["payload"]).pipe(
         map(data => {
-          console.log(data);
           new CreatePostSuccessAction(data["newPost"]);
         }),
         catchError(error => of(new CreatePostFailureAction(error)))
