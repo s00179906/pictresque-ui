@@ -5,10 +5,10 @@
         By Date
       </a>
       <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-        <button ngbDropdownItem>
+        <button ngbDropdownItem (click)="filterByDateAscending()">
           <i class="icon ion-ios-arrow-dropup-circle"></i> Ascending
         </button>
-        <button ngbDropdownItem>
+        <button ngbDropdownItem (click)="filterByDateDescending()">
           <i class="icon ion-ios-arrow-dropdown-circle"></i> Descending
         </button>
       </div>
