@@ -6,7 +6,7 @@ import {
   ElementRef
 } from "@angular/core";
 import { PictresqueAPIService } from "src/app/services/pictresque-service/pictresque-api.service";
-import { Category } from "src/app/models/Category";
+import { Category } from "src/app/interfaces/Category";
 import { State } from "src/app/store/models/state.model";
 import { Store } from "@ngrx/store";
 import {

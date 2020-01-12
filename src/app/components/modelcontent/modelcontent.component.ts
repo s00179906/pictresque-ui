@@ -10,7 +10,7 @@ import {
 } from "src/app/store/actions/pictresque.actions";
 import { State } from "src/app/store/models/state.model";
 import { Observable } from "rxjs";
-import { Category } from "src/app/models/Category";
+import { Category } from "src/app/interfaces/Category";
 
 @Component({
   selector: "app-modelcontent",

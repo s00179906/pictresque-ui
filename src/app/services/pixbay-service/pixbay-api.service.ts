@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { Pixbay } from "../../models/pixbay";
+import { Pixbay } from "../../interfaces/pixbay";
 
 @Injectable({
   providedIn: "root"

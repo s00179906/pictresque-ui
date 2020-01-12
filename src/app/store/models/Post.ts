@@ -5,5 +5,4 @@ export interface Post {
   imageUrl?: String;
   category: String;
   createdAt: string;
-  // __v?: string;
 }
