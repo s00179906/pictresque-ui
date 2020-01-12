@@ -1,15 +1,11 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Post } from "src/app/store/models/Post";
 import { PictresqueAPIService } from "src/app/services/pictresque-service/pictresque-api.service";
-import { Router } from "@angular/router";
-import { PixbayApiService } from "src/app/services/pixbay-service/pixbay-api.service";
-import { Observable, Subscription } from "rxjs";
+import { Observable } from "rxjs";
 import { Store } from "@ngrx/store";
 import { State } from "src/app/store/models/state.model";
 import {
   GetPostsAction,
-  CreatePostAction,
-  CreatePostTestAction,
   CreatePostSuccessTestAction
 } from "src/app/store/actions/pictresque.actions";
 
@@ -19,29 +15,30 @@ import {
   styleUrls: ["./posts.component.scss"]
 })
 export class PostsComponent implements OnInit {
-  posts$: Observable<Array<Post>>;
-  // public posts$: Post[] = [];
+  $posts: Observable<Array<Post>>;
+  $errors: Error;
+  $loading: Boolean;
 
   constructor(
-    private store: Store<State>,
-    private pictresqueService: PictresqueAPIService
+    private _store: Store<State>,
+    private _pictresqueService: PictresqueAPIService
   ) {
-    // this.pictresqueService.getAllPosts().subscribe((posts: Post[]) => {
-    //   this.posts$ = posts;
-    //   this.store.dispatch(new GetPostsAction());
-    // });
-    this.pictresqueService.getPosts().subscribe((post: Post) => {
-      console.log(post);
-      this.store.dispatch(new CreatePostSuccessTestAction(post));
+    this._pictresqueService.getPosts().subscribe((post: Post) => {
+      this._store.dispatch(new CreatePostSuccessTestAction(post));
     });
   }
 
   ngOnInit() {
-    this.posts$ = this.store.select(store => store.pictresque.posts);
-    this.store.dispatch(new GetPostsAction());
-  }
+    this.$posts = this._store.select(state => state.pictresque.posts);
+    this._store
+      .select(state => state.pictresque.error)
+      .subscribe(errors => (this.$errors = errors));
+    this._store
+      .select(state => state.pictresque.loading)
+      .subscribe(loading => (this.$loading = loading));
 
-  ngAfterViewChecked() {
-    // console.log(this.posts$);
+    this._store.dispatch(new GetPostsAction());
+
+    console.log("ARE POST LOADING -->", this.$loading);
   }
 }

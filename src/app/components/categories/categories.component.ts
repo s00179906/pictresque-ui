@@ -11,7 +11,8 @@ import { State } from "src/app/store/models/state.model";
 import { Store } from "@ngrx/store";
 import {
   GetCategoryPostsAction,
-  GetPostsAction
+  GetPostsAction,
+  FilterPostsByCategoryAction
 } from "src/app/store/actions/pictresque.actions";
 
 @Component({
@@ -29,10 +30,10 @@ export class CategoriesComponent implements OnInit {
   ) {}
 
   fetchCategoryPosts(category: string, categoryId: string): void {
-    console.log(category, categoryId);
     this.selectedCategory = category.toUpperCase();
 
     this.store.dispatch(new GetCategoryPostsAction(categoryId));
+    // this.store.dispatch(new FilterPostsByCategoryAction(categoryId));
   }
 
   fetchAllCategoryPosts(): void {

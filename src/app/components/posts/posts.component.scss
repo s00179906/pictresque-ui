@@ -9,10 +9,6 @@
   }
 }
 
-.card:hover {
+.card {
   cursor: pointer;
-  .post-img {
-    filter: brightness(1.1) drop-shadow(1px 8px 30px rgb(22, 22, 22));
-    transition: all 0.1s ease-in;
-  }
 }

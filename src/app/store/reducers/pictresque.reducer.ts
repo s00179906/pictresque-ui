@@ -29,6 +29,38 @@ export function PictresqueReducer(
   action: PictresqueAction
 ) {
   switch (action.type) {
+    case PictresqueActionTypes.FILTER_POSTS_BY_DATE_ASCENDING:
+      return {
+        ...state,
+        posts: [
+          ...state.posts.sort((a, b) => {
+            return (
+              new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+            );
+          })
+        ],
+        loading: false
+      };
+    case PictresqueActionTypes.FILTER_POSTS_BY_DATE_DESCENDING:
+      return {
+        ...state,
+        posts: [
+          ...state.posts.sort((a, b) => {
+            return (
+              new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+            );
+          })
+        ],
+        loading: false
+      };
+    case PictresqueActionTypes.FILTER_POSTS_BY_CATEGORY:
+      return {
+        ...state,
+        posts: [
+          ...state.posts.filter(posts => posts.category == action.category)
+        ],
+        loading: false
+      };
     case PictresqueActionTypes.GET_POSTS:
       return {
         ...state,
