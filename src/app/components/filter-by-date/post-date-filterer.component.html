@@ -1,8 +1,12 @@
 <div class="container" style="padding-top: 5rem;">
   <div class="col">
     <div ngbDropdown class="d-inline-block">
-      <a class="text-light" id="dropdownBasic1" ngbDropdownToggle>
-        By Date
+      <a
+        class="text-light"
+        id="dropdownBasic1"
+        [innerHtml]="dateType"
+        ngbDropdownToggle
+      >
       </a>
       <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
         <button ngbDropdownItem (click)="filterByDateAscending()">

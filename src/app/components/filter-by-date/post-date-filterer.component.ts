@@ -14,13 +14,18 @@ import {
   styleUrls: ["./post-date-filterer.component.scss"]
 })
 export class PostDateFiltererComponent implements OnInit {
+  dateType: string = "By Date";
+
   constructor(private _store: Store<State>) {}
 
   filterByDateAscending() {
+    this.dateType = "Date Ascending";
     this._store.dispatch(new FilterPostsByDateAscendingAction());
   }
 
   filterByDateDescending() {
+    this.dateType = "Date Descending";
+
     this._store.dispatch(new FilterPostsByDateDescendingAction());
   }
 
