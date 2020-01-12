@@ -8,17 +8,21 @@ import { Component, OnInit } from "@angular/core";
 export class CommentsComponent implements OnInit {
   constructor() {}
 
-  userName = "";
-  userNames = [];
+  date = Date.now();
+
+  // userName = "";
+  // userNames = [];
   comment = "";
   comments = [];
 
   postComment() {
+    this.date = Date.now();
     this.comments.push(this.comment);
-    console.log(this.userName);
-    this.userNames.push(this.userName);
+    // console.log(this.userName);
+    // this.userNames.push(this.userName);
     this.comment = "";
-    this.userName = "";
+    // this.userName = "";
+    // console.log(this.userNames);
   }
 
   ngOnInit() {}

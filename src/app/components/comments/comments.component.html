@@ -1,24 +1,38 @@
 <p>
-  <button type="button" class="btn btn-primary" (click)="isCollapsed = !isCollapsed"
-    [attr.aria-expanded]="!isCollapsed"><span>
+  <button
+    type="button"
+    class="btn btn-primary"
+    (click)="isCollapsed = !isCollapsed"
+    [attr.aria-expanded]="!isCollapsed"
+  >
+    <span>
       Comments
       <i class="material-icons">
         question_answer
-      </i></span>
+      </i></span
+    >
   </button>
 </p>
 <div id="collapseExample" [ngbCollapse]="!isCollapsed">
   <div class="card">
     <div class="card-body">
-      <label>Name: <textarea [(ngModel)]="userName" id="user"></textarea></label>
       <textarea [(ngModel)]="comment"></textarea>
-      <button (click)="postComment()" class="btn btn-primary btn-sm">Submit</button>
+      <button (click)="postComment()" class="btn btn-primary btn-sm">
+        Submit
+      </button>
+      <br />
+      <hr />
       <div *ngFor="let comment of comments">
         <i class="material-icons">
           person
         </i>
-        <p>{{userName}} Said: </p>
-        <p>{{comment}}</p>
+        <div style="border: orange solid 1px; border-radius: 5px;">
+          <br />
+          <h5>A viewer Said:</h5>
+          <p>{{ comment }}</p>
+          <p>{{ date | date: "short" }}</p>
+        </div>
+        <hr />
       </div>
     </div>
   </div>

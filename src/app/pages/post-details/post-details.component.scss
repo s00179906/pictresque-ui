@@ -9,8 +9,8 @@
 }
 
 img {
-  max-width: 25rem;
-  max-height: 30rem;
+  max-width: 100%;
+  max-height: auto;
 }
 
 .card-body {
@@ -25,8 +25,13 @@ img {
   padding: 10px;
   margin-bottom: 5rem;
   margin-top: 3rem;
-  background-color: gray;
-
+  background: rgb(46, 46, 60);
+  background: linear-gradient(
+    0deg,
+    rgba(46, 46, 60, 1) 25%,
+    rgba(51, 56, 65, 1) 65%,
+    rgba(72, 88, 92, 1) 100%
+  );
 }
 
 .back {
@@ -56,18 +61,13 @@ img {
 }
 
 p {
-  color: black;
-
+  color: white;
 }
 
 h5 {
-  color: black;
-}
-
-br {
-  border-bottom: 5px solid black;
+  color: white;
 }
 
 .nav-header.navbar-brand.font-weight-bold {
-  color: lighten($color: black, $amount: 14);
+  color: lighten($color: white, $amount: 14);
 }
