@@ -46,17 +46,26 @@ button:active {
   animation-name: scaleAnim;
   animation-duration: 0.3s;
 }
+
 body {
   background: rgb(25, 29, 35);
-  background: linear-gradient(
-    180deg,
-    rgba(25, 29, 35, 1) 0%,
-    rgba(6, 7, 13, 1) 59%
-  );
+  background: linear-gradient(180deg,
+      rgba(25, 29, 35, 1) 0%,
+      rgba(6, 7, 13, 1) 59%);
   background-repeat: no-repeat;
 }
 
 html,
 body {
   height: 100%;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
