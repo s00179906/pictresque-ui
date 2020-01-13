@@ -4,7 +4,10 @@ import { Router } from "@angular/router";
 import { PictresqueAPIService } from "src/app/services/pictresque-service/pictresque-api.service";
 import { State } from "src/app/state/models/state.model";
 import { Store } from "@ngrx/store";
-import { ToggleFormActionSuccess } from "src/app/state/pictresque.actions";
+import {
+  ToggleFormActionSuccess,
+  ShowNavbarAction
+} from "src/app/state/pictresque.actions";
 import { Observable } from "rxjs";
 
 @Component({
@@ -21,11 +24,11 @@ export class LoginComponent implements OnInit {
     private pictresqueAPI: PictresqueAPIService,
     private router: Router,
     private fb: FormBuilder,
-    private store: Store<State>
+    private _store: Store<State>
   ) {}
 
   toggleForm() {
-    this.store.dispatch(new ToggleFormActionSuccess(false));
+    this._store.dispatch(new ToggleFormActionSuccess(false));
   }
 
   loginUser(): void {
@@ -41,6 +44,7 @@ export class LoginComponent implements OnInit {
 
         localStorage.setItem("auth", JSON.stringify(auth));
         localStorage.setItem("userLoggedIn", "true");
+        this._store.dispatch(new ShowNavbarAction(true));
         this.router.navigate([""]);
       },
       error => {
@@ -58,7 +62,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store
+    this._store
       .select(state => state.pictresque.toggleForm)
       .subscribe(value => {
         this.$showForm = value;
@@ -67,6 +71,6 @@ export class LoginComponent implements OnInit {
       emailSignin: "",
       passwordSignin: ""
     });
-    this.loginForm.valueChanges.subscribe(console.log);
+    // this.loginForm.valueChanges.subscribe(console.log);
   }
 }

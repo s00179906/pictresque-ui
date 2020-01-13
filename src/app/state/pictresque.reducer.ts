@@ -31,7 +31,7 @@ export function PictresqueReducer(
     case PictresqueActionTypes.SHOW_NAVBAR:
       return {
         ...state,
-        showNavbar: false
+        showNavbar: action.payload
       };
     case PictresqueActionTypes.FILTER_POSTS_BY_DATE_ASCENDING:
       return {

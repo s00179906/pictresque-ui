@@ -1,6 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import Swal from "sweetalert2";
+import { Store } from "@ngrx/store";
+import { State } from "src/app/state/models/state.model";
+import { ShowNavbarAction } from "src/app/state/pictresque.actions";
 
 @Component({
   selector: "app-navbar",
@@ -14,9 +17,7 @@ export class NavbarComponent implements OnInit {
     false || localStorage.getItem("userLoggedIn") == "true";
   show: boolean = false;
 
-  constructor(private router: Router) {
-    // console.log("IS USER LOGGED IN --> ", this.userLoggedIn);
-  }
+  constructor(private router: Router, private _store: Store<State>) {}
 
   logout = () => {
     Swal.fire({
@@ -36,13 +37,11 @@ export class NavbarComponent implements OnInit {
         localStorage.setItem("userLoggedIn", "false");
       }
     });
-
-    let confirmBtn = Swal.getConfirmButton();
-    // let o = confirmBtn;
   };
 
   login() {
     this.router.navigate(["/auth"]);
+    this._store.dispatch(new ShowNavbarAction(false));
   }
 
   toggleCollapse() {
