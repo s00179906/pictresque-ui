@@ -10,7 +10,7 @@ import { State } from "src/app/store/models/state.model";
 import {
   CreatePostAction,
   CreatePostSuccessAction
-} from "src/app/store/actions/pictresque.actions";
+} from "src/app/store/pictresque.actions";
 import { IUser } from "src/app/interfaces/IUser";
 
 @Injectable({

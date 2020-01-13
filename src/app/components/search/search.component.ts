@@ -3,7 +3,7 @@ import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { SearchModalComponent } from "../search-modal/search-modal.component";
 import { Store } from "@ngrx/store";
 import { State } from "src/app/store/models/state.model";
-import { GetSearchWordActionSuccess } from "src/app/store/actions/pictresque.actions";
+import { GetSearchWordActionSuccess } from "src/app/store/pictresque.actions";
 import { Observable } from "rxjs";
 @Component({
   selector: "app-search",

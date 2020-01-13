@@ -7,7 +7,7 @@ import { State } from "src/app/store/models/state.model";
 import {
   GetPostsAction,
   CreatePostSuccessTestAction
-} from "src/app/store/actions/pictresque.actions";
+} from "src/app/store/pictresque.actions";
 
 @Component({
   selector: "app-posts",

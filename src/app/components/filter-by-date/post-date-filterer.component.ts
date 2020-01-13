@@ -6,7 +6,7 @@ import { Post } from "src/app/store/models/Post.model";
 import {
   FilterPostsByDateDescendingAction,
   FilterPostsByDateAscendingAction
-} from "src/app/store/actions/pictresque.actions";
+} from "src/app/store/pictresque.actions";
 
 @Component({
   selector: "app-post-date-filterer",

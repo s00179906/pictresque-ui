@@ -13,7 +13,7 @@ import {
   GetCategoryPostsAction,
   GetPostsAction,
   FilterPostsByCategoryAction
-} from "src/app/store/actions/pictresque.actions";
+} from "src/app/store/pictresque.actions";
 
 @Component({
   selector: "app-categories",

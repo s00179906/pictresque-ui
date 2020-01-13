@@ -3,7 +3,7 @@ import { PictresqueAPIService } from "src/app/services/pictresque-service/pictre
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { State } from "src/app/store/models/state.model";
 import { Store } from "@ngrx/store";
-import { ToggleFormActionSuccess } from "src/app/store/actions/pictresque.actions";
+import { ToggleFormActionSuccess } from "src/app/store/pictresque.actions";
 
 @Component({
   selector: "app-register",

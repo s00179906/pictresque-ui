@@ -1,8 +1,8 @@
 import {
   PictresqueActionTypes,
   PictresqueAction
-} from "../actions/pictresque.actions";
-import { Post } from "../models/Post";
+} from "./actions/pictresque.actions";
+import { Post } from "./models/Post";
 import { Pixbay } from "src/app/interfaces/pixbay";
 import { PictresqueAPIService } from "src/app/services/pictresque-service/pictresque-api.service";
 

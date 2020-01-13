@@ -1,5 +1,5 @@
 import { Action } from "@ngrx/store";
-import { Post } from "../models/Post";
+import { Post } from "./models/Post";
 import { Pixbay } from "src/app/interfaces/pixbay";
 
 export enum PictresqueActionTypes {

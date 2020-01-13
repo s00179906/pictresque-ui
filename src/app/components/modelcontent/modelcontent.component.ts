@@ -2,12 +2,12 @@ import { Component, OnInit } from "@angular/core";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { PictresqueAPIService } from "src/app/services/pictresque-service/pictresque-api.service";
 import Swal from "sweetalert2";
-import { PictresqueState } from "src/app/store/reducers/pictresque.reducer";
+import { PictresqueState } from "src/app/store/pictresque.reducer";
 import { Store } from "@ngrx/store";
 import {
   CreatePostAction,
   CreatePostSuccessAction
-} from "src/app/store/actions/pictresque.actions";
+} from "src/app/store/pictresque.actions";
 import { State } from "src/app/store/models/state.model";
 import { Observable } from "rxjs";
 import { ICategory } from "src/app/interfaces/ICategory";

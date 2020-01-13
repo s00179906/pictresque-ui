@@ -4,7 +4,7 @@ import { Router } from "@angular/router";
 import { PictresqueAPIService } from "src/app/services/pictresque-service/pictresque-api.service";
 import { State } from "src/app/store/models/state.model";
 import { Store } from "@ngrx/store";
-import { ToggleFormActionSuccess } from "src/app/store/actions/pictresque.actions";
+import { ToggleFormActionSuccess } from "src/app/store/pictresque.actions";
 import { Observable } from "rxjs";
 
 @Component({
