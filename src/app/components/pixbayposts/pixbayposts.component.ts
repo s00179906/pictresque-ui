@@ -13,7 +13,7 @@ import { Pixbay } from "src/app/interfaces/pixbay";
 export class PixbayPostsComponent implements OnInit {
   searchWord: string;
   searchWordBool: boolean = false;
-  // posts: Observable<Array<Pixbay>>;
+
   imgSearchObservable: Observable<string>;
 
   posts: any;
@@ -22,8 +22,8 @@ export class PixbayPostsComponent implements OnInit {
     private store: Store<State>
   ) {}
 
-  async showResults(term: string) {
-    if (term != "") {
+  showResults(term: string) {
+    if ((term != "")) {
       this.searchWordBool = true;
     }
   }
@@ -35,6 +35,8 @@ export class PixbayPostsComponent implements OnInit {
     this.imgSearchObservable.subscribe(term => {
       this.apiService.getSearchTerm(term).subscribe(hits => {
         this.posts = hits["hits"];
+
+        this.searchWord = term;
         // console.log("Peters method", this.posts);
       });
     });
