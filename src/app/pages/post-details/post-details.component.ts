@@ -23,7 +23,7 @@ export class PostDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private pictresqueService: PictresqueAPIService
   ) {
-    this.pictresqueService.getAllPosts().subscribe((posts: Post[]) => {
+    this.pictresqueService.getPictresquePosts().subscribe((posts: Post[]) => {
       this.posts$ = posts;
     });
 

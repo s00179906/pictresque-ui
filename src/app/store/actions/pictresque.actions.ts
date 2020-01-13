@@ -1,6 +1,6 @@
 import { Action } from "@ngrx/store";
 import { Post } from "../models/Post";
-import { Pixbay } from "src/app/models/pixbay";
+import { Pixbay } from "src/app/interfaces/pixbay";
 
 export enum PictresqueActionTypes {
   CREATE_POST = "[PICTRESQUE] Create Post",

@@ -38,7 +38,6 @@ export class PostsComponent implements OnInit {
       .subscribe(loading => (this.$loading = loading));
 
     this._store.dispatch(new GetPostsAction());
-
     console.log("ARE POST LOADING -->", this.$loading);
   }
 }

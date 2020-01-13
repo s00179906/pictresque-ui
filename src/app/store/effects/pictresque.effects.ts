@@ -25,26 +25,27 @@ export class PictresqueEffects {
     private _pixabayService: PixbayApiService
   ) {}
 
-  @Effect() loadPosts$ = this._actions.pipe(
+  @Effect() $loadPosts = this._actions.pipe(
     ofType<PictresqueAction>(PictresqueActionTypes.GET_POSTS),
     mergeMap(() =>
-      this._pictresqueService.getAllPosts().pipe(
+      this._pictresqueService.getPictresquePosts().pipe(
         map(data => new GetPostsSuccessAction(data)),
-        catchError(error => of(new GetPixabayFailureAction(error)))
+        catchError(error => of(new GetPostsFailureAction(error)))
       )
     )
   );
 
-  @Effect() getCategoryPosts$ = this._actions.pipe(
+  @Effect() $getCategoryPosts = this._actions.pipe(
     ofType<PictresqueAction>(PictresqueActionTypes.GET_CATEGORY_POSTS),
     mergeMap(action => {
+      console.log(action);
       return this._pictresqueService
-        .getSingleCategory(action["payload"])
+        .getSinglePostCategory(action["payload"])
         .pipe(map(data => new GetCategoryPostsActionSuccess(data["posts"])));
     })
   );
 
-  @Effect() loadPixabayPosts$ = this._actions.pipe(
+  @Effect() $loadPixabayPosts = this._actions.pipe(
     ofType<PictresqueAction>(PictresqueActionTypes.GET_PIXABAY_POSTS),
     switchMap(action => {
       return this._pixabayService.getSearchTerm(action["payload"]).pipe(
@@ -54,10 +55,10 @@ export class PictresqueEffects {
     })
   );
 
-  @Effect() createNewPost$ = this._actions.pipe(
+  @Effect() $createNewPost = this._actions.pipe(
     ofType<PictresqueAction>(PictresqueActionTypes.CREATE_POST),
     switchMap(action => {
-      return this._pictresqueService.uploadImage(action["payload"]).pipe(
+      return this._pictresqueService.createNewPost(action["payload"]).pipe(
         map(data => {
           new CreatePostSuccessAction(data["newPost"]);
         }),
