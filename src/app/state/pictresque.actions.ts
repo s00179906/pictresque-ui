@@ -3,6 +3,7 @@ import { Post } from "./models/Post";
 import { Pixbay } from "src/app/interfaces/pixbay";
 
 export enum PictresqueActionTypes {
+  SHOW_NAVBAR = "[PICTRESQUE] Show navbar action",
   CREATE_POST = "[PICTRESQUE] Create Post",
   CREATE_POST_SUCCESS = "[PICTRESQUE] Create Post Success",
   CREATE_POST_FAILURE = "[PICTRESQUE] Create Post Failure",
@@ -23,6 +24,11 @@ export enum PictresqueActionTypes {
   FILTER_POSTS_BY_CATEGORY = "[PICTRESQUE] Get posts filtered by category",
   FILTER_POSTS_BY_DATE_ASCENDING = "[PICTRESQUE] Get posts filtered by date ascending",
   FILTER_POSTS_BY_DATE_DESCENDING = "[PICTRESQUE] Get posts filtered by date descending"
+}
+
+export class ShowNavbarAction implements Action {
+  readonly type = PictresqueActionTypes.SHOW_NAVBAR;
+  constructor(public payload: Boolean) {}
 }
 export class CreatePostAction implements Action {
   readonly type = PictresqueActionTypes.CREATE_POST;
