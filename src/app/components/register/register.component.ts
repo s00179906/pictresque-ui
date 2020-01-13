@@ -15,19 +15,19 @@ export class RegisterComponent implements OnInit {
   registerErrors: string;
   $showForm: Boolean;
   constructor(
-    private pictresqueAPI: PictresqueAPIService,
-    private fb: FormBuilder,
-    private store: Store<State>
+    private _pictresqueAPI: PictresqueAPIService,
+    private _formBuilder: FormBuilder,
+    private _store: Store<State>
   ) {
-    this.store
+    this._store
       .select(state => state.pictresque.toggleForm)
       .subscribe(value => {
         this.$showForm = value;
       });
   }
 
-  toggleForm() {
-    this.store.dispatch(new ToggleFormActionSuccess(true));
+  toggleForm(): void {
+    this._store.dispatch(new ToggleFormActionSuccess(true));
   }
   get emailSignup() {
     return this.registerForm.get("emailSignup");
@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
   registerUser(): void {
     let canLogin = false;
 
-    this.pictresqueAPI
+    this._pictresqueAPI
       .registerUser(this.emailSignup.value, this.passwordSignup.value)
       .subscribe(
         data => {
@@ -58,10 +58,10 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.registerForm = this.fb.group({
+    this.registerForm = this._formBuilder.group({
       emailSignup: "",
       passwordSignup: ""
     });
-    this.registerForm.valueChanges.subscribe(console.log);
+    // this.registerForm.valueChanges.subscribe(console.log);
   }
 }

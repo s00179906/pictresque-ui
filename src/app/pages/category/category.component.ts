@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { PictresqueAPIService } from "src/app/services/pictresque-service/pictresque-api.service";
-import { Category } from "src/app/models/Category";
+import { Category } from "src/app/interfaces/Category";
 import { ActivatedRoute } from "@angular/router";
 
 @Component({
@@ -20,10 +20,9 @@ export class CategoryComponent implements OnInit {
   ngOnInit() {
     this.categoryId = this.activatedRoute.snapshot.paramMap.get("id");
     this.pictresqueService
-      .getSingleCategory(this.categoryId)
+      .getSinglePostCategory(this.categoryId)
       .subscribe(category => {
         this.category = category;
-        // console.log('SINGLE CATEGORY FROM CATEGORY PAGE:', this.category);
       });
   }
 }

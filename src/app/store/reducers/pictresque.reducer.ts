@@ -3,7 +3,7 @@ import {
   PictresqueAction
 } from "../actions/pictresque.actions";
 import { Post } from "../models/Post";
-import { Pixbay } from "src/app/models/pixbay";
+import { Pixbay } from "src/app/interfaces/pixbay";
 import { PictresqueAPIService } from "src/app/services/pictresque-service/pictresque-api.service";
 
 export interface PictresqueState {
@@ -84,7 +84,7 @@ export function PictresqueReducer(
         loading: true
       };
     case PictresqueActionTypes.CREATE_POST_SUCCESS:
-      console.log("POST IN ACTIONS -->", action.payload);
+      // console.log("POST IN ACTIONS -->", action.payload);
       return {
         ...state,
         posts: [...state.posts, action.payload],
