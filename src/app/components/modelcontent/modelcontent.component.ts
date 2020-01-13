@@ -10,7 +10,7 @@ import {
 } from "src/app/store/actions/pictresque.actions";
 import { State } from "src/app/store/models/state.model";
 import { Observable } from "rxjs";
-import { Category } from "src/app/interfaces/Category";
+import { ICategory } from "src/app/interfaces/ICategory";
 
 @Component({
   selector: "app-modelcontent",
@@ -25,7 +25,7 @@ export class ModelcontentComponent implements OnInit {
   userFile: any;
   file: any;
   errorObservable$: Observable<Error>;
-  categories: Category[];
+  categories: ICategory[];
   selectedCategory: String = "Categories";
   categoryId: string;
 

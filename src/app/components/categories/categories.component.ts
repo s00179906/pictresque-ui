@@ -6,7 +6,7 @@ import {
   ElementRef
 } from "@angular/core";
 import { PictresqueAPIService } from "src/app/services/pictresque-service/pictresque-api.service";
-import { Category } from "src/app/interfaces/Category";
+import { ICategory } from "src/app/interfaces/ICategory";
 import { State } from "src/app/store/models/state.model";
 import { Store } from "@ngrx/store";
 import {
@@ -21,7 +21,7 @@ import {
   styleUrls: ["./categories.component.scss"]
 })
 export class CategoriesComponent implements OnInit {
-  categories: Category[];
+  categories: ICategory[];
   selectedCategory: String = "All Categories";
 
   constructor(
