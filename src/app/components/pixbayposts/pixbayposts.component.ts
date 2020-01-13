@@ -23,7 +23,7 @@ export class PixbayPostsComponent implements OnInit {
   ) {}
 
   showResults(term: string) {
-    if ((term != "")) {
+    if (term != "") {
       this.searchWordBool = true;
     }
   }
@@ -37,6 +37,7 @@ export class PixbayPostsComponent implements OnInit {
         this.posts = hits["hits"];
 
         this.searchWord = term;
+        this.showResults(term);
         // console.log("Peters method", this.posts);
       });
     });
