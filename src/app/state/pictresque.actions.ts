@@ -124,6 +124,7 @@ export class FilterPostsByDateDescendingAction implements Action {
 }
 
 export type PictresqueAction =
+  | ShowNavbarAction
   | CreatePostAction
   | CreatePostSuccessAction
   | CreatePostFailureAction

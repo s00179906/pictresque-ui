@@ -28,7 +28,7 @@ export function PictresqueReducer(
   action: PictresqueAction
 ) {
   switch (action.type) {
-    case PictresqueActionTypes.SHOW_NAVBAR_ACTION:
+    case PictresqueActionTypes.SHOW_NAVBAR:
       return {
         ...state,
         showNavbar: false
