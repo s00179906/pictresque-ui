@@ -1,7 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
-
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { AppRoutingModule, routingComponents } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
@@ -39,7 +39,9 @@ import { PictresqueEffects } from "./store/effects/pictresque.effects";
 import { EffectsModule } from "@ngrx/effects";
 import { LoginComponent } from "./components/login/login.component";
 import { RegisterComponent } from "./components/register/register.component";
-import { CommentsComponent } from './components/comments/comments.component';
+import { CommentsComponent } from "./components/comments/comments.component";
+import { SnackbarComponent } from "./components/snackbar/snackbar.component";
+import { DislikeSnackbarComponent } from "./components/dislike-snackbar/dislike-snackbar.component";
 export function provideConfig() {
   return config;
 }
@@ -64,12 +66,15 @@ export function provideConfig() {
     LoginComponent,
     AuthComponent,
     RegisterComponent,
-    CommentsComponent
+    CommentsComponent,
+    SnackbarComponent,
+    DislikeSnackbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    MatSnackBarModule,
     HttpClientModule,
     DragDropModule,
     SocialLoginModule,
@@ -91,6 +96,11 @@ export function provideConfig() {
   ],
   bootstrap: [AppComponent],
   // ? ADD ANY NGBS MODAL COMPONENTS HERE
-  entryComponents: [ModelcontentComponent, SearchModalComponent]
+  entryComponents: [
+    ModelcontentComponent,
+    SearchModalComponent,
+    SnackbarComponent,
+    DislikeSnackbarComponent
+  ]
 })
 export class AppModule {}
