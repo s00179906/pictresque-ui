@@ -1,12 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { Store } from "@ngrx/store";
-import { State } from "src/app/store/models/state.model";
+import { State } from "src/app/state/models/state.model";
 import { map } from "rxjs/operators";
-import { Post } from "src/app/store/models/Post.model";
+import { Post } from "src/app/state/models/Post.model";
 import {
   FilterPostsByDateDescendingAction,
   FilterPostsByDateAscendingAction
-} from "src/app/store/pictresque.actions";
+} from "src/app/state/pictresque.actions";
 
 @Component({
   selector: "app-post-date-filterer",

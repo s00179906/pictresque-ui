@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { PictresqueAPIService } from "src/app/services/pictresque-service/pictresque-api.service";
-import { Post } from "src/app/store/models/Post";
+import { Post } from "src/app/state/models/Post";
 import { HighlightDirective } from "src/app/directives/highlight.directive";
 
 @Component({

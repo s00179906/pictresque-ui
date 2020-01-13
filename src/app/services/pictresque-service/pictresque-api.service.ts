@@ -1,16 +1,9 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, Subject } from "rxjs";
-import { Post } from "../../store/models/Post.model";
-// import { Post } from "../../store/models/Post";
+import { Post } from "../../state/models/Post.model";
 import { ICategory } from "../../interfaces/ICategory";
 import Pusher from "pusher-js";
-import { Store } from "@ngrx/store";
-import { State } from "src/app/store/models/state.model";
-import {
-  CreatePostAction,
-  CreatePostSuccessAction
-} from "src/app/store/pictresque.actions";
 import { IUser } from "src/app/interfaces/IUser";
 
 @Injectable({

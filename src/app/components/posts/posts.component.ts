@@ -1,13 +1,13 @@
 import { Component, OnInit } from "@angular/core";
-import { Post } from "src/app/store/models/Post";
+import { Post } from "src/app/state/models/Post";
 import { PictresqueAPIService } from "src/app/services/pictresque-service/pictresque-api.service";
 import { Observable } from "rxjs";
 import { Store } from "@ngrx/store";
-import { State } from "src/app/store/models/state.model";
+import { State } from "src/app/state/models/state.model";
 import {
   GetPostsAction,
   CreatePostSuccessTestAction
-} from "src/app/store/pictresque.actions";
+} from "src/app/state/pictresque.actions";
 
 @Component({
   selector: "app-posts",

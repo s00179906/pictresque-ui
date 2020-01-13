@@ -11,7 +11,7 @@ import {
   GetPixabayFailureAction,
   GetPixabayAction,
   GetCategoryPostsActionSuccess
-} from "../actions/pictresque.actions";
+} from "./pictresque.actions";
 import { map, mergeMap, catchError, switchMap } from "rxjs/operators";
 import { PictresqueAPIService } from "src/app/services/pictresque-service/pictresque-api.service";
 import { of, merge } from "rxjs";

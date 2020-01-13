@@ -2,9 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { Router } from "@angular/router";
 import { PictresqueAPIService } from "src/app/services/pictresque-service/pictresque-api.service";
-import { State } from "src/app/store/models/state.model";
+import { State } from "src/app/state/models/state.model";
 import { Store } from "@ngrx/store";
-import { ToggleFormActionSuccess } from "src/app/store/pictresque.actions";
+import { ToggleFormActionSuccess } from "src/app/state/pictresque.actions";
 import { Observable } from "rxjs";
 
 @Component({
