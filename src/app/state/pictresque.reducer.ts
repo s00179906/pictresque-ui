@@ -10,6 +10,7 @@ export interface PictresqueState {
   searchTerm: string;
   pixabayPosts: Pixbay[];
   toggleForm: Boolean;
+  showNavbar: Boolean;
 }
 
 const initialState: PictresqueState = {
@@ -18,7 +19,8 @@ const initialState: PictresqueState = {
   error: undefined,
   searchTerm: "",
   pixabayPosts: [],
-  toggleForm: false
+  toggleForm: false,
+  showNavbar: true
 };
 
 export function PictresqueReducer(
@@ -26,6 +28,11 @@ export function PictresqueReducer(
   action: PictresqueAction
 ) {
   switch (action.type) {
+    case PictresqueActionTypes.SHOW_NAVBAR_ACTION:
+      return {
+        ...state,
+        showNavbar: false
+      };
     case PictresqueActionTypes.FILTER_POSTS_BY_DATE_ASCENDING:
       return {
         ...state,
