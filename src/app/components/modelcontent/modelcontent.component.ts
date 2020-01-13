@@ -27,6 +27,7 @@ export class ModelcontentComponent implements OnInit {
   categories: ICategory[];
   selectedCategory: String = "Categories";
   categoryId: string;
+  $loading: Boolean;
 
   constructor(
     public activeModal: NgbActiveModal,
@@ -53,7 +54,7 @@ export class ModelcontentComponent implements OnInit {
     }
   }
 
-  createPost = (title, desc) => {
+  createPost = async (title, desc) => {
     if (!title || !desc || this.selectedCategory == "Categories")
       return this.alert("Title, Description & Category is required!");
 
@@ -66,15 +67,25 @@ export class ModelcontentComponent implements OnInit {
       category: this.categoryId
     };
 
-    this.store.dispatch(new CreatePostAction(post));
-    this.errorObservable$ = this.store.select(state => state.pictresque.error);
+    if (this.file && title && desc) {
+      this.store.dispatch(new CreatePostAction(post));
+      this.errorObservable$ = this.store.select(
+        state => state.pictresque.error
+      );
+    }
 
-    // this.errorObservable$.subscribe(error => {
-    //   if (error != undefined || error != null)
-    //     return this.alert("Whoops, That image is too large!");
-    // });
+    this.store.subscribe(state => (this.$loading = state.pictresque.loading));
 
-    return this.activeModal.dismiss();
+    console.log(this.$loading);
+
+    await this.errorObservable$.subscribe(error => {
+      console.log("ERROR IN MODAL -->", error);
+      if (error != undefined || error != null) {
+        return this.alert(error.message);
+      } else {
+        return this.activeModal.dismiss();
+      }
+    });
   };
 
   alert(msg: string) {

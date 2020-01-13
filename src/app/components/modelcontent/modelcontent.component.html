@@ -98,10 +98,19 @@
 
   <!-- ? UPLOAD BUTTON -->
   <button
+    *ngIf="!$loading"
     type="submit"
     class="btn btn-outline-warning"
     (click)="createPost(title.value, description.value)"
   >
     Upload
+  </button>
+  <button *ngIf="$loading" class="btn btn-warning" type="button" disabled>
+    <span
+      class="spinner-border spinner-border-md"
+      role="status"
+      aria-hidden="true"
+    ></span>
+    <span class="sr-only">Loading...</span>
   </button>
 </div>

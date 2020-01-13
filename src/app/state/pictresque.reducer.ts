@@ -95,10 +95,13 @@ export function PictresqueReducer(
         loading: false
       };
     case PictresqueActionTypes.CREATE_POST_FAILURE:
-      // console.log("POSSIBLE ERROR -->", action.payload["error"]);
+      console.log(
+        "POSSIBLE ERROR (IN REDUCER CREATE_POST_FAILURE)-->",
+        action.payload["error"].error
+      );
       return {
         ...state,
-        error: action.payload["error"],
+        error: action.payload["error"].error,
         loading: false
       };
     case PictresqueActionTypes.CREATE_POST_TEST:
