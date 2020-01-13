@@ -49,15 +49,4 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {}
-
-  // @HostListener('window:scroll', ['$event'])
-  // doSomething(event) {
-  //   // console.debug("Scroll Event", document.body.scrollTop);
-  //   // see András Szepesházi's comment below
-  //   let navbar = document.getElementsByClassName('nav-container');
-  //   this.scrollPost = window.pageYOffset;
-  //   if (this.scrollPost >= navbar.offsetTop) {
-  //     navbar.classList.add
-  //   }
-  // }
 }
