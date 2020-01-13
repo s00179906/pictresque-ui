@@ -29,13 +29,12 @@ import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { CategoriesComponent } from "./components/categories/categories.component";
 import { CategoryComponent } from "./pages/category/category.component";
 import { SearchComponent } from "./components/search/search.component";
-import { SearchModalComponent } from "./components/search-modal/search-modal.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FollowingComponent } from "./pages/following/following.component";
 import { PostDateFiltererComponent } from "./components/filter-by-date/post-date-filterer.component";
 import { StoreModule } from "@ngrx/store";
-import { PictresqueReducer } from "./store/reducers/pictresque.reducer";
-import { PictresqueEffects } from "./store/effects/pictresque.effects";
+import { PictresqueReducer } from "./state/pictresque.reducer";
+import { PictresqueEffects } from "./state/pictresque.effects";
 import { EffectsModule } from "@ngrx/effects";
 import { LoginComponent } from "./components/login/login.component";
 import { RegisterComponent } from "./components/register/register.component";
@@ -60,7 +59,6 @@ export function provideConfig() {
     CategoryComponent,
     AuthComponent,
     SearchComponent,
-    SearchModalComponent,
     FollowingComponent,
     PostDateFiltererComponent,
     LoginComponent,
@@ -98,7 +96,6 @@ export function provideConfig() {
   // ? ADD ANY NGBS MODAL COMPONENTS HERE
   entryComponents: [
     ModelcontentComponent,
-    SearchModalComponent,
     SnackbarComponent,
     DislikeSnackbarComponent
   ]

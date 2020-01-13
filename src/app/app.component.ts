@@ -1,6 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { RouterOutlet } from "@angular/router";
 import { slider } from "./animations/route-animations";
+import { Store } from "@ngrx/store";
+import { State } from "./state/models/state.model";
+import { ShowNavbarAction } from "./state/pictresque.actions";
 
 @Component({
   selector: "app-root",
@@ -10,19 +13,15 @@ import { slider } from "./animations/route-animations";
 })
 export class AppComponent implements OnInit {
   title = "Pictresque";
-  showNavbar: Boolean = true;
+  $showNavbar: Boolean;
 
-  constructor() {
-    console.log("CONSTRUCTOR CALLED");
+  constructor(private _store: Store<State>) {
+    this._store.subscribe(
+      state => (this.$showNavbar = state.pictresque.showNavbar)
+    );
   }
 
-  ngOnInit() {
-    this.showNavbar = window.location.href.includes("/auth") ? false : true;
-
-    // console.log("ngOnInit CALLED");
-    // console.log("SHOW NAVBAR? -->", this.showNavbar);
-    // console.log("WINDOW URL -->", window.location.href);
-  }
+  ngOnInit() {}
   prepareRoute(outlet: RouterOutlet) {
     return (
       outlet &&

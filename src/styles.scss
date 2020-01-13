@@ -1,5 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-
 @import url("https://fonts.googleapis.com/css?family=Montserrat:500&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
 
@@ -7,10 +6,9 @@ $ionicons-font-path: "~ionicons/dist/fonts";
 @import "~ionicons/dist/scss/ionicons.scss";
 
 // ** GLOBAL STYLE VARIABLES
-
 :root {
-  --primary: #06070d; //121212
-  --secondary: #06070d; //1d1d1d
+  --primary: #06070d;
+  --secondary: #06070d;
   --tertiary: #ffc107;
 }
 
@@ -37,35 +35,20 @@ $ionicons-font-path: "~ionicons/dist/fonts";
   font-family: "Poppins", "Montserrat";
 }
 
-button:focus,
-button:active {
-  outline: 0;
-}
-
-.modal-holder {
-  animation-name: scaleAnim;
-  animation-duration: 0.3s;
-}
-
 body {
   background: rgb(25, 29, 35);
-  background: linear-gradient(180deg,
-      rgba(25, 29, 35, 1) 0%,
-      rgba(6, 7, 13, 1) 59%);
-  background-repeat: no-repeat;
+  background: linear-gradient(
+    180deg,
+    rgba(25, 29, 35, 1) 0%,
+    rgba(6, 7, 13, 1) 59%
+  );
+
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 html,
 body {
+  background-color: var(--primary);
   height: 100%;
-}
-
-html,
-body {
-  height: 100%;
-}
-
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
 }

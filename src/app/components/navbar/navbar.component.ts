@@ -1,7 +1,9 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import Swal from "sweetalert2";
-import { Post } from "src/app/store/models/Post";
+import { Store } from "@ngrx/store";
+import { State } from "src/app/state/models/state.model";
+import { ShowNavbarAction } from "src/app/state/pictresque.actions";
 
 @Component({
   selector: "app-navbar",
@@ -15,9 +17,7 @@ export class NavbarComponent implements OnInit {
     false || localStorage.getItem("userLoggedIn") == "true";
   show: boolean = false;
 
-  constructor(private router: Router) {
-    // console.log("IS USER LOGGED IN --> ", this.userLoggedIn);
-  }
+  constructor(private router: Router, private _store: Store<State>) {}
 
   logout = () => {
     Swal.fire({
@@ -37,13 +37,11 @@ export class NavbarComponent implements OnInit {
         localStorage.setItem("userLoggedIn", "false");
       }
     });
-
-    let confirmBtn = Swal.getConfirmButton();
-    // let o = confirmBtn;
   };
 
   login() {
     this.router.navigate(["/auth"]);
+    this._store.dispatch(new ShowNavbarAction(false));
   }
 
   toggleCollapse() {
@@ -51,15 +49,4 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {}
-
-  // @HostListener('window:scroll', ['$event'])
-  // doSomething(event) {
-  //   // console.debug("Scroll Event", document.body.scrollTop);
-  //   // see András Szepesházi's comment below
-  //   let navbar = document.getElementsByClassName('nav-container');
-  //   this.scrollPost = window.pageYOffset;
-  //   if (this.scrollPost >= navbar.offsetTop) {
-  //     navbar.classList.add
-  //   }
-  // }
 }
