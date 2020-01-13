@@ -84,7 +84,7 @@ export function PictresqueReducer(
         loading: true
       };
     case PictresqueActionTypes.CREATE_POST_SUCCESS:
-      console.log("POST IN ACTIONS -->", action.payload);
+      // console.log("POST IN ACTIONS -->", action.payload);
       return {
         ...state,
         posts: [...state.posts, action.payload],

@@ -89,7 +89,7 @@ export class ModelcontentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.pictrService.getCategories().subscribe(categories => {
+    this.pictrService.getPostCategories().subscribe(categories => {
       this.categories = categories;
     });
   }

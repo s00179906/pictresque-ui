@@ -31,6 +31,8 @@ export class CategoriesComponent implements OnInit {
 
   fetchCategoryPosts(category: string, categoryId: string): void {
     this.selectedCategory = category.toUpperCase();
+
+    console.log(category);
     this._store.dispatch(new GetCategoryPostsAction(categoryId));
     // this.store.dispatch(new FilterPostsByCategoryAction(categoryId));
   }

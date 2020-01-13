@@ -36,9 +36,16 @@ export class PictresqueAPIService {
         title: string;
         description: string;
         imageUrl: string;
+        createdAt: string;
       }) => {
         this.post.next(
-          new Post(data._id, data.title, data.description, data.imageUrl)
+          new Post(
+            data._id,
+            data.title,
+            data.description,
+            data.imageUrl,
+            data.createdAt
+          )
         );
       }
     );

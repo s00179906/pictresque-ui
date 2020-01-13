@@ -30,7 +30,7 @@ export class PictresqueEffects {
     mergeMap(() =>
       this._pictresqueService.getPictresquePosts().pipe(
         map(data => new GetPostsSuccessAction(data)),
-        catchError(error => of(new GetPixabayFailureAction(error)))
+        catchError(error => of(new GetPostsFailureAction(error)))
       )
     )
   );
@@ -38,6 +38,7 @@ export class PictresqueEffects {
   @Effect() $getCategoryPosts = this._actions.pipe(
     ofType<PictresqueAction>(PictresqueActionTypes.GET_CATEGORY_POSTS),
     mergeMap(action => {
+      console.log(action);
       return this._pictresqueService
         .getSinglePostCategory(action["payload"])
         .pipe(map(data => new GetCategoryPostsActionSuccess(data["posts"])));

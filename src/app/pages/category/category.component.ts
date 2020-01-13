@@ -20,10 +20,9 @@ export class CategoryComponent implements OnInit {
   ngOnInit() {
     this.categoryId = this.activatedRoute.snapshot.paramMap.get("id");
     this.pictresqueService
-      .getSingleCategory(this.categoryId)
+      .getSinglePostCategory(this.categoryId)
       .subscribe(category => {
         this.category = category;
-        // console.log('SINGLE CATEGORY FROM CATEGORY PAGE:', this.category);
       });
   }
 }
