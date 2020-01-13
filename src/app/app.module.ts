@@ -37,12 +37,9 @@ import { StoreModule } from "@ngrx/store";
 import { PictresqueReducer } from "./store/reducers/pictresque.reducer";
 import { PictresqueEffects } from "./store/effects/pictresque.effects";
 import { EffectsModule } from "@ngrx/effects";
-<<<<<<< HEAD
-=======
 import { LoginComponent } from "./components/login/login.component";
 import { RegisterComponent } from "./components/register/register.component";
-import { CommentsComponent } from './components/comments/comments.component';
->>>>>>> origin/master
+import { CommentsComponent } from "./components/comments/comments.component";
 export function provideConfig() {
   return config;
 }
