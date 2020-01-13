@@ -11,7 +11,7 @@
 
   <app-upload
     *ngIf="userLoggedIn"
-    class="d-none d-md-block d-sm-none"
+    class="d-none d-md-none d-lg-block d-sm-none"
   ></app-upload>
 
   <button
@@ -34,7 +34,12 @@
   >
     <ul class="navbar-nav mr-auto"></ul>
 
-    <form class="form-inline my-2 my-lg-0">
+    <form class="form-inline d-lg-flex flex-lg-row d-sm-flex flex-sm-column">
+      <app-upload
+        *ngIf="userLoggedIn"
+        class="d-md-block d-lg-none d-sm-block"
+      ></app-upload>
+
       <app-search></app-search>
 
       <button
@@ -46,24 +51,6 @@
         BROWSE
       </button>
 
-      <!-- <button
-        type="button"
-        class="btn btn-outline-light mx-1"
-        *ngIf="userLoggedIn"
-        style="border:none;"
-        [routerLink]="['/following']"
-      >
-        FOLLOWING
-      </button> -->
-
-      <!-- <button
-        type="button"
-        class="btn btn-outline-light mx-1"
-        style="border:none;"
-        [routerLink]="['/categories']"
-      >
-        CATEGORIES
-      </button> -->
       <button
         type="button"
         class="btn btn-outline-info mx-2"

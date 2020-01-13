@@ -1,8 +1,5 @@
-import {
-  PictresqueActionTypes,
-  PictresqueAction
-} from "../actions/pictresque.actions";
-import { Post } from "../models/Post";
+import { PictresqueActionTypes, PictresqueAction } from "./pictresque.actions";
+import { Post } from "./models/Post";
 import { Pixbay } from "src/app/interfaces/pixbay";
 import { PictresqueAPIService } from "src/app/services/pictresque-service/pictresque-api.service";
 
@@ -13,6 +10,7 @@ export interface PictresqueState {
   searchTerm: string;
   pixabayPosts: Pixbay[];
   toggleForm: Boolean;
+  showNavbar: Boolean;
 }
 
 const initialState: PictresqueState = {
@@ -21,7 +19,8 @@ const initialState: PictresqueState = {
   error: undefined,
   searchTerm: "",
   pixabayPosts: [],
-  toggleForm: false
+  toggleForm: false,
+  showNavbar: true
 };
 
 export function PictresqueReducer(
@@ -29,6 +28,11 @@ export function PictresqueReducer(
   action: PictresqueAction
 ) {
   switch (action.type) {
+    case PictresqueActionTypes.SHOW_NAVBAR:
+      return {
+        ...state,
+        showNavbar: action.payload
+      };
     case PictresqueActionTypes.FILTER_POSTS_BY_DATE_ASCENDING:
       return {
         ...state,

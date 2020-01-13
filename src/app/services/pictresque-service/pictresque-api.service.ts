@@ -1,16 +1,9 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, Subject } from "rxjs";
-import { Post } from "../../store/models/Post.model";
-// import { Post } from "../../store/models/Post";
-import { Category } from "../../interfaces/Category";
+import { Post } from "../../state/models/Post.model";
+import { ICategory } from "../../interfaces/ICategory";
 import Pusher from "pusher-js";
-import { Store } from "@ngrx/store";
-import { State } from "src/app/store/models/state.model";
-import {
-  CreatePostAction,
-  CreatePostSuccessAction
-} from "src/app/store/actions/pictresque.actions";
 import { IUser } from "src/app/interfaces/IUser";
 
 @Injectable({
@@ -55,12 +48,12 @@ export class PictresqueAPIService {
     // });
   }
 
-  getPostCategories(): Observable<Category[]> {
-    return this._http.get<Category[]>(`${this.url}/api/v1/categories`);
+  getPostCategories(): Observable<ICategory[]> {
+    return this._http.get<ICategory[]>(`${this.url}/api/v1/categories`);
   }
 
-  getSinglePostCategory(id): Observable<Category> {
-    return this._http.get<Category>(`${this.url}/api/v1/category/${id}`);
+  getSinglePostCategory(id): Observable<ICategory> {
+    return this._http.get<ICategory>(`${this.url}/api/v1/category/${id}`);
   }
 
   getPictresquePosts(): Observable<Post[]> {
