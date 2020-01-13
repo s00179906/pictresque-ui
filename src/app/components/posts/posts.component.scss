@@ -5,14 +5,10 @@
     column-count: 3;
   }
   @media screen and (max-width: 425px) {
-    column-count: 2;
+    column-count: 1;
   }
 }
 
-.card:hover {
+.card {
   cursor: pointer;
-  .post-img {
-    opacity: 0.5;
-    transition: all 0.2s ease-in-out;
-  }
 }

@@ -3,7 +3,7 @@ import {
   PictresqueAction
 } from "../actions/pictresque.actions";
 import { Post } from "../models/Post";
-import { Pixbay } from "src/app/models/pixbay";
+import { Pixbay } from "src/app/interfaces/pixbay";
 import { PictresqueAPIService } from "src/app/services/pictresque-service/pictresque-api.service";
 
 export interface PictresqueState {
@@ -12,6 +12,7 @@ export interface PictresqueState {
   error: Error;
   searchTerm: string;
   pixabayPosts: Pixbay[];
+  toggleForm: Boolean;
 }
 
 const initialState: PictresqueState = {
@@ -19,7 +20,8 @@ const initialState: PictresqueState = {
   loading: false,
   error: undefined,
   searchTerm: "",
-  pixabayPosts: []
+  pixabayPosts: [],
+  toggleForm: false
 };
 
 export function PictresqueReducer(
@@ -27,6 +29,38 @@ export function PictresqueReducer(
   action: PictresqueAction
 ) {
   switch (action.type) {
+    case PictresqueActionTypes.FILTER_POSTS_BY_DATE_ASCENDING:
+      return {
+        ...state,
+        posts: [
+          ...state.posts.sort((a, b) => {
+            return (
+              new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+            );
+          })
+        ],
+        loading: false
+      };
+    case PictresqueActionTypes.FILTER_POSTS_BY_DATE_DESCENDING:
+      return {
+        ...state,
+        posts: [
+          ...state.posts.sort((a, b) => {
+            return (
+              new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+            );
+          })
+        ],
+        loading: false
+      };
+    case PictresqueActionTypes.FILTER_POSTS_BY_CATEGORY:
+      return {
+        ...state,
+        posts: [
+          ...state.posts.filter(posts => posts.category == action.category)
+        ],
+        loading: false
+      };
     case PictresqueActionTypes.GET_POSTS:
       return {
         ...state,
@@ -50,16 +84,29 @@ export function PictresqueReducer(
         loading: true
       };
     case PictresqueActionTypes.CREATE_POST_SUCCESS:
+      // console.log("POST IN ACTIONS -->", action.payload);
       return {
         ...state,
         posts: [...state.posts, action.payload],
         loading: false
       };
     case PictresqueActionTypes.CREATE_POST_FAILURE:
-      console.log("POSSIBLE ERROR -->", action.payload["error"]);
+      // console.log("POSSIBLE ERROR -->", action.payload["error"]);
       return {
         ...state,
         error: action.payload["error"],
+        loading: false
+      };
+    case PictresqueActionTypes.CREATE_POST_TEST:
+      return {
+        ...state,
+        loading: true
+      };
+    case PictresqueActionTypes.CREATE_POST_TEST_SUCCESS:
+      console.log(action.payload);
+      return {
+        ...state,
+        posts: [...state.posts, action.payload],
         loading: false
       };
 
@@ -90,6 +137,23 @@ export function PictresqueReducer(
         ...state,
         searchTerm: action.payload,
         loading: false
+      };
+    case PictresqueActionTypes.GET_CATEGORY_POSTS:
+      return {
+        ...state,
+        loading: true
+      };
+    case PictresqueActionTypes.GET_CATEGORY_POSTS_SUCCESS:
+      console.log(action.payload);
+      return {
+        ...state,
+        posts: action.payload,
+        loading: false
+      };
+    case PictresqueActionTypes.TOGGLE_FORM_SUCCESS:
+      return {
+        ...state,
+        toggleForm: action.payload
       };
     default:
       return state;

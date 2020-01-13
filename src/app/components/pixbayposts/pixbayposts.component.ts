@@ -4,7 +4,7 @@ import { Store } from "@ngrx/store";
 import { State } from "src/app/store/models/state.model";
 import { GetPixabayAction } from "src/app/store/actions/pictresque.actions";
 import { Observable } from "rxjs";
-import { Pixbay } from "src/app/models/pixbay";
+import { Pixbay } from "src/app/interfaces/pixbay";
 @Component({
   selector: "app-pixbayposts",
   templateUrl: "./pixbayposts.component.html",
@@ -35,9 +35,13 @@ export class PixbayPostsComponent implements OnInit {
     this.imgSearchObservable.subscribe(term => {
       this.apiService.getSearchTerm(term).subscribe(hits => {
         this.posts = hits["hits"];
+<<<<<<< HEAD
         console.log("Peters method", this.posts);
         this.searchWord = term;
         this.showResults(term);
+=======
+        // console.log("Peters method", this.posts);
+>>>>>>> origin/master
       });
     });
 

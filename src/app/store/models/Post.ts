@@ -1,7 +1,8 @@
 export interface Post {
   _id?: string;
-  title?: String;
-  description?: String;
-  imageUrl?: String;
-  // __v?: string;
+  title?: string;
+  description?: string;
+  imageUrl?: string;
+  category?: string;
+  createdAt?: string;
 }

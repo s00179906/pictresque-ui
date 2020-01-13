@@ -3,22 +3,17 @@
     <div ngbDropdown class="d-inline-block">
       <a
         class="text-light"
-        [innerHtml]="selectedCategory"
         id="dropdownBasic1"
+        [innerHtml]="dateType"
         ngbDropdownToggle
       >
-        All Categories
       </a>
       <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-        <button ngbDropdownItem (click)="fetchAllCategoryPosts()">
-          All Categories
+        <button ngbDropdownItem (click)="filterByDateAscending()">
+          <i class="icon ion-ios-arrow-dropup-circle"></i> Ascending
         </button>
-        <button
-          ngbDropdownItem
-          *ngFor="let cat of categories"
-          (click)="fetchCategoryPosts(cat.category, cat._id)"
-        >
-          {{ cat.category | titlecase }}
+        <button ngbDropdownItem (click)="filterByDateDescending()">
+          <i class="icon ion-ios-arrow-dropdown-circle"></i> Descending
         </button>
       </div>
     </div>

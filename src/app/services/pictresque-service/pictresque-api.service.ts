@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, Subject } from "rxjs";
 import { Post } from "../../store/models/Post.model";
 // import { Post } from "../../store/models/Post";
-import { Category } from "../../models/Category";
+import { Category } from "../../interfaces/Category";
 import Pusher from "pusher-js";
 import { Store } from "@ngrx/store";
 import { State } from "src/app/store/models/state.model";
@@ -11,12 +11,12 @@ import {
   CreatePostAction,
   CreatePostSuccessAction
 } from "src/app/store/actions/pictresque.actions";
+import { IUser } from "src/app/interfaces/IUser";
 
 @Injectable({
   providedIn: "root"
 })
 export class PictresqueAPIService {
-  // url: String = "http://localhost:5001";
   url: String = "https://pictresque-api.herokuapp.com";
   fileToUpload: any;
   userLoggedIn = localStorage.getItem("userLoggedIn");
@@ -24,7 +24,7 @@ export class PictresqueAPIService {
   private allPosts: Subject<Post[]> = new Subject<Post[]>();
   private pusherClient: Pusher;
 
-  constructor(private _http: HttpClient, private store: Store<State>) {
+  constructor(private _http: HttpClient) {
     this.pusherClient = new Pusher("83b272f41e06599d5878", { cluster: "eu" });
 
     const channel = this.pusherClient.subscribe("pictresque");
@@ -36,9 +36,16 @@ export class PictresqueAPIService {
         title: string;
         description: string;
         imageUrl: string;
+        createdAt: string;
       }) => {
         this.post.next(
-          new Post(data._id, data.title, data.description, data.imageUrl)
+          new Post(
+            data._id,
+            data.title,
+            data.description,
+            data.imageUrl,
+            data.createdAt
+          )
         );
       }
     );
@@ -48,62 +55,55 @@ export class PictresqueAPIService {
     // });
   }
 
-  getCategories = (): Observable<Category[]> => {
-    return this._http.get<Category[]>(`${this.url}/api/v1/categories`, {
-      headers: this.httpsOptions()
-    });
-  };
+  getPostCategories(): Observable<Category[]> {
+    return this._http.get<Category[]>(`${this.url}/api/v1/categories`);
+  }
 
-  getSingleCategory = (id): Observable<Category> => {
+  getSinglePostCategory(id): Observable<Category> {
     return this._http.get<Category>(`${this.url}/api/v1/category/${id}`);
-  };
+  }
 
-  getAllPosts = (): Observable<Post[]> => {
+  getPictresquePosts(): Observable<Post[]> {
+    return this._http.get<Post[]>(`${this.url}/api/v1/posts`);
+  }
+
+  createNewPost(post: any): Observable<Post> {
+    console.log("POST IN UPLOADIMAGE -->", post);
     const auth = JSON.parse(localStorage.getItem("auth"));
 
     const headers = new HttpHeaders({
-      "Content-Type": "application/json",
+      "Content-Type": "application/form-data",
       Authorization: `bearer ${auth.token}`
     });
 
-    // user id is not being passed
-    console.log(auth.id);
-    return this._http.get<Post[]>(`${this.url}/api/v1/posts`, {
-      headers
-    });
-  };
-
-  uploadImage = (post: any) => {
-    console.log("POST IN UPLOADIMAGE() -->", post);
-
     this.fileToUpload = post.file.item(0);
     let formData = new FormData();
-    formData.append("image", this.fileToUpload, this.fileToUpload.name);
-    formData.append("title", post.title);
-    formData.append("description", post.desc);
+    formData.set("image", this.fileToUpload, this.fileToUpload.name);
+    formData.set("title", post.title);
+    formData.set("description", post.desc);
+    formData.set("categoryId", post.category);
 
-    // for (var pair of formData.entries()) {
-    //   console.log(pair[0] + ", " + pair[1]);
-    // }
+    return this._http.post<Post>(`${this.url}/api/v1/post/create`, formData);
+  }
 
-    return this._http.post(`${this.url}/api/v1/post/create`, formData);
-  };
-
-  registerUser = (email, password) => {
+  registerUser(email: string, password: string): Observable<IUser> {
     const newUser = {
       email,
       password
     };
-    return this._http.post(`${this.url}/api/v1/register`, newUser);
-  };
+    return this._http.post<IUser>(`${this.url}/api/v1/register`, newUser);
+  }
 
-  loginUser = (email, password) => {
-    return this._http.post(`${this.url}/api/v1/login`, { email, password });
-  };
+  loginUser(email, password): Observable<IUser> {
+    return this._http.post<IUser>(`${this.url}/api/v1/login`, {
+      email,
+      password
+    });
+  }
 
-  getSinglePost = id => {
-    return this._http.get(`${this.url}/api/v1/post/${id}`);
-  };
+  getSinglePost(id): Observable<Post> {
+    return this._http.get<Post>(`${this.url}/api/v1/post/${id}`);
+  }
 
   getPosts(): Observable<Post> {
     return this.post.asObservable();
@@ -122,4 +122,19 @@ export class PictresqueAPIService {
 
     return headers;
   }
+
+  likeImage = id => {
+    const auth = JSON.parse(localStorage.getItem("auth"));
+    return this._http.post(`${this.url}/api/v1/like/${id}`, {
+      userId: auth.id
+    });
+  };
+
+  unlikeImage = id => {
+    const auth = JSON.parse(localStorage.getItem("auth"));
+
+    return this._http.post(`${this.url}/api/v1/unlike/${id}`, {
+      userId: auth.id
+    });
+  };
 }

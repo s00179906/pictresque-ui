@@ -1,6 +1,6 @@
 import { Action } from "@ngrx/store";
 import { Post } from "../models/Post";
-import { Pixbay } from "src/app/models/pixbay";
+import { Pixbay } from "src/app/interfaces/pixbay";
 
 export enum PictresqueActionTypes {
   CREATE_POST = "[PICTRESQUE] Create Post",
@@ -14,7 +14,15 @@ export enum PictresqueActionTypes {
   GET_PIXABAY_POSTS_FAILURE = "[PICTRESQUE] Get Posts Failure",
   GET_SEARCHWORD = "[PICTRESQUE] Get SearchWord",
   GET_SEARCHWORD_SUCCESS = "[PICTRESQUE] Get SearchWord Success",
-  GET_SEARCHWORD_FAILURE = "[PICTRESQUE] Get SearchWord Failure"
+  GET_SEARCHWORD_FAILURE = "[PICTRESQUE] Get SearchWord Failure",
+  GET_CATEGORY_POSTS = "[PICTRESQUE] Get Cataegory Posts",
+  GET_CATEGORY_POSTS_SUCCESS = "[PICTRESQUE] Get Cataegory Posts Success",
+  CREATE_POST_TEST = "[PICTRESQUE] Create Post Test",
+  CREATE_POST_TEST_SUCCESS = "[PICTRESQUE] Create Post Test Success",
+  TOGGLE_FORM_SUCCESS = "[PICTRESQUE] Toggle Login/Register Form",
+  FILTER_POSTS_BY_CATEGORY = "[PICTRESQUE] Get posts filtered by category",
+  FILTER_POSTS_BY_DATE_ASCENDING = "[PICTRESQUE] Get posts filtered by date ascending",
+  FILTER_POSTS_BY_DATE_DESCENDING = "[PICTRESQUE] Get posts filtered by date descending"
 }
 export class CreatePostAction implements Action {
   readonly type = PictresqueActionTypes.CREATE_POST;
@@ -32,22 +40,28 @@ export class CreatePostFailureAction implements Action {
 
   constructor(public payload: Error) {}
 }
+export class CreatePostTestAction implements Action {
+  readonly type = PictresqueActionTypes.CREATE_POST_TEST;
+  constructor(public payload: any) {}
+}
+export class CreatePostSuccessTestAction implements Action {
+  readonly type = PictresqueActionTypes.CREATE_POST_TEST_SUCCESS;
+
+  constructor(public payload: Post) {}
+}
 export class GetPostsAction implements Action {
   readonly type = PictresqueActionTypes.GET_POSTS;
 }
 export class GetPostsSuccessAction implements Action {
   readonly type = PictresqueActionTypes.GET_POSTS_SUCCESS;
 
-  constructor(public payload: Array<Post>) {
-    console.log("POSTS -->", payload);
-  }
+  constructor(public payload: Array<Post>) {}
 }
 export class GetPostsFailureAction implements Action {
   readonly type = PictresqueActionTypes.GET_POSTS_FAILURE;
 
   constructor(public payload: Error) {}
 }
-// get SearchWord Actions
 export class GetPixabayAction implements Action {
   readonly type = PictresqueActionTypes.GET_PIXABAY_POSTS;
   constructor(public payload: any) {}
@@ -55,16 +69,13 @@ export class GetPixabayAction implements Action {
 export class GetPixabaySuccessAction implements Action {
   readonly type = PictresqueActionTypes.GET_PIXABAY_POSTS_SUCCESS;
 
-  constructor(public payload: Array<Pixbay>) {
-    console.log("pixbay posts -->", payload);
-  }
+  constructor(public payload: Array<Pixbay>) {}
 }
 export class GetPixabayFailureAction implements Action {
   readonly type = PictresqueActionTypes.GET_PIXABAY_POSTS_FAILURE;
 
   constructor(public payload: Error) {}
 }
-// get searchword actions
 export class GetSearchWordAction implements Action {
   readonly type = PictresqueActionTypes.GET_SEARCHWORD;
 }
@@ -73,17 +84,45 @@ export class GetSearchWordActionSuccess implements Action {
 
   constructor(public payload: any) {}
 }
-
 export class GetSearchWordActionFailure implements Action {
   readonly type = PictresqueActionTypes.GET_SEARCHWORD_FAILURE;
 
   constructor(public payload: Error) {}
+}
+export class GetCategoryPostsAction implements Action {
+  readonly type = PictresqueActionTypes.GET_CATEGORY_POSTS;
+
+  constructor(public payload: string) {}
+}
+export class GetCategoryPostsActionSuccess implements Action {
+  readonly type = PictresqueActionTypes.GET_CATEGORY_POSTS_SUCCESS;
+
+  constructor(public payload: Array<Post>) {}
+}
+export class ToggleFormActionSuccess implements Action {
+  readonly type = PictresqueActionTypes.TOGGLE_FORM_SUCCESS;
+
+  constructor(public payload: Boolean) {}
+}
+
+export class FilterPostsByCategoryAction implements Action {
+  readonly type = PictresqueActionTypes.FILTER_POSTS_BY_CATEGORY;
+  constructor(public category: String) {}
+}
+
+export class FilterPostsByDateAscendingAction implements Action {
+  readonly type = PictresqueActionTypes.FILTER_POSTS_BY_DATE_ASCENDING;
+}
+export class FilterPostsByDateDescendingAction implements Action {
+  readonly type = PictresqueActionTypes.FILTER_POSTS_BY_DATE_DESCENDING;
 }
 
 export type PictresqueAction =
   | CreatePostAction
   | CreatePostSuccessAction
   | CreatePostFailureAction
+  | CreatePostTestAction
+  | CreatePostSuccessTestAction
   | GetPostsAction
   | GetPostsSuccessAction
   | GetPostsFailureAction
@@ -92,4 +131,10 @@ export type PictresqueAction =
   | GetPixabayFailureAction
   | GetSearchWordAction
   | GetSearchWordActionSuccess
-  | GetSearchWordActionFailure;
+  | GetSearchWordActionFailure
+  | GetCategoryPostsAction
+  | GetCategoryPostsActionSuccess
+  | ToggleFormActionSuccess
+  | FilterPostsByCategoryAction
+  | FilterPostsByDateAscendingAction
+  | FilterPostsByDateDescendingAction;

@@ -1,17 +1,14 @@
 <div class="py-3">
   <div class="d-flex mx-5">
     <app-categories></app-categories>
-
     <app-post-date-filterer></app-post-date-filterer>
   </div>
 
-  <div class="card-columns mx-5" style="padding-top: 1rem">
+  <div class="card-columns mx-5 py-3" *ngIf="$posts">
     <div
-      class="card text-light shadow"
-      style="border:none;"
-      *ngFor="let post of posts$"
+      class="card shadow border-0"
+      *ngFor="let post of $posts | async"
       [routerLink]="['/post', post._id]"
-      routerLinkActive="router-link-active"
     >
       <img [src]="post.imageUrl" class="card-img-top post-img" />
     </div>

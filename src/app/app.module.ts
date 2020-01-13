@@ -17,7 +17,7 @@ import {
   AuthServiceConfig,
   FacebookLoginProvider
 } from "angularx-social-login";
-import { RegisterComponent } from "./pages/register/register.component";
+import { AuthComponent } from "./pages/auth/auth.component";
 const config = new AuthServiceConfig([
   {
     id: FacebookLoginProvider.PROVIDER_ID,
@@ -32,12 +32,17 @@ import { SearchComponent } from "./components/search/search.component";
 import { SearchModalComponent } from "./components/search-modal/search-modal.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FollowingComponent } from "./pages/following/following.component";
-import { FilterPostsComponent } from "./components/filter-posts/filter-posts.component";
-import { PostDateFiltererComponent } from "./components/post-date-filterer/post-date-filterer.component";
+import { PostDateFiltererComponent } from "./components/filter-by-date/post-date-filterer.component";
 import { StoreModule } from "@ngrx/store";
 import { PictresqueReducer } from "./store/reducers/pictresque.reducer";
 import { PictresqueEffects } from "./store/effects/pictresque.effects";
 import { EffectsModule } from "@ngrx/effects";
+<<<<<<< HEAD
+=======
+import { LoginComponent } from "./components/login/login.component";
+import { RegisterComponent } from "./components/register/register.component";
+import { CommentsComponent } from './components/comments/comments.component';
+>>>>>>> origin/master
 export function provideConfig() {
   return config;
 }
@@ -54,12 +59,15 @@ export function provideConfig() {
     HighlightDirective,
     CategoriesComponent,
     CategoryComponent,
-    RegisterComponent,
+    AuthComponent,
     SearchComponent,
     SearchModalComponent,
     FollowingComponent,
-    FilterPostsComponent,
-    PostDateFiltererComponent
+    PostDateFiltererComponent,
+    LoginComponent,
+    AuthComponent,
+    RegisterComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,

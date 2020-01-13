@@ -43,7 +43,7 @@ export class NavbarComponent implements OnInit {
   };
 
   login() {
-    this.router.navigate(["/register"]);
+    this.router.navigate(["/auth"]);
   }
 
   toggleCollapse() {
