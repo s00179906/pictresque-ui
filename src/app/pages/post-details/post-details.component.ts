@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { PictresqueAPIService } from "src/app/services/pictresque-service/pictresque-api.service";
 import { Post } from "src/app/store/models/Post";
@@ -17,6 +17,8 @@ export class PostDetailsComponent implements OnInit {
 
   id: any;
   post: any;
+  setAutoHide: any;
+  action: any;
   constructor(
     private route: ActivatedRoute,
     private pictresqueService: PictresqueAPIService

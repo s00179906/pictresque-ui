@@ -3,14 +3,14 @@
 <br />
 
 <div *ngIf="post" class="card text-center" cdkDrag>
-  <div appHighlight class="card-header">
+  <div class="card-header" appHighlight>
     <p class="nav-header navbar-brand font-weight-bold">Pictresque</p>
   </div>
   <div class="card-body">
     <h5 class="card-title">{{ post.title }}</h5>
     <p class="card-text">{{ post.description }}</p>
     <img [src]="post.imageUrl" />
-    <hr>
+    <hr />
   </div>
 
   <div class="btn-group" role="group" aria-label="Basic example">
@@ -32,8 +32,7 @@
     </button>
   </div>
 
-  <div class="card-footer text-muted">
-  </div>
+  <div class="card-footer text-muted"></div>
   <app-comments></app-comments>
 </div>
 <div class="text-center">
