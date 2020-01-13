@@ -35,7 +35,7 @@ export class PixbayPostsComponent implements OnInit {
     this.imgSearchObservable.subscribe(term => {
       this.apiService.getSearchTerm(term).subscribe(hits => {
         this.posts = hits["hits"];
-
+        console.log(this.posts);
         this.searchWord = term;
         this.showResults(term);
         // console.log("Peters method", this.posts);

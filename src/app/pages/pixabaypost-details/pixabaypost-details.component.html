@@ -1,0 +1,26 @@
+<app-navbar></app-navbar>
+<br />
+<br />
+
+
+<div class="card text-center" *ngFor="let post of singlePost" [routerLink]="['/pixabayPost', post.id]">
+
+  <div class="card-header" appHighlight>
+    <p class="nav-header navbar-brand font-weight-bold">Pixabay</p>
+
+  </div>
+  <div class="card-body">
+    <img [src]="post.largeImageURL" />
+    <h3>{{post.user}}</h3>
+    <p>Likes: {{post.likes}}</p>
+    <p>Views: {{post.views}}</p>
+    <p>Image Tags: {{post.tags}}</p>
+    <p>Click to view: <a>{{post.pageURL}}</a></p>
+    <div class="text-center">
+      <button type="button" class="btn btn-warning" [routerLink]="['/']">
+        <span class="btn-label"><i class="material-icons">keyboard_backspace</i></span>Back
+      </button>
+    </div>
+  </div>
+  <div class="card-footer text-muted"></div>
+</div>

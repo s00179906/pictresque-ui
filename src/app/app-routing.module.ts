@@ -5,6 +5,7 @@ import { AuthComponent } from "./pages/auth/auth.component";
 import { PostDetailsComponent } from "./pages/post-details/post-details.component";
 import { CategoryComponent } from "./pages/category/category.component";
 import { FollowingComponent } from "./pages/following/following.component";
+import { PixabaypostDetailsComponent } from "./pages/pixabaypost-details/pixabaypost-details.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent, data: { animation: "isLeft" } },
@@ -16,6 +17,11 @@ const routes: Routes = [
   {
     path: "post/:id",
     component: PostDetailsComponent,
+    data: { animation: "isRight" }
+  },
+  {
+    path: "pixabayPost/:id",
+    component: PixabaypostDetailsComponent,
     data: { animation: "isRight" }
   },
   {

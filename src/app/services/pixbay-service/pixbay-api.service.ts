@@ -9,6 +9,8 @@ import { Pixbay } from "../../interfaces/pixbay";
 export class PixbayApiService {
   public apiUrl =
     "https://pixabay.com/api/?key=11999068-334e8043671d15213267678c5&q=";
+  public singlePost =
+    "https://pixabay.com/api/?key=11999068-334e8043671d15213267678c5&id=";
 
   constructor(private http: HttpClient) {
     this.getImageData();
@@ -19,5 +21,8 @@ export class PixbayApiService {
 
   getSearchTerm(inputValue: string): Observable<Pixbay> {
     return this.http.get<Pixbay>(this.apiUrl + inputValue);
+  }
+  getSinglePost(id: string): Observable<Pixbay> {
+    return this.http.get<Pixbay>(this.singlePost + id);
   }
 }

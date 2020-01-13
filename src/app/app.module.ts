@@ -40,6 +40,7 @@ import { EffectsModule } from "@ngrx/effects";
 import { LoginComponent } from "./components/login/login.component";
 import { RegisterComponent } from "./components/register/register.component";
 import { CommentsComponent } from "./components/comments/comments.component";
+import { PixabaypostDetailsComponent } from './pages/pixabaypost-details/pixabaypost-details.component';
 export function provideConfig() {
   return config;
 }
@@ -64,7 +65,8 @@ export function provideConfig() {
     LoginComponent,
     AuthComponent,
     RegisterComponent,
-    CommentsComponent
+    CommentsComponent,
+    PixabaypostDetailsComponent
   ],
   imports: [
     BrowserModule,
