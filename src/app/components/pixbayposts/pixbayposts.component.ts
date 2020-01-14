@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { PixbayApiService } from "src/app/services/pixbay-service/pixbay-api.service";
 import { Store } from "@ngrx/store";
-import { State } from "src/app/store/models/state.model";
-import { GetPixabayAction } from "src/app/store/actions/pictresque.actions";
+import { State } from "src/app/state/models/state.model";
+import { GetPixabayAction } from "src/app/state/pictresque.actions";
 import { Observable } from "rxjs";
 import { Pixbay } from "src/app/interfaces/pixbay";
 @Component({

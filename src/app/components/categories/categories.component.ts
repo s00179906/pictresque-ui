@@ -6,14 +6,14 @@ import {
   ElementRef
 } from "@angular/core";
 import { PictresqueAPIService } from "src/app/services/pictresque-service/pictresque-api.service";
-import { Category } from "src/app/interfaces/Category";
-import { State } from "src/app/store/models/state.model";
+import { ICategory } from "src/app/interfaces/ICategory";
+import { State } from "src/app/state/models/state.model";
 import { Store } from "@ngrx/store";
 import {
   GetCategoryPostsAction,
   GetPostsAction,
   FilterPostsByCategoryAction
-} from "src/app/store/actions/pictresque.actions";
+} from "src/app/state/pictresque.actions";
 
 @Component({
   selector: "app-categories",
@@ -21,7 +21,7 @@ import {
   styleUrls: ["./categories.component.scss"]
 })
 export class CategoriesComponent implements OnInit {
-  categories: Category[];
+  categories: ICategory[];
   selectedCategory: String = "All Categories";
 
   constructor(

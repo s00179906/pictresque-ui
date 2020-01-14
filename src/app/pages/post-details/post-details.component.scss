@@ -26,12 +26,10 @@ img {
   margin-bottom: 5rem;
   margin-top: 3rem;
   background: rgb(46, 46, 60);
-  background: linear-gradient(
-    0deg,
-    rgba(46, 46, 60, 1) 25%,
-    rgba(51, 56, 65, 1) 65%,
-    rgba(72, 88, 92, 1) 100%
-  );
+  background: linear-gradient(0deg,
+      rgba(46, 46, 60, 1) 25%,
+      rgba(51, 56, 65, 1) 65%,
+      rgba(72, 88, 92, 1) 100%);
 }
 
 .back {
@@ -70,4 +68,19 @@ h5 {
 
 .nav-header.navbar-brand.font-weight-bold {
   color: lighten($color: white, $amount: 14);
+}
+
+#back {
+  display: flex inline-block;
+  margin-left: 30%;
+}
+
+i {
+  font-size: 18px;
+}
+
+@media only screen and (max-width: 600px) {
+  #back {
+    margin-left: auto;
+  }
 }

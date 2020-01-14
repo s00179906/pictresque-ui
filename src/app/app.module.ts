@@ -1,7 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
-
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { AppRoutingModule, routingComponents } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
@@ -29,18 +29,20 @@ import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { CategoriesComponent } from "./components/categories/categories.component";
 import { CategoryComponent } from "./pages/category/category.component";
 import { SearchComponent } from "./components/search/search.component";
-import { SearchModalComponent } from "./components/search-modal/search-modal.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FollowingComponent } from "./pages/following/following.component";
 import { PostDateFiltererComponent } from "./components/filter-by-date/post-date-filterer.component";
 import { StoreModule } from "@ngrx/store";
-import { PictresqueReducer } from "./store/reducers/pictresque.reducer";
-import { PictresqueEffects } from "./store/effects/pictresque.effects";
+import { PictresqueReducer } from "./state/pictresque.reducer";
+import { PictresqueEffects } from "./state/pictresque.effects";
 import { EffectsModule } from "@ngrx/effects";
 import { LoginComponent } from "./components/login/login.component";
 import { RegisterComponent } from "./components/register/register.component";
 import { CommentsComponent } from "./components/comments/comments.component";
-import { PixabaypostDetailsComponent } from './pages/pixabaypost-details/pixabaypost-details.component';
+import { SnackbarComponent } from "./components/snackbar/snackbar.component";
+import { DislikeSnackbarComponent } from "./components/dislike-snackbar/dislike-snackbar.component";
+import { PixabaypostDetailsComponent } from "./pages/pixabaypost-details/pixabaypost-details.component";
+
 export function provideConfig() {
   return config;
 }
@@ -59,19 +61,21 @@ export function provideConfig() {
     CategoryComponent,
     AuthComponent,
     SearchComponent,
-    SearchModalComponent,
     FollowingComponent,
     PostDateFiltererComponent,
     LoginComponent,
     AuthComponent,
     RegisterComponent,
     CommentsComponent,
-    PixabaypostDetailsComponent
+    PixabaypostDetailsComponent,
+    SnackbarComponent,
+    DislikeSnackbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    MatSnackBarModule,
     HttpClientModule,
     DragDropModule,
     SocialLoginModule,
@@ -93,6 +97,10 @@ export function provideConfig() {
   ],
   bootstrap: [AppComponent],
   // ? ADD ANY NGBS MODAL COMPONENTS HERE
-  entryComponents: [ModelcontentComponent, SearchModalComponent]
+  entryComponents: [
+    ModelcontentComponent,
+    SnackbarComponent,
+    DislikeSnackbarComponent
+  ]
 })
 export class AppModule {}

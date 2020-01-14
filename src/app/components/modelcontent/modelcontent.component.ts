@@ -2,15 +2,14 @@ import { Component, OnInit } from "@angular/core";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { PictresqueAPIService } from "src/app/services/pictresque-service/pictresque-api.service";
 import Swal from "sweetalert2";
-import { PictresqueState } from "src/app/store/reducers/pictresque.reducer";
 import { Store } from "@ngrx/store";
 import {
   CreatePostAction,
   CreatePostSuccessAction
-} from "src/app/store/actions/pictresque.actions";
-import { State } from "src/app/store/models/state.model";
+} from "src/app/state/pictresque.actions";
+import { State } from "src/app/state/models/state.model";
 import { Observable } from "rxjs";
-import { Category } from "src/app/interfaces/Category";
+import { ICategory } from "src/app/interfaces/ICategory";
 
 @Component({
   selector: "app-modelcontent",
@@ -25,9 +24,10 @@ export class ModelcontentComponent implements OnInit {
   userFile: any;
   file: any;
   errorObservable$: Observable<Error>;
-  categories: Category[];
+  categories: ICategory[];
   selectedCategory: String = "Categories";
   categoryId: string;
+  $loading: Boolean;
 
   constructor(
     public activeModal: NgbActiveModal,
@@ -54,7 +54,7 @@ export class ModelcontentComponent implements OnInit {
     }
   }
 
-  createPost = (title, desc) => {
+  createPost = async (title, desc) => {
     if (!title || !desc || this.selectedCategory == "Categories")
       return this.alert("Title, Description & Category is required!");
 
@@ -67,15 +67,25 @@ export class ModelcontentComponent implements OnInit {
       category: this.categoryId
     };
 
-    this.store.dispatch(new CreatePostAction(post));
-    this.errorObservable$ = this.store.select(state => state.pictresque.error);
+    if (this.file && title && desc) {
+      this.store.dispatch(new CreatePostAction(post));
+      this.errorObservable$ = this.store.select(
+        state => state.pictresque.error
+      );
+    }
 
-    // this.errorObservable$.subscribe(error => {
-    //   if (error != undefined || error != null)
-    //     return this.alert("Whoops, That image is too large!");
-    // });
+    this.store.subscribe(state => (this.$loading = state.pictresque.loading));
 
-    return this.activeModal.dismiss();
+    console.log(this.$loading);
+
+    await this.errorObservable$.subscribe(error => {
+      console.log("ERROR IN MODAL -->", error);
+      if (error != undefined || error != null) {
+        return this.alert(error.message);
+      } else {
+        return this.activeModal.dismiss();
+      }
+    });
   };
 
   alert(msg: string) {

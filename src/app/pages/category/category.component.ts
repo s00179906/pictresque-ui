@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { PictresqueAPIService } from "src/app/services/pictresque-service/pictresque-api.service";
-import { Category } from "src/app/interfaces/Category";
+import { ICategory } from "src/app/interfaces/ICategory";
 import { ActivatedRoute } from "@angular/router";
 
 @Component({
@@ -9,7 +9,7 @@ import { ActivatedRoute } from "@angular/router";
   styleUrls: ["./category.component.scss"]
 })
 export class CategoryComponent implements OnInit {
-  category: Category;
+  category: ICategory;
   categoryId: string;
 
   constructor(

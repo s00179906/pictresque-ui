@@ -1,93 +1,38 @@
-<nav
-  class="navbar navbar-expand-lg nav-container text-light fixed-top"
-  style="background-color: var(--secondary)"
->
-  <header
-    class="nav-header navbar-brand font-weight-bold"
-    style="font-size: 26px;"
-  >
+<nav class="navbar navbar-expand-lg nav-container text-light fixed-top" style="background-color: var(--secondary)">
+  <header class="nav-header navbar-brand font-weight-bold" style="font-size: 26px; cursor: pointer;"
+    [routerLink]="['']">
     Pictresque.
   </header>
 
-  <app-upload
-    *ngIf="userLoggedIn"
-    class="d-none d-md-block d-sm-none"
-  ></app-upload>
+  <app-upload *ngIf="userLoggedIn" class="d-none d-md-none d-lg-block d-sm-none"></app-upload>
 
-  <button
-    class="navbar-toggler btn-dark d-sm-block d-md-block d-lg-none"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-    (click)="toggleCollapse()"
-  >
+  <button class="navbar-toggler btn-dark d-sm-block d-md-block d-lg-none" type="button" data-toggle="collapse"
+    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+    aria-label="Toggle navigation" (click)="toggleCollapse()">
     <i class="icon ion-ios-menu"></i>
   </button>
 
-  <div
-    class="collapse navbar-collapse"
-    id="navbarSupportedContent"
-    [class.show]="show"
-  >
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" [class.show]="show">
     <ul class="navbar-nav mr-auto"></ul>
 
-    <form class="form-inline my-2 my-lg-0">
+    <form class="form-inline d-lg-flex flex-lg-row d-sm-flex flex-sm-column">
+      <app-upload *ngIf="userLoggedIn" class="d-md-block d-lg-none d-sm-block"></app-upload>
+
       <app-search></app-search>
 
-      <button
-        type="button"
-        class="btn btn-outline-light mx-1"
-        style="border:none;"
-        [routerLink]="['']"
-      >
+      <button type="button" class="btn btn-outline-light mx-1" style="border:none;" [routerLink]="['']">
         BROWSE
       </button>
 
-      <!-- <button
-        type="button"
-        class="btn btn-outline-light mx-1"
-        *ngIf="userLoggedIn"
-        style="border:none;"
-        [routerLink]="['/following']"
-      >
-        FOLLOWING
-      </button> -->
-
-      <!-- <button
-        type="button"
-        class="btn btn-outline-light mx-1"
-        style="border:none;"
-        [routerLink]="['/categories']"
-      >
-        CATEGORIES
-      </button> -->
-      <button
-        type="button"
-        class="btn btn-outline-info mx-2"
-        (click)="login()"
-        *ngIf="!userLoggedIn"
-      >
+      <button type="button" class="btn btn-outline-info mx-2" (click)="login()" *ngIf="!userLoggedIn">
         SIGN UP
       </button>
 
-      <button
-        type="button"
-        class="btn btn-success mx-2"
-        (click)="login()"
-        *ngIf="!userLoggedIn"
-      >
+      <button type="button" class="btn btn-success mx-2" (click)="login()" *ngIf="!userLoggedIn">
         SIGN IN
       </button>
 
-      <button
-        type="button"
-        class="btn btn-danger mx-1"
-        (click)="logout()"
-        *ngIf="userLoggedIn"
-      >
+      <button type="button" class="btn btn-danger mx-1" (click)="logout()" *ngIf="userLoggedIn">
         LOGOUT
       </button>
     </form>
