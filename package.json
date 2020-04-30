@@ -31,7 +31,7 @@
     "font-awesome": "^4.7.0",
     "glyphicons": "^0.2.0",
     "ionicons": "^4.6.3",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "popper.js": "^1.16.0",
     "pusher-js": "^5.0.3",
     "rxjs": "~6.4.0",
